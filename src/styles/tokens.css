@@ -1,0 +1,43 @@
+/* ==========================================================================
+   DESIGN TOKENS — couleurs, typographie, espacements
+   Modifie ces valeurs pour ajuster l'apparence de tout le site.
+   ========================================================================== */
+
+:root {
+  /* Couleurs */
+  --ivory: #f3f0e8;        /* fond principal */
+  --paper: #e9e5da;        /* fond secondaire (moodboard) */
+  --stone: #d3cec1;        /* filets, fonds d'images */
+  --charcoal: #1d1e1b;     /* texte principal, fonds sombres */
+  --ink-2: #3a3b36;        /* texte secondaire */
+  --muted: #605f57;        /* légendes (contraste AA sur ivoire) */
+  --mineral: #8e8f88;      /* gris minéral décoratif */
+  --olive: #4e5530;        /* accent */
+  --olive-soft: #8a9066;   /* accent clair */
+  --on-dark: #f3f0e8;
+  --on-dark-muted: #b9b5a8;
+  --line: rgba(29, 30, 27, 0.14);
+  --line-strong: rgba(29, 30, 27, 0.32);
+
+  /* Typographie */
+  --font-sans: "Archivo Variable", "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+
+  --fs-body: clamp(1rem, 0.96rem + 0.2vw, 1.0625rem);
+  --fs-lead: clamp(1.15rem, 1.05rem + 0.5vw, 1.45rem);
+  --fs-h3: clamp(1.25rem, 1.1rem + 0.6vw, 1.6rem);
+  --fs-h2: clamp(2.1rem, 1.4rem + 3.2vw, 4.4rem);
+  --fs-display: clamp(4.2rem, 1rem + 15vw, 15.5rem);
+  --fs-label: 0.72rem;
+
+  /* Mise en page */
+  --container: 1440px;
+  --gutter: clamp(16px, 4vw, 56px);
+  --section-space: clamp(4.5rem, 2.5rem + 7vw, 8.5rem);
+  --header-h: 68px;
+  --radius: 4px;
+
+  /* Animations */
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --dur: 0.9s;
+}
