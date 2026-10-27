@@ -1,5 +1,30 @@
 # Guide de modification du portfolio
 
+## ⚡ Le plus simple : changer une photo depuis GitHub (sans rien installer)
+
+1. Sur ton ordinateur, renomme ta photo avec **exactement le même nom** que celle à remplacer
+   (le nom est écrit sur chaque visuel temporaire, ex. `hero.jpg`).
+2. Va sur https://github.com/sackroy7-png/portfolio et ouvre le dossier `public` → `images`
+   (puis `projets` ou `moodboard` si besoin).
+3. Clique sur **Add file → Upload files**, glisse ta photo, puis clique sur **Commit changes**.
+4. Attends 2 minutes : le site est republié tout seul avec ta nouvelle photo.
+
+Photos à remplacer en priorité :
+
+| Fichier | Où il apparaît |
+|---|---|
+| `images/hero.jpg` | grande photo de l'accueil (paysage, format horizontal) |
+| `images/portrait.jpg` | ta photo dans « À propos » (format vertical) |
+| `images/apropos-detail.jpg` | petite photo à côté du portrait |
+| `images/projets/decathlon-cover.jpg` | couverture du projet Decathlon |
+| `images/moodboard/…` | les 12 images du moodboard |
+
+Ensuite, dis à Claude que c'est fait : il retirera la mention « visuel temporaire » des fichiers de données.
+Pour changer un texte, le plus simple reste de demander à Claude.
+
+---
+
+
 Ce guide explique comment modifier ton site **sans toucher au code des composants**.
 Tout le contenu se trouve dans 3 fichiers et 2 dossiers :
 

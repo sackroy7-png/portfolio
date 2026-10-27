@@ -9,7 +9,7 @@ export default function Hero() {
       <div className="container">
         <div className="hero__meta mono-label">
           <span>Portfolio · Carnet n° 01</span>
-          <Text value={profile.location} />
+          {profile.location && <Text value={profile.location} />}
           <span>
             Recherche de stage · <strong>{profile.internship.duration}</strong>
           </span>

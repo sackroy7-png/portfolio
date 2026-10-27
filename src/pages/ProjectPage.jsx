@@ -51,18 +51,22 @@ export default function ProjectPage({ slug }) {
           <p className="case__summary">{project.summary}</p>
 
           <dl className="case__meta">
-            <div>
-              <dt>Période</dt>
-              <dd><Text value={project.period} /></dd>
-            </div>
+            {project.period && (
+              <div>
+                <dt>Période</dt>
+                <dd><Text value={project.period} /></dd>
+              </div>
+            )}
             <div>
               <dt>Statut</dt>
               <dd><span className={`status status--inline status--${slugify(project.status)}`}>{project.status}</span></dd>
             </div>
-            <div>
-              <dt>Rôle</dt>
-              <dd><Text value={project.role} /></dd>
-            </div>
+            {project.role && (
+              <div>
+                <dt>Rôle</dt>
+                <dd><Text value={project.role} /></dd>
+              </div>
+            )}
             <div>
               <dt>Catégories</dt>
               <dd>{project.categories.join(" · ")}</dd>
@@ -76,16 +80,20 @@ export default function ProjectPage({ slug }) {
       </figure>
 
       <div className="container case__content">
-        <Row label="Contexte">
-          <Text as="p" className="case__lead" value={project.context} />
-        </Row>
+        {project.context && (
+          <Row label="Présentation">
+            <Text as="p" className="case__lead" value={project.context} />
+          </Row>
+        )}
 
-        <Row label="Problématique">
-          <Text as="p" className="case__question" value={project.problem} />
-        </Row>
+        {project.problem && (
+          <Row label="Problématique">
+            <Text as="p" className="case__question" value={project.problem} />
+          </Row>
+        )}
 
         {project.approach?.length > 0 && (
-          <Row label="Démarche">
+          <Row label="Ce que j'ai fait">
             <ol className="steps">
               {project.approach.map((step, i) => (
                 <li key={i} className="step">
@@ -124,9 +132,11 @@ export default function ProjectPage({ slug }) {
           </Row>
         )}
 
-        <Row label="Bilan">
-          <Text as="p" className="case__lead" value={project.outcome} />
-        </Row>
+        {project.outcome && (
+          <Row label="Bilan">
+            <Text as="p" className="case__lead" value={project.outcome} />
+          </Row>
+        )}
 
         {project.learnings?.length > 0 && (
           <Row label="Apprentissages">

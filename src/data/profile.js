@@ -20,7 +20,7 @@ export const profile = {
   intro:
     "Étudiant en deuxième année de BUT Techniques de Commercialisation, parcours Marketing digital, e-commerce et entrepreneuriat. Je m'intéresse à la manière dont un produit de sport — une chaussure, un textile, un vélo — se présente, se raconte et se vend en ligne.",
 
-  location: "[À compléter : ville]",
+  location: "", // facultatif, ex. "Lyon"
 
   heroImage: {
     src: "images/hero.jpg",
@@ -45,7 +45,6 @@ export const profile = {
     // Chaque élément du tableau = un paragraphe.
     paragraphs: [
       "Je me forme au marketing digital et à l'e-commerce à travers le BUT Techniques de Commercialisation. Ce qui m'attire, c'est le lien entre un produit technique et la façon dont on le met en valeur : la photo, la fiche produit, le discours de marque, le parcours d'achat.",
-      "[À compléter : 2 ou 3 phrases sur ta personnalité, ta pratique sportive, ce qui te motive dans l'outdoor.]",
     ],
     interests: [
       "Sport outdoor",
@@ -65,13 +64,7 @@ export const profile = {
       period: "2025 — 2028",
       title: "BUT Techniques de Commercialisation",
       detail: "Parcours Marketing digital, e-commerce et entrepreneuriat · 2e année en cours",
-      school: "[À compléter : IUT et ville]",
-    },
-    {
-      period: "[À compléter]",
-      title: "[À compléter : baccalauréat et spécialités]",
-      detail: "",
-      school: "[À compléter : lycée]",
+      school: "", // facultatif, ex. "IUT de …"
     },
   ],
 
