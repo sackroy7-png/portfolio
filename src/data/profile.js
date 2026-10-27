@@ -79,7 +79,7 @@ export const profile = {
   internship: {
     duration: "2 mois",
     // Modifie librement les dates (texte libre).
-    dates: "[À compléter : ex. du 6 avril au 5 juin 2027]",
+    dates: "Du 5 avril au 28 mai 2027",
     missions: [
       "Marketing digital",
       "E-commerce",
@@ -140,9 +140,9 @@ export const profile = {
   documents: [
     {
       label: "Curriculum vitæ",
-      file: "documents/cv-sacha-roy.pdf",
-      updated: "[À compléter : date de mise à jour]",
-      placeholder: true,
+      file: null, // quand ton CV est prêt : "documents/cv-sacha-roy.pdf"
+      updated: "",
+      note: "En préparation — disponible sur demande",
     },
     {
       label: "Lettre de motivation",
@@ -153,8 +153,8 @@ export const profile = {
 
   /* ----------------------------------------------------------------- CONTACT */
   contact: {
-    email: "prenom.nom@exemple.fr",
-    linkedin: "https://www.linkedin.com/in/votre-profil",
+    email: "sack.roy7@gmail.com",
+    linkedin: "https://www.linkedin.com/in/sacha-roy-bb004a351",
     message: "Une offre de stage, une question sur un projet ? Écrivez-moi.",
   },
 };

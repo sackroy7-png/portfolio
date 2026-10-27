@@ -1454,6 +1454,7 @@ a:hover .link-arrow {
 
 .case-gallery {
   display: grid;
+  grid-auto-flow: dense;
   grid-template-columns: repeat(12, 1fr);
   gap: clamp(2rem, 4vw, 3rem) var(--gutter);
 }

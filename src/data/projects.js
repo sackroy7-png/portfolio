@@ -17,6 +17,7 @@
    • cover        image de couverture
    • gallery      images de la page détaillée (autant que tu veux)
                   wide: true = image en pleine largeur
+                  position: "center 30%" = règle le cadrage (facultatif)
    • context, problem       textes
    • approach     étapes de la démarche : { title, text }
    • deliverables liste des livrables
@@ -29,86 +30,95 @@
 
 export const projects = [
   {
-    slug: "marque-de-vetements",
-    title: "Création d'une marque de vêtements",
+    slug: "whocares",
+    title: "WhoCares — ma marque de vêtements",
     kicker: "Projet personnel · Entrepreneuriat",
-    period: "[À compléter : année]",
+    period: "[À compléter : année de lancement]",
     status: "En cours",
-    role: "Fondateur — [À compléter : précise tes rôles]",
+    role: "Fondateur",
     summary:
-      "Construire une marque de vêtements de A à Z : positionnement, univers visuel, produit et mise en vente.",
-    categories: ["Branding", "Produit", "E-commerce"],
+      "Créer une marque de vêtements : un logo, un premier t-shirt, des photos et un compte Instagram.",
+    categories: ["Branding", "Produit", "Réseaux sociaux"],
     cover: {
-      src: "images/projets/marque-cover.jpg",
-      alt: "Visuel de couverture de la marque de vêtements",
-      placeholder: true,
+      src: "images/projets/whocares-lookbook.jpg",
+      alt: "Deux personnes portant le t-shirt blanc WhoCares au logo rose",
+      position: "center 18%",
     },
     gallery: [
       {
-        src: "images/projets/marque-01.jpg",
-        alt: "Recherche graphique pour l'identité de la marque",
-        caption: "[À compléter : légende — ex. recherches de logo]",
-        placeholder: true,
+        src: "images/projets/whocares-logo.jpg",
+        alt: "Logo WhoCares : un visage dessiné d'un trait continu, en rose",
+        caption: "Le logo : un visage griffonné d'un trait rose.",
       },
       {
-        src: "images/projets/marque-02.jpg",
-        alt: "Détail textile",
-        caption: "[À compléter : légende — ex. choix des matières]",
-        placeholder: true,
-        wide: true,
+        src: "images/projets/whocares-lookbook.jpg",
+        alt: "Séance photo en studio avec deux modèles portant le t-shirt",
+        caption: "Séance photo portée en studio.",
       },
       {
-        src: "images/projets/marque-03.jpg",
-        alt: "Mise en situation du produit",
-        caption: "[À compléter : légende — ex. séance photo produit]",
-        placeholder: true,
+        src: "images/projets/whocares-tshirt-face.jpg",
+        alt: "T-shirt blanc WhoCares vu de face, logo rose imprimé",
+        caption: "T-shirt blanc, logo imprimé sur le devant.",
+      },
+      {
+        src: "images/projets/whocares-tshirt-dos.jpg",
+        alt: "T-shirt blanc WhoCares vu de dos, inscription « Made it simple »",
+        caption: "Au dos, la signature « Made it simple ».",
+      },
+      {
+        src: "images/projets/whocares-coulisses.jpg",
+        alt: "Smartphone affichant une photo de la marque prise en extérieur",
+        caption: "Coulisses d'un contenu pour Instagram.",
       },
     ],
     context:
-      "[À compléter : nom de la marque, date de lancement, d'où vient l'idée, à qui elle s'adresse.]",
+      "WhoCares est la marque de vêtements que j'ai créée. Le produit présenté ici est un t-shirt blanc, avec un visage griffonné en rose sur le devant et la signature « Made it simple » au dos. [À compléter : date de lancement, d'où vient l'idée, à qui s'adresse la marque.]",
     problem:
-      "[À compléter : la question à laquelle tu as cherché à répondre — ex. comment créer une marque crédible avec un budget étudiant ?]",
+      "[À compléter : la question à laquelle tu as cherché à répondre — ex. comment donner une identité forte à une marque avec un seul produit et un budget étudiant ?]",
     approach: [
       {
-        title: "Positionnement",
-        text: "[À compléter : cible, valeurs, ce qui différencie la marque.]",
-      },
-      {
         title: "Identité visuelle",
-        text: "[À compléter : nom, logo, couleurs, outils utilisés.]",
+        text: "Un logo simple et reconnaissable : un visage dessiné d'un trait continu, dans un rose qui se détache sur le blanc. [À compléter : qui l'a dessiné, avec quel outil.]",
       },
       {
         title: "Produit",
-        text: "[À compléter : choix des pièces, des matières, du fournisseur.]",
+        text: "Un t-shirt blanc imprimé recto verso : le logo devant, « Made it simple » au dos. [À compléter : choix de la coupe, de la matière, du fournisseur.]",
       },
       {
-        title: "Communication et vente",
-        text: "[À compléter : réseaux sociaux, boutique en ligne, premiers retours.]",
+        title: "Photo et contenus",
+        text: "Des photos produit sur fond blanc, une séance photo portée en studio et des contenus en extérieur.",
+      },
+      {
+        title: "Communication",
+        text: "Un compte Instagram, @whocares.ms, qui réunit l'univers visuel de la marque. [À compléter : vente, premiers retours.]",
       },
     ],
     deliverables: [
-      "[À compléter : ex. logo et charte graphique]",
-      "[À compléter : ex. visuels pour Instagram]",
+      "Logo",
+      "T-shirt imprimé recto verso",
+      "Photos produit sur fond blanc",
+      "Séance photo portée",
+      "Compte Instagram @whocares.ms",
     ],
     outcome:
-      "[À compléter : où en est le projet aujourd'hui. N'indique que des chiffres réels.]",
+      "[À compléter : où en est la marque aujourd'hui. N'indique que des chiffres réels (ventes, abonnés…).]",
     learnings: ["[À compléter : ce que ce projet t'a appris]"],
-    links: [],
+    links: [{ label: "Instagram @whocares.ms", url: "https://www.instagram.com/whocares.ms/" }],
   },
 
   {
     slug: "decathlon-cycle-fitness",
     title: "Decathlon — rayons cycle et fitness",
-    kicker: "Expérience professionnelle · Commerce",
-    period: "[À compléter : dates]",
+    kicker: "Stage · Commerce",
+    period: "[À compléter : dates du stage]",
     status: "Réalisé",
-    role: "[À compléter : intitulé du poste et type de contrat]",
+    role: "Stagiaire — rayons cycle et fitness",
     summary:
-      "Une expérience en magasin dans les rayons cycle et fitness, au contact des produits et des pratiquants.",
+      "Un stage en magasin au contact des clients et des produits techniques : conseil, rayon, merchandising et préparation des vélos.",
     categories: ["Retail", "Produit", "Relation client"],
     cover: {
       src: "images/projets/decathlon-cover.jpg",
-      alt: "Visuel de couverture de l'expérience Decathlon",
+      alt: "Visuel de couverture du stage chez Decathlon",
       placeholder: true,
     },
     gallery: [
@@ -127,26 +137,30 @@ export const projects = [
       },
     ],
     context:
-      "Expérience au sein d'un magasin Decathlon, dans les rayons cycle et fitness. [À compléter : magasin, période, organisation de l'équipe.]",
+      "Stage dans un magasin Decathlon, aux rayons cycle et fitness. [À compléter : ville du magasin, dates.]",
     problem:
-      "[À compléter : ce que tu retiens du lien entre conseil en magasin et valorisation du produit — ex. comment aider un client à choisir parmi des produits techniques ?]",
+      "Comment aider un client à choisir parmi des produits techniques, et comment le rayon met-il l'offre en valeur ?",
     approach: [
       {
-        title: "[À compléter : mission 1]",
-        text: "[À compléter : ex. accueil et conseil des clients au rayon cycle.]",
+        title: "Conseil client",
+        text: "Conseil et accompagnement des clients dans leurs choix ; analyse de leurs besoins et proposition de solutions adaptées.",
       },
       {
-        title: "[À compléter : mission 2]",
-        text: "[À compléter : ex. mise en rayon, implantation, balisage.]",
+        title: "Connaissance produit",
+        text: "Découverte des caractéristiques techniques des produits cycle et fitness.",
       },
       {
-        title: "[À compléter : mission 3]",
-        text: "[À compléter : ex. gestion des stocks, encaissement.]",
+        title: "Merchandising et rayon",
+        text: "Participation au merchandising et à la mise en valeur de l'offre ; gestion du rayon et de la disponibilité des produits.",
+      },
+      {
+        title: "Atelier vélo",
+        text: "Assemblage et préparation de vélos.",
       },
     ],
-    deliverables: ["[À compléter : ce que tu as produit ou pris en charge]"],
+    deliverables: [],
     outcome:
-      "[À compléter : bilan personnel. Ce que cette expérience t'apporte pour le marketing produit.]",
+      "[À compléter : bilan personnel. Ce que ce stage t'apporte pour le marketing produit.]",
     learnings: ["[À compléter]"],
     links: [],
   },
