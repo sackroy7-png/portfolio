@@ -8,7 +8,7 @@ export default function Projects() {
   return (
     <section id="projets" className="section container" aria-labelledby="projets-title">
       <SectionHead index="02" label="Projets" title={<span id="projets-title">Expériences, projets et études.</span>}>
-        <p>Chaque projet s'ouvre sur une présentation détaillée : contexte, problématique, démarche, livrables et bilan.</p>
+        <p>Chaque projet s'ouvre sur une courte présentation et ses photos.</p>
       </SectionHead>
 
       <div className="project-grid">

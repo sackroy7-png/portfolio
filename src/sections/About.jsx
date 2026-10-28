@@ -15,7 +15,7 @@ export default function About() {
           <figure className="about__portrait">
             <Img image={about.portrait} sizes="(min-width: 900px) 30vw, 90vw" />
           </figure>
-          {about.detailImage && (
+          {about.detailImage?.src && (
             <figure className="about__detail">
               <Img image={about.detailImage} sizes="(min-width: 900px) 18vw, 50vw" />
               <figcaption className="caption">

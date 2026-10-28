@@ -5,18 +5,20 @@
   "location": "",
   "heroImage": {
     "src": "images/hero.jpg",
-    "alt": "Paysage de montagne en couches successives",
-    "caption": "Visuel d'ouverture — à remplacer par une photo outdoor personnelle."
+    "alt": "Dessin d'un massif montagneux en noir et blanc",
+    "caption": "",
+    "position": ""
   },
   "about": {
     "portrait": {
       "src": "images/portrait.jpg",
-      "alt": "Portrait de Sacha Roy"
+      "alt": "Portrait de Sacha Roy",
+      "position": "center 35%"
     },
     "detailImage": {
-      "src": "images/apropos-detail.jpg",
-      "alt": "Détail de carte topographique",
-      "caption": "Détail matière ou terrain — à remplacer."
+      "src": "",
+      "alt": "",
+      "caption": ""
     },
     "paragraphs": [
       "Je me forme au marketing digital et à l'e-commerce à travers le BUT Techniques de Commercialisation. Ce qui m'attire, c'est le lien entre un produit technique et la façon dont on le met en valeur : la photo, la fiche produit, le discours de marque, le parcours d'achat."

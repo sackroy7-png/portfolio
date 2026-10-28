@@ -572,7 +572,7 @@ a:hover .link-arrow {
 .hero__media {
   overflow: hidden;
   aspect-ratio: 16 / 8;
-  background: var(--stone);
+  background: var(--ivory);
   animation: unveil 1.6s var(--ease) 0.2s both;
 }
 
@@ -593,7 +593,7 @@ a:hover .link-arrow {
   }
 
   .hero__media {
-    aspect-ratio: 4 / 5;
+    aspect-ratio: 4 / 3;
   }
 }
 

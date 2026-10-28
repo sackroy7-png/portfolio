@@ -55,8 +55,9 @@ content:
             fields:
               - { name: src, label: Photo (format portrait), type: image, options: { media: images } }
               - { name: alt, label: Description de la photo, type: string }
+              - { name: position, label: "Cadrage (facultatif, ex. center 30%)", type: string }
           - name: detailImage
-            label: Petite photo à côté du portrait
+            label: Petite photo à côté du portrait (facultatif)
             type: object
             fields:
               - { name: src, label: Photo, type: image, options: { media: images } }

@@ -36,10 +36,12 @@ export default function Hero() {
         <div className="hero__media">
           <Img image={profile.heroImage} eager sizes="100vw" />
         </div>
-        <figcaption className="caption container">
-          <span>Fig. 01</span>
-          <Text value={profile.heroImage.caption} />
-        </figcaption>
+        {profile.heroImage.caption && (
+          <figcaption className="caption container">
+            <span>Fig. 01</span>
+            <Text value={profile.heroImage.caption} />
+          </figcaption>
+        )}
       </figure>
     </section>
   );
