@@ -1,9 +1,8 @@
 [
   {
-    "slug": "whocares",
     "title": "WhoCares — mon premier projet",
+    "slug": "whocares",
     "kicker": "Projet personnel · Entrepreneuriat",
-    "period": "",
     "status": "En cours",
     "role": "Fondateur",
     "summary": "Créer une marque de vêtements : un logo, un premier t-shirt, des photos et un compte Instagram.",
@@ -18,6 +17,7 @@
       "position": "center 18%"
     },
     "context": "WhoCares est la marque de vêtements que j'ai créée. Le produit présenté ici est un t-shirt blanc, avec un visage griffonné en rose sur le devant et la signature « Made it simple » au dos.",
+    "approachLabel": "J’ai imaginé l’identité visuelle de ma marque en dessinant le logo et en choisissant la typographie ainsi que les couleurs. J’ai ensuite conçu le tech pack du t-shirt, qui présente les détails nécessaires à sa fabrication, puis je l’ai transmis à un collectif parisien spécialisé dans la sérigraphie. Le collectif a imprimé les t-shirts, et j’ai ensuite fait connaître ma marque en la promouvant sur les réseaux sociaux. ",
     "approach": [
       {
         "title": "Identité visuelle",
@@ -90,10 +90,9 @@
     ]
   },
   {
-    "slug": "saisonia",
     "title": "Saisonia — l'appli emploi des jeunes d'Auvergne",
+    "slug": "saisonia",
     "kicker": "Création d'entreprise · Application mobile",
-    "period": "",
     "status": "Prototype",
     "role": "Cofondateur",
     "highlight": "Accompagné par PEPITE · statut d'étudiant-entrepreneur",
@@ -105,8 +104,7 @@
     ],
     "cover": {
       "src": "images/projets/saisonia-cover.jpg",
-      "alt": "Écran d'accueil du prototype Saisonia sur fond bleu",
-      "position": ""
+      "alt": "Écran d'accueil du prototype Saisonia sur fond bleu"
     },
     "context": "Saisonia est un projet de création d'entreprise mené avec un ami, accompagné par PEPITE, ce qui nous a valu le statut d'étudiant-entrepreneur. L'application regroupe les stages, alternances, jobs d'été, jobs étudiants, jobs saisonniers et premiers emplois proposés aux jeunes d'Auvergne par les entreprises locales. Plus simple et plus locale que les plateformes généralistes, elle mise sur quatre promesses : proximité, simplicité, rapidité et accompagnement.",
     "approachLabel": "Du terrain au produit",
@@ -128,7 +126,6 @@
         "text": "Les offres proches sont mises en avant, et l'âge minimum est affiché pour protéger les plus jeunes."
       }
     ],
-    "prototype": "saisonia",
     "gallery": [
       {
         "src": "images/projets/saisonia-logo.png",
@@ -143,6 +140,6 @@
       "À tester : les notifications d'offres correspondant au profil, et l'accompagnement des plus jeunes (stages de 3e et de seconde).",
       "Prototype : données fictives, distances calculées à vol d'oiseau depuis la ville choisie."
     ],
-    "links": []
+    "prototype": "saisonia"
   }
 ]
