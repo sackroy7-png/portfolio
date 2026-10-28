@@ -1,7 +1,7 @@
 [
   {
     "slug": "whocares",
-    "title": "WhoCares — mon premier projet de vêtements",
+    "title": "WhoCares — mon premier projet",
     "kicker": "Projet personnel · Entrepreneuriat",
     "period": "",
     "status": "En cours",
@@ -47,6 +47,13 @@
         "src": "images/projets/whocares-lookbook.jpg",
         "alt": "Séance photo en studio",
         "caption": "Séance photo portée.",
+        "wide": false
+      },
+      {
+        "src": "images/projets/whocares-coulisses-shooting.jpg",
+        "video": "videos/whocares-coulisses-shooting.mp4",
+        "alt": "Vidéo des coulisses de la séance photo en studio : les modèles posent en t-shirt WhoCares",
+        "caption": "Coulisses de la séance photo, en vidéo.",
         "wide": false
       },
       {
