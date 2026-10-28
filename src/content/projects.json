@@ -50,6 +50,12 @@
         "wide": false
       },
       {
+        "src": "images/projets/whocares-porte-recto-verso.jpg",
+        "alt": "Deux personnes portant le t-shirt WhoCares, l'une de dos avec « Made it simple », l'autre de face avec le logo",
+        "caption": "Porté : le dos et le devant du t-shirt.",
+        "wide": false
+      },
+      {
         "src": "images/projets/whocares-tshirt-face.jpg",
         "alt": "T-shirt WhoCares de face",
         "caption": "Le t-shirt, de face.",
