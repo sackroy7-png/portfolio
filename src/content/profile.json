@@ -43,6 +43,51 @@
     ],
     "sectors": "Sport · Outdoor"
   },
+  "experiences": [
+    {
+      "company": "Decathlon",
+      "type": "Stage",
+      "duration": "1 mois",
+      "period": "",
+      "role": "Stagiaire — rayons cycle et fitness",
+      "summary": "Un mois en magasin, au contact des clients et des produits techniques des rayons cycle et fitness.",
+      "logo": {
+        "src": "images/experience/decathlon-logo.png",
+        "alt": "Logo Decathlon"
+      },
+      "missions": [
+        "Conseil et accompagnement des clients dans leurs choix",
+        "Analyse des besoins et proposition de solutions adaptées",
+        "Découverte des caractéristiques techniques des produits cycle et fitness",
+        "Participation au merchandising et à la mise en valeur de l'offre",
+        "Gestion du rayon et disponibilité des produits",
+        "Assemblage et préparation de vélos"
+      ],
+      "highlight": "Soutenance de stage notée 18/20",
+      "presentation": {
+        "label": "Voir mon support de soutenance",
+        "url": "",
+        "file": ""
+      },
+      "photos": [
+        {
+          "src": "images/experience/decathlon-merchandising.jpg",
+          "alt": "Meuble de présentation : t-shirts, shorts et tapis de sport",
+          "caption": "Merchandising et mise en valeur de l'offre."
+        },
+        {
+          "src": "images/experience/decathlon-rayon-cycle.jpg",
+          "alt": "Allée du rayon cycle avec vélos et casques",
+          "caption": "Le rayon cycle."
+        },
+        {
+          "src": "images/experience/decathlon-rayon-fitness.jpg",
+          "alt": "Espace fitness avec tapis de course",
+          "caption": "Le rayon fitness."
+        }
+      ]
+    }
+  ],
   "skills": [
     {
       "name": "Marketing digital",

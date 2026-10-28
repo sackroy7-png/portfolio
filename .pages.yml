@@ -83,6 +83,40 @@ content:
           - { name: dates, label: Dates, type: string }
           - { name: missions, label: Missions recherchées, type: string, list: true }
           - { name: sectors, label: Secteur, type: string }
+      - name: experiences
+        label: Expériences (stages, jobs)
+        type: object
+        list: true
+        fields:
+          - { name: company, label: Entreprise, type: string }
+          - { name: type, label: "Type (ex. Stage)", type: string }
+          - { name: duration, label: "Durée (ex. 1 mois)", type: string }
+          - { name: period, label: "Période (facultatif)", type: string }
+          - { name: role, label: Poste, type: string }
+          - { name: summary, label: Résumé, type: text }
+          - name: logo
+            label: Logo (facultatif)
+            type: object
+            fields:
+              - { name: src, label: Logo, type: image, options: { media: images, path: experience } }
+              - { name: alt, label: Description, type: string }
+          - { name: missions, label: Missions, type: string, list: true }
+          - { name: highlight, label: "Point fort (ex. note de soutenance)", type: string }
+          - name: presentation
+            label: Support de présentation (facultatif)
+            type: object
+            fields:
+              - { name: label, label: Texte du bouton, type: string }
+              - { name: url, label: "Lien (ex. lien Canva)", type: string }
+              - { name: file, label: "Ou fichier PDF", type: file, options: { media: documents } }
+          - name: photos
+            label: Photos (la première est la grande)
+            type: object
+            list: true
+            fields:
+              - { name: src, label: Photo, type: image, options: { media: images, path: experience } }
+              - { name: alt, label: Description de la photo, type: string }
+              - { name: caption, label: Légende, type: string }
       - name: skills
         label: Compétences
         type: object

@@ -10,7 +10,7 @@ export default function Contact() {
       <div className="container">
         <Reveal>
           <p className="eyebrow eyebrow--light">
-            <span>06</span>
+            <span>07</span>
             <span aria-hidden="true" className="eyebrow__rule" />
             <span>Contact</span>
           </p>

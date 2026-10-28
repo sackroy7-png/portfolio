@@ -7,7 +7,7 @@ import SectionHead from "../components/SectionHead.jsx";
 export default function Documents() {
   return (
     <section id="documents" className="section container" aria-labelledby="documents-title">
-      <SectionHead index="05" label="CV & documents" title={<span id="documents-title">Documents à consulter.</span>} />
+      <SectionHead index="06" label="CV & documents" title={<span id="documents-title">Documents à consulter.</span>} />
 
       <ul className="doc-list">
         {profile.documents.map((doc, i) => (

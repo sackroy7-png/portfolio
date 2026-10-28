@@ -9,7 +9,7 @@ export default function Skills() {
 
   return (
     <section id="competences" className="section container" aria-labelledby="competences-title">
-      <SectionHead index="04" label="Compétences & outils" title={<span id="competences-title">Ce que je sais faire, ce que j'apprends.</span>} />
+      <SectionHead index="05" label="Compétences & outils" title={<span id="competences-title">Ce que je sais faire, ce que j'apprends.</span>} />
 
       <div className="skills">
         <Reveal className="skills__col">

@@ -3,6 +3,7 @@ import { profile } from "../data/profile.js";
 
 const links = [
   { href: "#apropos", label: "À propos" },
+  { href: "#experience", label: "Expérience" },
   { href: "#projets", label: "Projets" },
   { href: "#moodboard", label: "Moodboard" },
   { href: "#competences", label: "Compétences" },

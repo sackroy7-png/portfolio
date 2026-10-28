@@ -6,7 +6,8 @@ fais la modification, publie, puis confirme en une ou deux phrases.
 
 ## Où se trouve le contenu
 - Textes du profil, stage, compétences, outils, CV, contact : `src/content/profile.json`
-- Projets (WhoCares, Decathlon, étude e-commerce) : `src/content/projects.json`
+- Expérience (stage Decathlon) : `experiences` dans `src/content/profile.json`
+- Projets (WhoCares) : `src/content/projects.json`
 - Moodboard : `src/content/moodboard.json` + images dans `public/images/moodboard/<catégorie>/`
   (une image déposée dans un dossier de catégorie apparaît automatiquement, voir `vite.config.js`)
 - Photos : `public/images/` ; PDF : `public/documents/`

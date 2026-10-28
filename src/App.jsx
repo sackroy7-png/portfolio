@@ -5,6 +5,7 @@ import Header from "./components/Header.jsx";
 import Footer from "./components/Footer.jsx";
 import Hero from "./sections/Hero.jsx";
 import About from "./sections/About.jsx";
+import Experience from "./sections/Experience.jsx";
 import Projects from "./sections/Projects.jsx";
 import Moodboard from "./sections/Moodboard.jsx";
 import Skills from "./sections/Skills.jsx";
@@ -22,6 +23,7 @@ function Home() {
     <main id="contenu" tabIndex={-1}>
       <Hero />
       <About />
+      <Experience />
       <Projects />
       <Moodboard />
       <Skills />
@@ -33,7 +35,8 @@ function Home() {
 
 export default function App() {
   const route = useHashRoute();
-  const previous = useRef(route.name);
+  // null au départ : un lien direct vers une section (#projets…) y mène dès l'ouverture.
+  const previous = useRef(null);
 
   // Gère le défilement lors d'un changement de page.
   useLayoutEffect(() => {

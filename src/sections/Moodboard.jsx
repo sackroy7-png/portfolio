@@ -25,7 +25,7 @@ export default function Moodboard() {
   return (
     <section id="moodboard" className="section section--paper" aria-labelledby="moodboard-title">
       <div className="container">
-        <SectionHead index="03" label="Moodboard" title={<span id="moodboard-title">Carnet d'inspirations.</span>}>
+        <SectionHead index="04" label="Moodboard" title={<span id="moodboard-title">Carnet d'inspirations.</span>}>
           <p>Terrains, matières, objets et marques qui nourrissent ma réflexion sur le produit et sa mise en valeur.</p>
         </SectionHead>
 

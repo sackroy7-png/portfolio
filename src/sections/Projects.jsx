@@ -7,13 +7,11 @@ import SectionHead from "../components/SectionHead.jsx";
 export default function Projects() {
   return (
     <section id="projets" className="section container" aria-labelledby="projets-title">
-      <SectionHead index="02" label="Projets" title={<span id="projets-title">Expériences, projets et études.</span>}>
-        <p>Chaque projet s'ouvre sur une courte présentation et ses photos.</p>
-      </SectionHead>
+      <SectionHead index="03" label="Projet" title={<span id="projets-title">Ce que je construis.</span>} />
 
       <div className="project-grid">
         {projects.map((project, i) => (
-          <Reveal key={project.slug} className={`project-card project-card--${(i % 3) + 1}`} delay={i * 80}>
+          <Reveal key={project.slug} className={`project-card ${projects.length === 1 ? "project-card--solo" : `project-card--${(i % 3) + 1}`}`} delay={i * 80}>
             <a href={`#/projets/${project.slug}`} className="project-card__link">
               <div className="project-card__media">
                 <Img image={project.cover} sizes="(min-width: 900px) 55vw, 100vw" />
