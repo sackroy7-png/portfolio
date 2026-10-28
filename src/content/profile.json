@@ -143,9 +143,24 @@
       "status": "en apprentissage"
     },
     {
-      "name": "Procreate",
-      "level": "Bases acquises",
-      "status": "utilisé"
+      "name": "Figma",
+      "level": "Découverte",
+      "status": "en apprentissage"
+    },
+    {
+      "name": "GitHub",
+      "level": "Découverte",
+      "status": "en apprentissage"
+    },
+    {
+      "name": "Claude Pro",
+      "level": "Découverte",
+      "status": "en apprentissage"
+    },
+    {
+      "name": "Google Analytics",
+      "level": "Découverte",
+      "status": "en apprentissage"
     }
   ],
   "documents": [
