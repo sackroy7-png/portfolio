@@ -25,8 +25,8 @@ const out = path.join(dir, "build", mode === "full" ? "sub" : mode);
     fs.writeFileSync(path.join(dir, "build", "audio.wav"), Buffer.from(b64, "base64"));
   } else {
     const times = mode === "full"
-      ? [...Array(15 * 180)].map((_, n) => n / 180).slice(0, process.argv[3] ? +process.argv[3] : undefined)
-      : [...Array(30)].map((_, n) => n * 0.5 + (process.argv[3] ? +process.argv[3] : 0.3));
+      ? [...Array(35 * 180)].map((_, n) => n / 180).slice(0, process.argv[3] ? +process.argv[3] : undefined)
+      : [...Array(70)].map((_, n) => n * 0.5 + (process.argv[3] ? +process.argv[3] : 0.3));
     for (let n = 0; n < times.length; n++) {
       await page.evaluate((t) => window.seek(t), times[n]);
       await page.screenshot({ path: path.join(out, `f${String(n).padStart(5, "0")}.jpg`), type: "jpeg", quality: mode === "full" ? 93 : 80 });

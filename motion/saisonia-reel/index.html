@@ -13,7 +13,7 @@
 <svg id="sv" width="1920" height="1080" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg"></svg>
 <script>
 // « La diagonale » — 15 s, 120 BPM. Tout l'état visuel est calculé depuis t dans window.seek(t).
-const W = 1920, H = 1080, CX = 960, CY = 540, DUR = 15;
+const W = 1920, H = 1080, CX = 960, CY = 540, DUR = 35;
 const COL = { blue: "#316fdf", teal: "#38bdb4", peach: "#ffaa78", ink: "#0b1220", white: "#ffffff" };
 
 // ---------- Courbes (fonctions du temps, sans état) ----------
@@ -63,8 +63,8 @@ function markState(t) {
   if (t < 0.5) { mx = mix(LOCKX, CX, spn(t - 0.04, 0.42, 16)); wv = 1 - eo((t - 0.04) / 0.36); }
   else if (t < 1) { const p = spn(t - 0.5, 0.45, 18); a = 60 * p; s = 75 * p; }
   else if (t < 1.5) { a = 60 + 1500 * ei((t - 1) / 0.5); s = 75 + 75 * eo((t - 1) / 0.4); }
-  else if (t >= 14 && t < 14.5) { a = 1500 * (1 - eo((t - 14) / 0.5)); s = mix(1100, 40, eo((t - 14) / 0.45)); }
-  else if (t >= 14.5) { const p = spn(t - 14.5, 0.45, 16); s = 40 * (1 - p); mx = mix(CX, LOCKX, p); wv = eo((t - 14.55) / 0.4); }
+  else if (t >= 34 && t < 34.5) { a = 1500 * (1 - eo((t - 34) / 0.5)); s = mix(1100, 40, eo((t - 34) / 0.45)); }
+  else if (t >= 34.5) { const p = spn(t - 34.5, 0.45, 16); s = 40 * (1 - p); mx = mix(CX, LOCKX, p); wv = eo((t - 34.55) / 0.4); }
   return { mx, a, s, wv };
 }
 const halfPos = (t, sign) => { const m = markState(t); return [m.mx + sign * (D[0] * m.a - N[0] * m.s), CY + sign * (D[1] * m.a - N[1] * m.s)]; };
@@ -89,7 +89,7 @@ function bandState(t) {
   }
   if (t >= 1.5 && t < 2) { const p = spn(t - 1.5, 0.45, 16); return { c: [CX, CY], ang: ANG * (1 - p), L: 3800, w: mix(326, 300, p) }; }
   if (t >= 2 && t < 4) return { c: [CX, CY], ang: 0, L: 3800, w: 300 * (1 - eo((t - 3.75) / 0.22)) };
-  if (t >= 14) return { c: [m.mx, CY], ang: ANG, L: 3800, w: 2 * m.s + 26 * cl(m.s / 15) };
+  if (t >= 34) return { c: [m.mx, CY], ang: ANG, L: 3800, w: 2 * m.s + 26 * cl(m.s / 15) };
   return null;
 }
 function bandPoly(b) {
@@ -185,184 +185,152 @@ function drawSeasons(t) {
   return o;
 }
 
-// ---------- Mesure 4 : la carte passe en 3D, se démultiplie, devient des barres ----------
-const F = 1500;
+// ---------- Mesures 4 à 16 : la carte devient le téléphone, puis six écrans réels de l'appli ----------
 const CARD = { a: 330, b: 210 };
-const CC = [COL.ink, COL.blue, COL.teal, COL.peach, COL.blue, COL.teal];
-const BI = [3, 0, 1, 2, 4, 5]; // carte k → barre
-const COUNTS = [3, 2, 3, 3, 3, 1]; // Stage, Alternance, Job d'été, Job étudiant, Saisonnier, Premier emploi (offres du prototype)
-const LABELS = [["Stage"], ["Alternance"], ["Job d’été"], ["Job", "étudiant"], ["Saisonnier"], ["Premier", "emploi"]];
-const BCOL = [COL.blue, COL.teal, COL.peach, COL.ink, COL.blue, COL.teal];
-const BASE = 800, barX = (i) => CX + (i - 2.5) * 190;
-function project(p, rx, ry, off) {
-  const [x, y, z] = [p[0] + off[0], p[1] + off[1], (p[2] || 0) + off[2]];
-  const a = (ry * Math.PI) / 180, b = (rx * Math.PI) / 180;
-  const x1 = x * Math.cos(a) + z * Math.sin(a), z1 = -x * Math.sin(a) + z * Math.cos(a);
-  const y2 = y * Math.cos(b) - z1 * Math.sin(b), z2 = y * Math.sin(b) + z1 * Math.cos(b);
-  const s = F / (F + z2);
-  return [CX + x1 * s, CY + y2 * s, z2];
-}
-const rectPts = (x0, y0, x1, y1) => [[x0, y0], [x1, y0], [x1, y1], [x0, y1]];
-const circPts = (cx, cy, r) => [...Array(40)].map((_, i) => [cx + r * Math.cos((i / 40) * 2 * Math.PI), cy + r * Math.sin((i / 40) * 2 * Math.PI)]);
-const CONTENT = [circPts(-235, -105, 42), rectPts(-170, -135, 170, -100), rectPts(-170, -78, 60, -54), rectPts(-255, 50, -95, 100), rectPts(90, 60, 250, 90)];
-function cardState(k, t) {
-  let rx, ry;
-  if (t < 6.5) { const p = spn(t - 6, 0.45, 16); rx = 50 * p; ry = -28 * p; }
-  else if (t < 7) { rx = 50; ry = -28; }
-  else { const q = eio((t - 7) / 0.45); rx = mix(50, 28, q); ry = mix(-28, 32, q); }
-  const sk = k === 0 ? 1 : spn(t - 6.5 - 0.03 * k, 0.42, 18);
-  let off = [-40 * k * sk, -22 * k * sk, 130 * k * sk], a = CARD.a, b = CARD.b, n = 5;
-  const pk = spn(t - 7.5 - 0.025 * k, 0.42, 18);
-  if (pk > 0) {
-    const i = BI[k];
-    rx = mix(rx, 0, pk); ry = mix(ry, 0, pk);
-    off = [mix(off[0], barX(i) - CX, pk), mix(off[1], BASE - 30 - CY, pk), mix(off[2], 0, pk)];
-    a = mix(a, 56, pk); b = mix(b, 30, pk); n = mix(5, 8, pk);
+const UI = "../saisonia-film/assets/ui/";
+const PX = 1330, SS = 410 / 390, SW = 410, SHh = 844 * SS; // écran : captures 390 x 844 pt
+const SX0 = PX - SW / 2, SY0 = CY - SHh / 2;
+const PHONE = { a: 219, b: SHh / 2 + 14, n: 14 };
+// Changements d'écran, calés sur les temps.
+const SCREENS = [
+  { t: 7.0, src: "00-welcome", ty: "wipe" },
+  { t: 9.0, src: "01-qui", ty: "push" },
+  { t: 10.0, src: "02-cherche", ty: "push" },
+  { t: 11.0, src: "03-ou", ty: "push" },
+  { t: 12.0, src: "10-home", ty: "push" },
+  { t: 16.0, src: "21-explore-ete", ty: "push" },
+  { t: 20.0, src: "30-offer", ty: "push" },
+  { t: 24.0, src: "40-apply1", ty: "sheet" },
+  { t: 25.5, src: "42-apply2", ty: "push" },
+  { t: 26.75, src: "44-success", ty: "up" },
+  { t: 28.0, src: "54-detail-entretien-clean", ty: "push" },
+];
+// Ce que chaque écran explique (deux lignes, un mot en bleu) et où la caméra s'approche.
+const SECTIONS = [
+  { t: 8, l: [["Crée", "ton"], ["profil.", 1]], sub: "Âge, niveau, ce que tu cherches, ta ville." },
+  { t: 12, l: [["Des", "offres"], ["pour", 1, "toi.", 1]], sub: "Adaptées à ton âge, ton niveau et ta zone." },
+  { t: 16, l: [["Filtre", "par"], ["contrat.", 1]], sub: "Stage, alternance, job d’été, saisonnier…" },
+  { t: 20, l: [["Tout", "voir", "avant"], ["de", "postuler.", 1]], sub: "Salaire, dates, horaires, distance." },
+  { t: 24, l: [["Postule", "en"], ["deux", 1, "étapes.", 1]], sub: "Ton dossier est déjà rempli." },
+  { t: 28, l: [["Suis", "ta"], ["candidature.", 1]], sub: "Envoyée, vue, entretien." },
+];
+const ZOOMS = [
+  { t0: 13.0, t1: 15.3, f: [[195, 394]] },
+  { t0: 17.0, t1: 19.3, f: [[230, 300]] },
+  { t0: 20.8, t1: 23.3, f: [[195, 330], [290, 790]], pan: 22.2 },
+  { t0: 29.2, t1: 31.4, f: [[195, 420]] },
+];
+const ZOOM = 1.5;
+const toFrame = (p) => [SX0 + p[0] * SS, SY0 + p[1] * SS];
+function camState(t) {
+  for (const z of ZOOMS) {
+    if (t < z.t0 || t > z.t1 + 0.5) continue;
+    const k = eio((t - z.t0) / 0.6) * (1 - eio((t - z.t1) / 0.5));
+    let f = toFrame(z.f[0]);
+    if (z.f[1]) { const q = eio((t - z.pan) / 0.6); const g = toFrame(z.f[1]); f = [mix(f[0], g[0], q), mix(f[1], g[1], q)]; }
+    return { s: mix(1, ZOOM, k), f };
   }
-  const cs = t < 7.5 ? spn(t - 6, 0.35, 20) : 1 - ei((t - 7.5) / 0.12);
-  return { rx, ry, off, a, b, n, cs };
+  return { s: 1, f: [PX, CY] };
 }
-function drawCards(t) {
-  if (t < 6 || t >= 8) return "";
-  const list = [];
-  for (let k = 0; k < 6; k++) {
-    if (k > 0 && t < 6.5 + 0.03 * k) continue;
-    const s = cardState(k, t);
-    const r = shCard(s.a, s.b, s.n);
-    const poly = r.map((v, i) => project([v * Math.cos(TH[i]), v * Math.sin(TH[i]), 0], s.rx, s.ry, s.off));
-    const depth = project([0, 0, 0], s.rx, s.ry, s.off)[2];
-    let g = `<polygon points="${pts(poly)}" fill="${CC[k]}"/>`;
-    if (s.cs > 0.01) CONTENT.forEach((c, ci) => {
-      const pp = c.map((p) => project([p[0] * s.cs, p[1] * s.cs, 0], s.rx, s.ry, s.off));
-      g += `<polygon points="${pts(pp)}" fill="${ci === 3 && k === 0 ? COL.peach : COL.white}"/>`;
-    });
-    list.push({ depth, g });
-  }
-  list.sort((p, q) => q.depth - p.depth);
-  return list.map((l) => l.g).join("");
-}
-
-// ---------- Mesure 5 : les données du prototype ----------
-const barH = (i, t) => mix(60, COUNTS[i] * 110, spn(t - 8 - 0.04 * i, 0.42, 18));
-function drawData(t) {
-  if (t < 8 || t >= 10.2) return "";
+const img = (src, x, y, extra = "") => `<image href="${UI}${src}.png" x="${f1(x)}" y="${f1(y)}" width="${SW}" height="${f1(SHh)}"${extra}/>`;
+function drawScreens(t) {
+  let k = -1;
+  SCREENS.forEach((s, i) => { if (t >= s.t) k = i; });
+  if (k < 0) return "";
+  const cur = SCREENS[k], prev = SCREENS[k - 1], p = eo((t - cur.t) / 0.5);
+  const vx = (tt) => SW * (1 - eo((tt - cur.t) / 0.5));
   let o = "";
-  const dim = (i) => (i === 2 ? 1 : 1 - 0.85 * eo((t - 9) / 0.25));
-  for (let i = 0; i < 6; i++) {
-    if (i === 2 && t >= 9.5) continue; // la barre Job d'été devient la puce (mesure 6)
-    let h = barH(i, t);
-    if (t >= 9.5) h *= 1 - ei((t - 9.5 - 0.03 * i) / 0.25);
-    if (h < 1) continue;
-    const r = shCard(56, h / 2, 8);
-    o += `<polygon points="${pts(polar(r, barX(i), BASE - h / 2).map((p, j) => [p[0], p[1]]))}" fill="${BCOL[i]}" fill-opacity="${dim(i).toFixed(3)}"/>`;
-    // valeur au-dessus
-    const sc = spn(t - 8.1 - 0.04 * i, 0.3, 22);
-    if (sc > 0.01 && t < 9.5) o += `<g transform="translate(${f1(barX(i))},${f1(BASE - h - 26)}) scale(${sc.toFixed(3)})" opacity="${dim(i).toFixed(3)}">${text(String(COUNTS[i]), 0, 0, 48, 800, COL.ink, ' text-anchor="middle"')}</g>`;
+  if (cur.ty === "wipe") {
+    const off = mix(-700, 700, eio((t - cur.t) / 0.45));
+    const c = [PX, CY];
+    const poly = [[c[0] + D[0] * 2000 + N[0] * off, c[1] + D[1] * 2000 + N[1] * off], [c[0] - D[0] * 2000 + N[0] * off, c[1] - D[1] * 2000 + N[1] * off], [c[0] - D[0] * 2000 - N[0] * 2000, c[1] - D[1] * 2000 - N[1] * 2000], [c[0] + D[0] * 2000 - N[0] * 2000, c[1] + D[1] * 2000 - N[1] * 2000]];
+    return `<g${clipPoly(poly)}>${img(cur.src, SX0, SY0)}</g>`;
   }
-  // étiquettes sous les barres
-  let lab = "";
-  LABELS.forEach((ls, i) => {
-    const fy = (tt) => 70 * (1 - spn(tt - 8.05 - 0.04 * i, 0.35, 22)) + 90 * ei((tt - 9.5 - 0.03 * i) / 0.2);
-    const vy = (fy(t) - fy(t - DT)) / DT;
-    ls.forEach((l, li) => { lab += `<g opacity="${dim(i).toFixed(3)}"${blur(0, vy)}>${text(l, barX(i), BASE + 46 + li * 34 + fy(t), 28, i === 2 ? 800 : 600, COL.ink, ' text-anchor="middle"')}</g>`; });
-  });
-  o += `<g${clipRect(0, BASE + 8, W, 120)}>${lab}</g>`;
-  // compteur
-  if (t >= 8.5) {
-    const fx = (tt) => -700 * (1 - spn(tt - 8.5, 0.4, 18)) - 1000 * ei((tt - 9.5) / 0.3);
-    const vx = (fx(t) - fx(t - DT)) / DT, x = 120 + fx(t);
-    const roll = (tt) => 240 * spn(tt - 9, 0.35, 22);
-    const ry = roll(t), ry2 = ry / 2, vry = (roll(t) - roll(t - DT)) / DT;
-    const n15 = Math.round(15 * eo((t - 8.5) / 0.4));
-    let num = `<g${blur(0, vry)}>${text(String(n15), x, 330 - ry, 220, 900, COL.ink)}${text("3", x, 330 + 240 - ry, 220, 900, COL.peach)}</g>`;
-    let sub = `<g${blur(0, vry)}>${text("offres dans le prototype", x + 6, 400 - ry2, 34, 700, COL.ink)}${text("jobs d’été", x + 6, 400 + 120 - ry2, 34, 700, COL.ink)}</g>`;
-    o += `<g${blur(vx, 0)}><g${clipRect(0, 150, 1000, 200)}>${num}</g><g${clipRect(0, 365, 1000, 50)}>${sub}</g>${text("données fictives", x + 6, 446, 28, 500, COL.ink, ' fill-opacity="0.55"')}</g>`;
+  if (p < 1 && prev) {
+    if (cur.ty === "push") o += img(prev.src, SX0 - 130 * p, SY0);
+    if (cur.ty === "up") o += img(prev.src, SX0, SY0 - 160 * p);
+    if (cur.ty === "sheet") o += img(prev.src, SX0, SY0);
+  }
+  if (cur.ty === "push") { const v = (vx(t) - vx(t - DT)) / DT; o += `<g${blur(v, 0)}>${img(cur.src, SX0 + SW * (1 - p), SY0)}</g>`; }
+  else if (cur.ty === "up") o += img(cur.src, SX0, SY0 + SHh * (1 - p));
+  else if (cur.ty === "sheet") {
+    const top = 371.4 * SS;
+    if (p < 1) {
+      o += `<g opacity="${p.toFixed(3)}"${clipRect(SX0, SY0, SW, top)}>${img(cur.src, SX0, SY0)}</g>`;
+      o += `<g${clipRect(SX0, SY0 + top + (SHh - top) * (1 - p), SW, SHh - top)}>${img(cur.src, SX0, SY0 + (SHh - top) * (1 - p))}</g>`;
+    } else o += img(cur.src, SX0, SY0);
+  }
+  // notification de réponse de l'entreprise
+  if (t >= 28.6 && t < 30.4) {
+    const ty = -90 * (1 - eo((t - 28.6) / 0.6)) - 90 * ei((t - 30.0) / 0.3);
+    const b = [45.2 * SS, 60 * SS, 299.5 * SS, 42.7 * SS];
+    o += `<g${clipRect(SX0 + b[0], SY0 + b[1] + ty, b[2], b[3], b[3] / 2)}>${img("53-detail-entretien", SX0, SY0 + ty)}</g>`;
   }
   return o;
 }
-
-// ---------- Mesure 6 : l'interface ----------
-const PH = { x0: 1200, y0: 60, x1: 1720, y1: 1020 };
-const ROWS = [["Vendeur·se en magasin", "de sport", "Riom · 13 km"], ["Animateur·rice centre", "de loisirs", "Le Puy-en-Velay"], ["Préparateur·rice", "de commandes", "Montluçon"]];
-const CHIP = { cx: 1336, cy: 238, a: 100, b: 28 };
-function chipState(t) {
-  const p = spn(t - 9.5, 0.45, 16);
-  const h = COUNTS[2] * 110;
-  return { cx: mix(barX(2), CHIP.cx, p), cy: mix(BASE - h / 2, CHIP.cy, p), a: mix(56, CHIP.a, p), b: mix(h / 2, CHIP.b, p), n: mix(8, 6, p), rot: -18 * Math.sin(Math.PI * p) };
+function drawPhone(t) {
+  if (t < 6 || t >= 32.05) return "";
+  // 6,0 s : la carte noire devient le téléphone.
+  const p = spn(t - 6, 0.6, 14);
+  const a = mix(CARD.a, PHONE.a, p), b = mix(CARD.b, PHONE.b, p), n = mix(5, PHONE.n, p), cx = mix(CX, PX, p);
+  const v = vel((tt) => [mix(CX, PX, spn(tt - 6, 0.6, 14)), CY], t);
+  const cam = camState(t);
+  let inner = `<g${blur(v[0], 0)}><polygon points="${pts(polar(shCard(a, b, n), cx, CY, 0))}" fill="${COL.ink}"/></g>`;
+  if (t >= 7) {
+    inner += `<g${clipRect(SX0, SY0, SW, SHh, 50)}><rect x="${f1(SX0)}" y="${f1(SY0)}" width="${SW}" height="${f1(SHh)}" fill="#eef2f8"/>${drawScreens(t)}</g>`;
+    const ip = spn(t - 7.5, 0.35, 22);
+    inner += `<rect x="${f1(PX - 66 * ip)}" y="${f1(SY0 + 11)}" width="${f1(132 * ip)}" height="39" rx="19.5" fill="#000"/>`;
+    if (ip > 0.5) inner += text("17:02", SX0 + 46, SY0 + 38, 18, 700, COL.ink);
+  }
+  // le bouton bleu « Ajouter au calendrier » envahit l'image
+  if (t >= 31.75) {
+    const q = ei((t - 31.75) / 0.25);
+    const x = SX0 + 33 * SS, y = SY0 + 442.6 * SS, w = 324 * SS, h = 50 * SS;
+    inner += `<rect x="${f1(mix(x, -40, q))}" y="${f1(mix(y, -40, q))}" width="${f1(mix(w, W + 80, q))}" height="${f1(mix(h, H + 80, q))}" rx="${f1(26 * (1 - q))}" fill="${COL.blue}"/>`;
+  }
+  return `<g transform="translate(${f1(cam.f[0])},${f1(cam.f[1])}) scale(${cam.s.toFixed(4)}) translate(${f1(-cam.f[0])},${f1(-cam.f[1])})">${inner}</g>`;
 }
-const rowY = (i, t) => { const base = 300 + i * 170; return i === 0 ? base : base + 270 * spn(t - 10.5, 0.4, 18); };
-const rowH = (i, t) => (i === 0 ? mix(150, 420, spn(t - 10.5, 0.4, 18)) : 150);
-const rowX = (i, t) => 1236 + 520 * (1 - spn(t - 10 - 0.06 * i, 0.42, 18));
-function drawUI(t) {
-  if (t < 9.5 || t >= 12.05) return "";
+function drawCaptions(t) {
+  if (t < 8 || t >= 32) return "";
   let o = "";
-  // téléphone qui se dessine
-  if (t >= 10) {
-    const p = eio((t - 10) / 0.45);
-    o += `<rect x="${PH.x0}" y="${PH.y0}" width="${PH.x1 - PH.x0}" height="${PH.y1 - PH.y0}" rx="70" fill="none" stroke="${COL.ink}" stroke-width="12" pathLength="1" stroke-dasharray="1 1" stroke-dashoffset="${(1 - p).toFixed(4)}"/>`;
-    const hy = (tt) => 60 * (1 - spn(tt - 10.05, 0.35, 22));
-    o += `<g${clipRect(PH.x0, 110, 520, 80)}>${text("Rechercher", 1240, 172 + hy(t), 44, 800, COL.ink)}</g>`;
-  }
-  // puce « Job d'été » (la barre de données)
-  const c = chipState(t), cv2 = vel((tt) => { const q = chipState(tt); return [q.cx, q.cy]; }, t);
-  o += `<g${blur(cv2[0], cv2[1])}><polygon points="${pts(polar(shCard(c.a, c.b, c.n), c.cx, c.cy, c.rot))}" fill="${COL.peach}"/></g>`;
-  const ls = spn(t - 9.85, 0.25, 24);
-  if (ls > 0.01) o += `<g transform="translate(${CHIP.cx},${CHIP.cy + 10}) scale(${ls.toFixed(3)})">${text("Job d’été", 0, 0, 28, 700, COL.ink, ' text-anchor="middle"')}</g>`;
-  // lignes d'offres
-  if (t >= 10) {
-    let rows = "";
-    ROWS.forEach((r, i) => {
-      const x = rowX(i, t), y = rowY(i, t), h = rowH(i, t), vx = (rowX(i, t) - rowX(i, t - DT)) / DT;
-      let g = `<rect x="${f1(x)}" y="${f1(y)}" width="448" height="${f1(h)}" rx="26" fill="${COL.white}" stroke="${COL.ink}" stroke-width="3"/>`;
-      g += text(r[0], x + 26, y + 48, 28, 800, COL.ink) + text(r[1], x + 26, y + 82, 28, 800, COL.ink);
-      g += text(r[2], x + 26, y + 124, 28, 500, COL.ink, ' fill-opacity="0.6"');
-      if (i === 0 && t >= 10.5) {
-        const cy0 = y + 130;
-        g += `<g${clipRect(x, y, 448, h, 26)}>`;
-        g += text("Altitude Sport Riom", x + 26, cy0 + 40, 28, 500, COL.ink, ' fill-opacity="0.6"');
-        g += text("11,88 € brut / h", x + 26, cy0 + 84, 28, 800, COL.ink);
-        const bx = x + 24, by = y + 300, bw = 400, bh = 84;
-        const fw = bw * eo((t - 11) / 0.25);
-        const lab = (tt) => 60 * spn(tt - 11.5, 0.3, 22);
-        const ly = lab(t);
-        const labs = (fill) => `<g${clipRect(bx, by, bw, bh, 42)}>` +
-          text(t < 11.08 ? "Postuler" : "Envoyée", bx + bw / 2, by + 54 - ly, 30, 800, fill, ' text-anchor="middle"') +
-          text("Entretien · mardi 10 h", bx + bw / 2, by + 54 + 60 - ly, 30, 800, fill, ' text-anchor="middle"') + `</g>`;
-        g += `<rect x="${f1(bx)}" y="${f1(by)}" width="${bw}" height="${bh}" rx="42" fill="${COL.white}" stroke="${COL.blue}" stroke-width="4"/>` + labs(COL.blue);
-        g += `<g${clipRect(bx, by, fw, bh)}><rect x="${f1(bx)}" y="${f1(by)}" width="${bw}" height="${bh}" rx="42" fill="${COL.blue}"/>${labs(COL.white)}</g>`;
-        g += `</g>`;
+  SECTIONS.forEach((S, si) => {
+    const end = si === SECTIONS.length - 1 ? 31.55 : S.t + 3.72;
+    if (t < S.t || t > end + 0.3) return;
+    let wi = 0;
+    S.l.forEach((line, li) => {
+      let x = 150;
+      for (let j = 0; j < line.length; j++) {
+        const w = line[j]; if (typeof w !== "string") continue;
+        const accent = line[j + 1] === 1;
+        const tin = S.t + 0.07 * wi++, a = cl((t - tin) / 0.14) * (1 - cl((t - end) / 0.2));
+        const bl = 6 * (1 - cl((t - tin) / 0.14)) + 8 * cl((t - end) / 0.2);
+        if (a > 0.01) {
+          const id = "f" + uid++; defs.push(`<filter id="${id}" x="-20%" y="-40%" width="140%" height="180%"><feGaussianBlur stdDeviation="${bl.toFixed(2)}"/></filter>`);
+          o += `<g opacity="${a.toFixed(3)}"${bl > 0.3 ? ` filter="url(#${id})"` : ""}>${text(w, x, 440 + li * 108, 100, 900, accent ? COL.blue : COL.ink, ' letter-spacing="-3"')}</g>`;
+        }
+        x += meas(w, 900, 100) - 3 * (w.length - 1) + 26;
       }
-      rows += `<g${blur(vx, 0)}>${g}</g>`;
     });
-    o += `<g${clipRect(PH.x0 + 6, PH.y0 + 6, 508, 948, 64)}>${rows}</g>`;
-  }
-  // mots à gauche
-  const LW = [{ s: "Près de toi.", t: 10 }, { s: "Postuler.", t: 10.5 }, { s: "Envoyée.", t: 11 }, { s: "Entretien.", t: 11.5, c: COL.blue }];
-  let lw = "";
-  LW.forEach((w, i) => {
-    const nxt = LW[i + 1] ? LW[i + 1].t : 99;
-    if (t < w.t || t > nxt + 0.2) return;
-    const fy = (tt) => 200 * (1 - spn(tt - w.t, 0.4, 22)) - 220 * ei((tt - nxt) / 0.16);
-    const vy = (fy(t) - fy(t - DT)) / DT;
-    lw += `<g${blur(0, vy)}>${text(w.s, 140, CY + 50 + fy(t), 130, 900, w.c || COL.ink, ' letter-spacing="-4"')}</g>`;
+    const ts = S.t + 0.35, a = cl((t - ts) / 0.2) * (1 - cl((t - end) / 0.2));
+    const sy = 24 * (1 - eo((t - ts) / 0.4));
+    if (a > 0.01) o += `<g opacity="${a.toFixed(3)}">${text(S.sub, 152, 625 + sy, 38, 500, COL.ink, ' fill-opacity="0.7"')}</g>`;
   });
-  o += `<g${clipRect(100, CY - 120, 1060, 220)}>${lw}</g>`;
-  // le bouton bleu envahit l'image
-  if (t >= 11.75) {
-    const p = ei((t - 11.75) / 0.25);
-    const x = rowX(0, t) + 24, y = rowY(0, t) + 300;
-    const r = [mix(x, -40, p), mix(y, -40, p), mix(x + 400, W + 40, p), mix(y + 84, H + 40, p)];
-    o += `<rect x="${f1(r[0])}" y="${f1(r[1])}" width="${f1(r[2] - r[0])}" height="${f1(r[3] - r[1])}" rx="${f1(42 * (1 - p))}" fill="${COL.blue}"/>`;
+  // progression : six points, un par écran
+  const cur = SECTIONS.reduce((k, S, i) => (t >= S.t ? i : k), 0);
+  const da = cl((t - 8) / 0.3) * (1 - cl((t - 31.55) / 0.2));
+  for (let i = 0; i < 6; i++) {
+    const on = i === cur, r = on ? mix(7, 11, spn(t - SECTIONS[i].t, 0.3, 24)) : 7;
+    o += `<circle cx="${156 + i * 36}" cy="720" r="${r.toFixed(2)}" fill="${on ? COL.blue : COL.ink}" fill-opacity="${(on ? da : 0.2 * da).toFixed(3)}"/>`;
   }
   return o;
 }
 
 // ---------- Mesure 7 : le moment fort, des coupes en diagonale ----------
 const LAYERS = [
-  { t: 12.0, bg: COL.blue, s: "TROUVE", c: COL.white, size: 340 },
-  { t: 12.5, bg: COL.teal, s: "TON", c: COL.ink, size: 420 },
-  { t: 13.0, bg: COL.peach, s: "JOB", c: COL.ink, size: 440 },
-  { t: 13.5, bg: COL.ink, s: "EN AUVERGNE.", c: COL.white, size: 205 },
+  { t: 32.0, bg: COL.blue, s: "TROUVE", c: COL.white, size: 340 },
+  { t: 32.5, bg: COL.teal, s: "TON", c: COL.ink, size: 420 },
+  { t: 33.0, bg: COL.peach, s: "JOB", c: COL.ink, size: 440 },
+  { t: 33.5, bg: COL.ink, s: "EN AUVERGNE.", c: COL.white, size: 205 },
 ];
 function wipePoly(off) {
   const big = 3200;
@@ -380,7 +348,7 @@ function layerWord(L, t) {
   return `<g transform="translate(${f1(c[0])},${f1(c[1])}) scale(${sc.toFixed(3)})"${blur(v[0], v[1])}>${text(L.s, -ww / 2, (0.727 * L.size) / 2, L.size, 900, L.c, ' letter-spacing="-8"')}</g>`;
 }
 function drawBig(t) {
-  if (t < 12 || t >= 14) return "";
+  if (t < 32 || t >= 34) return "";
   let o = "";
   LAYERS.forEach((L, i) => {
     if (t < L.t) return;
@@ -393,7 +361,7 @@ function drawBig(t) {
   return o;
 }
 function drawEnd(t) {
-  if (t < 14) return "";
+  if (t < 34) return "";
   const b = bandState(t), bp = bandPoly(b);
   return `<polygon points="${pts(bp)}" fill="${COL.ink}"/><g${clipPoly(bp)}>${layerWord(LAYERS[3], t)}</g>`;
 }
@@ -407,8 +375,8 @@ window.seek = (t) => {
   let body = `<rect x="0" y="0" width="${W}" height="${H}" fill="${COL.white}"/>`;
   const b = bandState(t);
   if (b && t < 4) body += `<polygon points="${pts(bandPoly(b))}" fill="${COL.ink}"/>`;
-  body += drawWords(t) + drawSeasons(t) + drawCards(t) + drawData(t) + drawUI(t) + drawBig(t) + drawEnd(t);
-  if (t < 1.5 || t >= 14) body += drawMark(t);
+  body += drawWords(t) + drawSeasons(t) + drawPhone(t) + drawCaptions(t) + drawBig(t) + drawEnd(t);
+  if (t < 1.5 || t >= 34) body += drawMark(t);
   sv.innerHTML = `<defs>${STATIC}${defs.join("")}</defs>${body}`;
 };
 
@@ -430,7 +398,7 @@ async function init() {
     { t: 4.35, r: shCirc(250), c: COL.peach, cy: CY - 40, d: 0.15, spin: 0 },
     { t: 4.5, r: shTri(320), c: COL.blue, cy: CY - 20, d: 0.42, spin: 24 },
     { t: 5.0, r: shDrop(290), c: COL.teal, cy: CY - 40, d: 0.42, spin: -24 },
-    { t: 5.5, r: shCard(CARD.a, CARD.b, 5), c: COL.ink, cy: CY, d: 0.42, spin: 18 },
+    { t: 5.5, r: shCard(330, 210, 5), c: COL.ink, cy: CY, d: 0.42, spin: 18 },
   ];
   window.seek(0);
 }
@@ -462,38 +430,39 @@ window.renderAudio = async () => {
   };
   const kick = (t, g = 1) => { tone(t, 0.42, 150, 44, g); noise(t, 0.014, { f: 2500, g: 0.22 * g }); };
   const L = pan(-0.35), R = pan(0.35);
-  const BAR_NOTES = [55, 43.65, 65.41, 49, 55, 43.65, 73.42, 55];
-  for (let n = 0; n < 30; n++) {
+  const BAR_NOTES = [55, 43.65, 65.41, 49];
+  const STRONG = [55, 43.65, 73.42, 55];
+  for (let n = 0; n < 70; n++) {
     const t = n * 0.5, bar = Math.floor(t / 2);
     kick(t, n % 4 === 0 ? 1 : 0.85);
     noise(t + 0.25, 0.05, { f: 7500, g: 0.16, out: n % 2 ? L : R });
     noise(t + 0.375, 0.03, { f: 9000, g: 0.07, out: n % 2 ? R : L });
     if (n % 2 === 1) noise(t, 0.16, { type: "bandpass", f: 1900, q: 0.9, g: 0.32 });
     // basse pulsée sur le contretemps
-    const o = ctx.createOscillator(); o.type = "sawtooth"; o.frequency.value = BAR_NOTES[bar] * 2;
+    const o = ctx.createOscillator(); o.type = "sawtooth"; o.frequency.value = (bar >= 16 ? STRONG[bar - 16] : BAR_NOTES[bar % 4]) * 2;
     const lp = ctx.createBiquadFilter(); lp.type = "lowpass"; lp.frequency.value = 420; lp.Q.value = 6;
     const gn = ctx.createGain(); env(gn, t + 0.25, 0.2, 0.01, 0.22);
     o.connect(lp).connect(gn).connect(center); o.start(t + 0.25); o.stop(t + 0.5);
   }
   // impact à chaque changement de scène
-  [2, 4, 6, 8, 10, 12, 14].forEach((t) => {
-    const big = t === 12;
+  [2, 4, 6, 8, 12, 16, 20, 24, 28, 32, 34].forEach((t) => {
+    const big = t === 32;
     tone(t, big ? 1.6 : 0.9, 95, 30, big ? 0.9 : 0.55);
     noise(t, big ? 0.6 : 0.3, { type: "lowpass", f: 4000, f2: 300, g: big ? 0.55 : 0.32 });
   });
   // montée vers la dernière mesure pleine
   const rs = ctx.createBufferSource(); rs.buffer = nb; rs.loop = true;
-  const rf = ctx.createBiquadFilter(); rf.type = "bandpass"; rf.Q.value = 2; rf.frequency.setValueAtTime(300, 10); rf.frequency.exponentialRampToValueAtTime(7000, 12);
-  const rg = ctx.createGain(); rg.gain.setValueAtTime(0.0001, 10); rg.gain.exponentialRampToValueAtTime(0.42, 11.98); rg.gain.setValueAtTime(0.0001, 12);
-  rs.connect(rf).connect(rg).connect(center); rs.start(10); rs.stop(12.01);
-  const ro = ctx.createOscillator(); ro.type = "sawtooth"; ro.frequency.setValueAtTime(110, 10); ro.frequency.exponentialRampToValueAtTime(880, 12);
-  const rlp = ctx.createBiquadFilter(); rlp.type = "lowpass"; rlp.frequency.setValueAtTime(400, 10); rlp.frequency.exponentialRampToValueAtTime(5000, 12);
-  const rog = ctx.createGain(); rog.gain.setValueAtTime(0.0001, 10); rog.gain.exponentialRampToValueAtTime(0.12, 11.98); rog.gain.setValueAtTime(0.0001, 12);
-  ro.connect(rlp).connect(rog).connect(center); ro.start(10); ro.stop(12.01);
+  const rf = ctx.createBiquadFilter(); rf.type = "bandpass"; rf.Q.value = 2; rf.frequency.setValueAtTime(300, 30); rf.frequency.exponentialRampToValueAtTime(7000, 32);
+  const rg = ctx.createGain(); rg.gain.setValueAtTime(0.0001, 30); rg.gain.exponentialRampToValueAtTime(0.42, 31.98); rg.gain.setValueAtTime(0.0001, 32);
+  rs.connect(rf).connect(rg).connect(center); rs.start(30); rs.stop(32.01);
+  const ro = ctx.createOscillator(); ro.type = "sawtooth"; ro.frequency.setValueAtTime(110, 30); ro.frequency.exponentialRampToValueAtTime(880, 32);
+  const rlp = ctx.createBiquadFilter(); rlp.type = "lowpass"; rlp.frequency.setValueAtTime(400, 30); rlp.frequency.exponentialRampToValueAtTime(5000, 32);
+  const rog = ctx.createGain(); rog.gain.setValueAtTime(0.0001, 30); rog.gain.exponentialRampToValueAtTime(0.12, 31.98); rog.gain.setValueAtTime(0.0001, 32);
+  ro.connect(rlp).connect(rog).connect(center); ro.start(30); ro.stop(32.01);
   // souffles sur les coupes en diagonale, clics sur l'interface, tics du compteur
-  [0.5, 1.0, 12.5, 13.0, 13.5, 14.0].forEach((t, i) => noise(t - 0.04, 0.32, { type: "bandpass", f: 500, f2: 4200, q: 1.2, g: 0.22, attack: 0.08, out: i % 2 ? L : R }));
-  [10.5, 11.0, 11.5].forEach((t) => tone(t, 0.07, 1600, 1150, 0.22));
-  for (let i = 0; i < 15; i++) tone(8.5 + i * 0.027, 0.02, 2600, null, 0.05);
+  [0.5, 1.0, 6.0, 7.0, 32.5, 33.0, 33.5, 34.0].forEach((t, i) => noise(t - 0.04, 0.32, { type: "bandpass", f: 500, f2: 4200, q: 1.2, g: 0.22, attack: 0.08, out: i % 2 ? L : R }));
+  SCREENS.forEach((s) => { tone(s.t, 0.07, 1600, 1150, 0.2); noise(s.t - 0.03, 0.18, { type: "bandpass", f: 1200, f2: 3500, q: 1, g: 0.1, attack: 0.04 }); });
+  [28.6, 13.0, 17.0, 20.8, 29.2].forEach((t) => tone(t, 0.12, 880, 1320, 0.07, "triangle", 0.005));
   [4.5, 5.0, 5.5].forEach((t) => tone(t, 0.18, 660, 990, 0.08, "triangle", 0.005));
   const buf = await ctx.startRendering();
   // normalisation à -1 dBFS puis WAV 16 bits
