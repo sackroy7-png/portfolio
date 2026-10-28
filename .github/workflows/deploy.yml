@@ -26,6 +26,10 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
+      # Bloque la publication si une image ou un PDF indiqué est introuvable
+      - run: npm run check
+      # Réduit les photos trop lourdes (ex. photos de téléphone) avant publication
+      - run: npm run images
       - run: npm run build
       - uses: actions/upload-pages-artifact@v3
         with:

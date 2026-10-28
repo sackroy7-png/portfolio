@@ -17,20 +17,20 @@ npm run preview   # tester la version finale
 ## Structure
 
 ```
-src/data/            ← CONTENU (seuls fichiers à modifier au quotidien)
-  profile.js           profil, formation, stage, compétences, outils, documents, contact
-  projects.js          projets et pages détaillées
-  inspirations.js      moodboard et catégories
+src/content/         ← CONTENU (modifiable avec Pages CMS, voir .pages.yml)
+  profile.json         profil, formation, stage, compétences, outils, documents, contact
+  projects.json        projets et pages détaillées
+  moodboard.json       images du moodboard
 public/images/       ← photos et visuels
 public/documents/    ← CV et PDF
+src/data/            préparation du contenu pour les composants
 src/styles/tokens.css  couleurs, typographie, espacements
 src/styles/main.css    mise en page
-src/sections/        sections de l'accueil (Hero, About, Projects, Moodboard, Skills, Documents, Contact)
+src/sections/        sections de l'accueil
 src/pages/           page détaillée d'un projet
 src/components/      composants réutilisables (Img, Text, Reveal, Lightbox, Meter…)
-src/lib/             navigation et utilitaires
 scripts/             vérification du contenu, optimisation des images
-.github/workflows/   publication automatique sur GitHub Pages
+.github/workflows/   vérification, optimisation et publication sur GitHub Pages
 ```
 
 ## Choix techniques
@@ -43,4 +43,5 @@ scripts/             vérification du contenu, optimisation des images
   service externe.
 - **Accessibilité** : lien d'évitement, focus visible, textes alternatifs, visionneuse au clavier,
   contrastes AA, animations désactivées si `prefers-reduced-motion`.
+- **Pages CMS** édite les fichiers JSON directement dans le dépôt GitHub : pas de base de données, pas de clé API.
 - Aucune clé API, aucun secret, aucun traceur.

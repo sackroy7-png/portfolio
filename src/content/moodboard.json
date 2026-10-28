@@ -1,0 +1,98 @@
+[
+  {
+    "src": "images/moodboard/outdoor-01.jpg",
+    "category": "Outdoor",
+    "title": "Ligne de crête",
+    "caption": "Visuel temporaire. Idée : un paysage de montagne qui t'inspire.",
+    "sourceLabel": "",
+    "sourceUrl": ""
+  },
+  {
+    "src": "images/moodboard/footwear-01.jpg",
+    "category": "Footwear",
+    "title": "Semelle crantée",
+    "caption": "Visuel temporaire. Idée : gros plan sur une semelle de trail.",
+    "sourceLabel": "",
+    "sourceUrl": ""
+  },
+  {
+    "src": "images/moodboard/matieres-01.jpg",
+    "category": "Matières",
+    "title": "Maille technique",
+    "caption": "Visuel temporaire. Idée : texture d'un mesh ou d'un ripstop.",
+    "sourceLabel": "",
+    "sourceUrl": ""
+  },
+  {
+    "src": "images/moodboard/design-01.jpg",
+    "category": "Design",
+    "title": "Forme et fonction",
+    "caption": "Visuel temporaire. Idée : un objet dont le design t'a marqué.",
+    "sourceLabel": "",
+    "sourceUrl": ""
+  },
+  {
+    "src": "images/moodboard/ecommerce-01.jpg",
+    "category": "E-commerce",
+    "title": "Fiche produit",
+    "caption": "Visuel temporaire. Idée : une page produit que tu trouves réussie.",
+    "sourceLabel": "",
+    "sourceUrl": ""
+  },
+  {
+    "src": "images/moodboard/branding-01.jpg",
+    "category": "Branding",
+    "title": "Système graphique",
+    "caption": "Visuel temporaire. Idée : une identité de marque outdoor.",
+    "sourceLabel": "",
+    "sourceUrl": ""
+  },
+  {
+    "src": "images/moodboard/outdoor-02.jpg",
+    "category": "Outdoor",
+    "title": "Relief",
+    "caption": "Visuel temporaire. Idée : une carte, un itinéraire, un terrain.",
+    "sourceLabel": "",
+    "sourceUrl": ""
+  },
+  {
+    "src": "images/moodboard/footwear-02.jpg",
+    "category": "Footwear",
+    "title": "Tige et laçage",
+    "caption": "Visuel temporaire. Idée : détail de construction d'une chaussure.",
+    "sourceLabel": "",
+    "sourceUrl": ""
+  },
+  {
+    "src": "images/moodboard/matieres-02.jpg",
+    "category": "Matières",
+    "title": "Tissage",
+    "caption": "Visuel temporaire. Idée : échantillons, nuancier, toile enduite.",
+    "sourceLabel": "",
+    "sourceUrl": ""
+  },
+  {
+    "src": "images/moodboard/design-02.jpg",
+    "category": "Design",
+    "title": "Esquisse",
+    "caption": "Visuel temporaire. Idée : croquis ou dessin technique produit.",
+    "sourceLabel": "",
+    "sourceUrl": ""
+  },
+  {
+    "src": "images/moodboard/branding-02.jpg",
+    "category": "Branding",
+    "title": "Étiquette",
+    "caption": "Visuel temporaire. Idée : packaging, étiquette, hangtag.",
+    "sourceLabel": "",
+    "sourceUrl": ""
+  },
+  {
+    "src": "images/moodboard/ecommerce-02.jpg",
+    "category": "E-commerce",
+    "title": "Parcours mobile",
+    "caption": "Visuel temporaire. Idée : capture d'un parcours d'achat sur mobile.",
+    "sourceLabel": "",
+    "sourceUrl": ""
+  }
+]

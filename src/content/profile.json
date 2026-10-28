@@ -1,0 +1,124 @@
+{
+  "name": "Sacha Roy",
+  "title": "Marketing digital · E-commerce · Outdoor",
+  "intro": "Étudiant en deuxième année de BUT Techniques de Commercialisation, parcours Marketing digital, e-commerce et entrepreneuriat. Je m'intéresse à la manière dont un produit de sport — une chaussure, un textile, un vélo — se présente, se raconte et se vend en ligne.",
+  "location": "",
+  "heroImage": {
+    "src": "images/hero.jpg",
+    "alt": "Paysage de montagne en couches successives",
+    "caption": "Visuel d'ouverture — à remplacer par une photo outdoor personnelle."
+  },
+  "about": {
+    "portrait": {
+      "src": "images/portrait.jpg",
+      "alt": "Portrait de Sacha Roy"
+    },
+    "detailImage": {
+      "src": "images/apropos-detail.jpg",
+      "alt": "Détail de carte topographique",
+      "caption": "Détail matière ou terrain — à remplacer."
+    },
+    "paragraphs": [
+      "Je me forme au marketing digital et à l'e-commerce à travers le BUT Techniques de Commercialisation. Ce qui m'attire, c'est le lien entre un produit technique et la façon dont on le met en valeur : la photo, la fiche produit, le discours de marque, le parcours d'achat."
+    ],
+    "interests": [
+      "Sport outdoor",
+      "Chaussures techniques",
+      "Matériaux et textiles",
+      "Biomécanique",
+      "Design produit",
+      "Identité de marque"
+    ],
+    "goal": "À long terme, je souhaite devenir chef de produit dans le secteur du sport, en particulier dans l'outdoor et la chaussure technique."
+  },
+  "education": [
+    {
+      "period": "2025 — 2028",
+      "title": "BUT Techniques de Commercialisation",
+      "detail": "Parcours Marketing digital, e-commerce et entrepreneuriat · 2e année en cours",
+      "school": ""
+    }
+  ],
+  "internship": {
+    "duration": "2 mois",
+    "dates": "Du 5 avril au 28 mai 2027",
+    "missions": [
+      "Marketing digital",
+      "E-commerce",
+      "Communication digitale",
+      "Valorisation des produits"
+    ],
+    "sectors": "Sport · Outdoor"
+  },
+  "skills": [
+    {
+      "name": "Marketing digital",
+      "level": "Bases acquises",
+      "detail": "Réseaux sociaux, contenus, indicateurs de performance."
+    },
+    {
+      "name": "E-commerce",
+      "level": "Bases acquises",
+      "detail": "Fiches produit, parcours d'achat, mise en avant de l'offre."
+    },
+    {
+      "name": "Analyse de marché et benchmark",
+      "level": "Bases acquises",
+      "detail": "Comparaison d'offres, positionnement, veille concurrentielle."
+    },
+    {
+      "name": "Identité de marque et communication",
+      "level": "Bases acquises",
+      "detail": "Univers visuel, ton, cohérence entre les supports."
+    }
+  ],
+  "tools": [
+    {
+      "name": "Canva",
+      "level": "Opérationnel",
+      "status": "utilisé"
+    },
+    {
+      "name": "Excel",
+      "level": "Bases acquises",
+      "status": "utilisé"
+    },
+    {
+      "name": "Shopify",
+      "level": "Bases acquises",
+      "status": "utilisé"
+    },
+    {
+      "name": "Lightroom",
+      "level": "Bases acquises",
+      "status": "utilisé"
+    },
+    {
+      "name": "Photoshop",
+      "level": "Découverte",
+      "status": "en apprentissage"
+    },
+    {
+      "name": "Procreate",
+      "level": "Découverte",
+      "status": "en apprentissage"
+    }
+  ],
+  "documents": [
+    {
+      "label": "Curriculum vitæ",
+      "file": "",
+      "note": "En préparation — disponible sur demande"
+    },
+    {
+      "label": "Lettre de motivation",
+      "file": "",
+      "note": "Disponible sur demande"
+    }
+  ],
+  "contact": {
+    "email": "sack.roy7@gmail.com",
+    "linkedin": "https://www.linkedin.com/in/sacha-roy-bb004a351",
+    "message": "Une offre de stage, une question sur un projet ? Écrivez-moi."
+  }
+}

@@ -1,0 +1,193 @@
+# Configuration de Pages CMS (https://pagescms.org)
+# Décrit les formulaires d'édition du portfolio. Chaque enregistrement dans
+# Pages CMS modifie les fichiers de src/content/ et republie le site.
+
+media:
+  - name: images
+    label: Images
+    input: public/images
+    output: /images
+    extensions: [jpg, jpeg, png, webp]
+    rename: safe
+  - name: documents
+    label: Documents PDF
+    input: public/documents
+    output: /documents
+    extensions: [pdf]
+    rename: safe
+
+content:
+  # ------------------------------------------------------------------ PROFIL
+  - name: profil
+    label: Profil, stage et contact
+    type: file
+    path: src/content/profile.json
+    format: json
+    fields:
+      - name: name
+        label: Nom
+        type: string
+        required: true
+      - name: title
+        label: Titre (sous le nom)
+        type: string
+      - name: intro
+        label: Présentation (accueil)
+        type: text
+      - name: location
+        label: Ville (facultatif)
+        type: string
+      - name: heroImage
+        label: Grande photo de l'accueil
+        type: object
+        fields:
+          - { name: src, label: Photo (format paysage), type: image, options: { media: images } }
+          - { name: alt, label: Description de la photo, type: string }
+          - { name: caption, label: Légende, type: string }
+          - { name: position, label: "Cadrage (facultatif, ex. center 30%)", type: string }
+      - name: about
+        label: À propos
+        type: object
+        fields:
+          - name: portrait
+            label: Portrait
+            type: object
+            fields:
+              - { name: src, label: Photo (format portrait), type: image, options: { media: images } }
+              - { name: alt, label: Description de la photo, type: string }
+          - name: detailImage
+            label: Petite photo à côté du portrait
+            type: object
+            fields:
+              - { name: src, label: Photo, type: image, options: { media: images } }
+              - { name: alt, label: Description de la photo, type: string }
+              - { name: caption, label: Légende, type: string }
+          - { name: paragraphs, label: Paragraphes, type: text, list: true }
+          - { name: interests, label: Centres d'intérêt, type: string, list: true }
+          - { name: goal, label: Objectif professionnel, type: text }
+      - name: education
+        label: Formation
+        type: object
+        list: true
+        fields:
+          - { name: period, label: "Période (ex. 2025 — 2028)", type: string }
+          - { name: title, label: Diplôme, type: string }
+          - { name: detail, label: Précision, type: string }
+          - { name: school, label: Établissement, type: string }
+      - name: internship
+        label: Recherche de stage
+        type: object
+        fields:
+          - { name: duration, label: Durée, type: string }
+          - { name: dates, label: Dates, type: string }
+          - { name: missions, label: Missions recherchées, type: string, list: true }
+          - { name: sectors, label: Secteur, type: string }
+      - name: skills
+        label: Compétences
+        type: object
+        list: true
+        fields:
+          - { name: name, label: Compétence, type: string }
+          - name: level
+            label: Niveau
+            type: select
+            options: { values: [Découverte, Bases acquises, Opérationnel, Avancé] }
+          - { name: detail, label: Précision, type: string }
+      - name: tools
+        label: Outils
+        type: object
+        list: true
+        fields:
+          - { name: name, label: Outil, type: string }
+          - name: level
+            label: Niveau
+            type: select
+            options: { values: [Découverte, Bases acquises, Opérationnel, Avancé] }
+          - name: status
+            label: Statut
+            type: select
+            options: { values: [utilisé, en apprentissage] }
+      - name: documents
+        label: CV et documents
+        type: object
+        list: true
+        fields:
+          - { name: label, label: Nom du document, type: string }
+          - { name: file, label: Fichier PDF (vide = bouton masqué), type: file, options: { media: documents } }
+          - { name: note, label: Texte affiché s'il n'y a pas de fichier, type: string }
+      - name: contact
+        label: Contact
+        type: object
+        fields:
+          - { name: email, label: E-mail, type: string }
+          - { name: linkedin, label: Lien LinkedIn, type: string }
+          - { name: message, label: Message, type: text }
+
+  # ---------------------------------------------------------------- PROJETS
+  - name: projets
+    label: Projets
+    type: file
+    path: src/content/projects.json
+    format: json
+    list: true
+    fields:
+      - { name: title, label: Titre, type: string, required: true }
+      - { name: slug, label: "Identifiant dans l'adresse (vide = automatique)", type: string }
+      - { name: kicker, label: "Type (ex. Stage · Commerce)", type: string }
+      - name: status
+        label: Statut
+        type: select
+        options: { values: [Réalisé, En cours, À venir] }
+      - { name: period, label: Période, type: string }
+      - { name: role, label: Rôle, type: string }
+      - { name: summary, label: Résumé (une phrase), type: text }
+      - { name: categories, label: Catégories, type: string, list: true }
+      - name: cover
+        label: Photo de couverture
+        type: object
+        fields:
+          - { name: src, label: Photo, type: image, options: { media: images, path: projets } }
+          - { name: alt, label: Description de la photo, type: string }
+          - { name: position, label: "Cadrage (facultatif, ex. center 20%)", type: string }
+      - { name: context, label: Présentation, type: text }
+      - name: approach
+        label: Ce que j'ai fait (étapes)
+        type: object
+        list: true
+        fields:
+          - { name: title, label: Titre, type: string }
+          - { name: text, label: Texte, type: text }
+      - name: gallery
+        label: Photos du projet
+        type: object
+        list: true
+        fields:
+          - { name: src, label: Photo, type: image, options: { media: images, path: projets } }
+          - { name: alt, label: Description de la photo, type: string }
+          - { name: caption, label: Légende, type: string }
+          - { name: wide, label: Pleine largeur, type: boolean }
+      - name: links
+        label: Liens
+        type: object
+        list: true
+        fields:
+          - { name: label, label: Texte du lien, type: string }
+          - { name: url, label: Adresse (https://…), type: string }
+
+  # -------------------------------------------------------------- MOODBOARD
+  - name: moodboard
+    label: Moodboard
+    type: file
+    path: src/content/moodboard.json
+    format: json
+    list: true
+    fields:
+      - { name: src, label: Image, type: image, required: true, options: { media: images, path: moodboard } }
+      - name: category
+        label: Catégorie
+        type: select
+        options: { values: [Outdoor, Footwear, Matières, Design, Branding, E-commerce] }
+      - { name: title, label: Titre, type: string }
+      - { name: caption, label: Légende, type: string }
+      - { name: sourceLabel, label: Source (nom), type: string }
+      - { name: sourceUrl, label: Source (lien), type: string }
