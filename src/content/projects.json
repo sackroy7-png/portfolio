@@ -20,16 +20,16 @@
     "approachLabel": "J’ai imaginé l’identité visuelle de ma marque en dessinant le logo et en choisissant la typographie ainsi que les couleurs. J’ai ensuite conçu le tech pack du t-shirt, qui présente les détails nécessaires à sa fabrication, puis je l’ai transmis à un collectif parisien spécialisé dans la sérigraphie. Le collectif a imprimé les t-shirts, et j’ai ensuite fait connaître ma marque en la promouvant sur les réseaux sociaux. ",
     "approach": [
       {
-        "title": "Identité visuelle",
-        "text": "Un logo simple et reconnaissable : un visage dessiné d'un trait continu, en rose."
+        "title": "Logo",
+        "text": "Un logo simple et reconnaissable : un visage abstrait dessiné d'un trait continu, en rose."
       },
       {
         "title": "Produit",
-        "text": "Un t-shirt blanc imprimé recto verso."
+        "text": "Un t-shirt blanc sérigraphié recto verso."
       },
       {
         "title": "Photo et contenus",
-        "text": "Photos produit, séance photo portée en studio et contenus en extérieur."
+        "text": "Photos produit, séance photo portée en studio "
       },
       {
         "title": "Communication",
@@ -39,45 +39,38 @@
     "gallery": [
       {
         "src": "images/projets/whocares-logo.jpg",
-        "alt": "Logo WhoCares",
         "caption": "Le logo.",
         "wide": false
       },
       {
         "src": "images/projets/whocares-lookbook.jpg",
-        "alt": "Séance photo en studio",
         "caption": "Séance photo portée.",
         "wide": false
       },
       {
         "src": "images/projets/whocares-coulisses-shooting.jpg",
         "video": "videos/whocares-coulisses-shooting.mp4",
-        "alt": "Vidéo des coulisses de la séance photo en studio : les modèles posent en t-shirt WhoCares",
         "caption": "Coulisses de la séance photo, en vidéo.",
         "wide": false
       },
       {
         "src": "images/projets/whocares-porte-recto-verso.jpg",
-        "alt": "Deux personnes portant le t-shirt WhoCares, l'une de dos avec « Made it simple », l'autre de face avec le logo",
         "caption": "Porté : le dos et le devant du t-shirt.",
         "wide": false
       },
       {
         "src": "images/projets/whocares-tshirt-face.jpg",
-        "alt": "T-shirt WhoCares de face",
         "caption": "Le t-shirt, de face.",
         "wide": false
       },
       {
         "src": "images/projets/whocares-tshirt-dos.jpg",
-        "alt": "T-shirt WhoCares de dos",
         "caption": "Au dos : « Made it simple ».",
         "wide": false
       },
       {
         "src": "images/projets/whocares-coulisses-video.jpg",
         "video": "videos/whocares-coulisses.mp4",
-        "alt": "Vidéo : une personne en t-shirt WhoCares tague « Who Cares » sur un mur",
         "caption": "Coulisses d'un contenu, en vidéo.",
         "wide": false
       }
