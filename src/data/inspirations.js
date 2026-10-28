@@ -5,7 +5,7 @@ import folderFiles from "virtual:moodboard-files";
 import { slugify } from "../lib/asset.js";
 
 // Ordre des filtres au-dessus de la galerie.
-export const CATEGORY_NAMES = ["Outdoor", "Footwear", "Matières", "Performance", "Design", "Branding", "E-commerce"];
+export const CATEGORY_NAMES = ["Outdoor", "Footwear", "Matières", "Performance", "Design", "Artistes", "E-commerce"];
 
 const labelOf = Object.fromEntries(CATEGORY_NAMES.map((name) => [slugify(name), name]));
 const clean = (src = "") => src.replace(/^\/+/, "");

@@ -58,7 +58,7 @@ Dépose ta photo directement dans le dossier de sa catégorie, sur GitHub :
 | Matières | `public/images/moodboard/matieres/` |
 | Performance | `public/images/moodboard/performance/` |
 | Design | `public/images/moodboard/design/` |
-| Branding | `public/images/moodboard/branding/` |
+| Artistes | `public/images/moodboard/artistes/` |
 | E-commerce | `public/images/moodboard/ecommerce/` |
 
 Sur GitHub : ouvre le dossier → **Add file → Upload files** → glisse tes photos → **Commit changes**.

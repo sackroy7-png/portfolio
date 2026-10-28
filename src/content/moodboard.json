@@ -88,14 +88,6 @@
     "sourceUrl": ""
   },
   {
-    "src": "images/moodboard/branding/next-time-better.jpg",
-    "category": "Branding",
-    "title": "« Next time better »",
-    "caption": "Ne jamais être satisfait de son travail : la prochaine fois, mieux.",
-    "sourceLabel": "",
-    "sourceUrl": ""
-  },
-  {
     "src": "images/moodboard/matieres/imprime-maille.jpg",
     "category": "Matières",
     "title": "Imprimé sur maille",
@@ -140,6 +132,30 @@
     "category": "Matières",
     "title": "Superposition de couches",
     "caption": "Coque, isolation et couche de base : le système multicouche.",
+    "sourceLabel": "",
+    "sourceUrl": ""
+  },
+  {
+    "src": "images/moodboard/artistes/slawn.jpg",
+    "category": "Artistes",
+    "title": "Slawn",
+    "caption": "Artiste nigérian : peinture, graffiti et design.",
+    "sourceLabel": "",
+    "sourceUrl": ""
+  },
+  {
+    "src": "images/moodboard/artistes/virgil-abloh.jpg",
+    "category": "Artistes",
+    "title": "Virgil Abloh",
+    "caption": "Designer, fondateur d'Off-White. Ici avec l'Air Jordan 1 Off-White × Nike.",
+    "sourceLabel": "",
+    "sourceUrl": ""
+  },
+  {
+    "src": "images/moodboard/artistes/jackson-pollock.jpg",
+    "category": "Artistes",
+    "title": "Jackson Pollock",
+    "caption": "Peintre américain, connu pour sa technique du dripping.",
     "sourceLabel": "",
     "sourceUrl": ""
   }

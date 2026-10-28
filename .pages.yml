@@ -227,7 +227,7 @@ content:
       - name: category
         label: Catégorie
         type: select
-        options: { values: [Outdoor, Footwear, Matières, Performance, Design, Branding, E-commerce] }
+        options: { values: [Outdoor, Footwear, Matières, Performance, Design, Artistes, E-commerce] }
       - { name: title, label: Titre, type: string }
       - { name: caption, label: Légende, type: string }
       - { name: sourceLabel, label: Source (nom), type: string }
