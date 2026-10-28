@@ -1657,6 +1657,100 @@ a:hover .link-arrow {
   }
 }
 
+/* ---------------------------------------------------------- Prototype */
+
+.case-proto {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 2rem clamp(2rem, 6vw, 6rem);
+  align-items: center;
+  padding: clamp(2rem, 5vw, 4rem);
+  border-radius: var(--radius);
+  background: var(--paper);
+}
+
+.case-proto__label {
+  color: var(--charcoal);
+  margin-bottom: 1rem;
+}
+
+.case-proto__note {
+  margin: 1rem 0 1.6rem;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.proto-page {
+  min-height: 100vh;
+  background: #e9edf5;
+}
+
+.proto-page__back {
+  position: fixed;
+  z-index: 60;
+  top: 10px;
+  left: 10px;
+  padding: 0.45rem 0.8rem;
+  border-radius: 999px;
+  background: var(--charcoal);
+  color: var(--ivory);
+  font-size: 0.8rem;
+}
+
+@media (min-width: 700px) {
+  .proto-page {
+    display: grid;
+    place-items: center;
+    padding: 2rem;
+  }
+
+  .proto-page .sz-full {
+    height: min(860px, calc(100vh - 4rem));
+    border-radius: 28px;
+    overflow: hidden;
+    box-shadow: 0 30px 60px -30px rgba(15, 27, 51, 0.4);
+  }
+}
+
+@media (max-width: 700px) {
+  /* Mobile : une barre fine au-dessus de l'application */
+  .proto-page__back {
+    position: static;
+    display: block;
+    border-radius: 0;
+    padding: 0.55rem 1rem;
+  }
+
+  .proto-page .sz-full {
+    height: calc(100vh - 36px);
+    height: calc(100dvh - 36px);
+  }
+}
+
+@media (max-width: 860px) {
+  .case-proto {
+    grid-template-columns: 1fr;
+    padding: 1.5rem 1rem;
+  }
+
+  .case-proto__phone {
+    justify-self: center;
+    width: 100%;
+    max-width: 410px;
+  }
+
+  .case-proto__phone .sz-phone {
+    height: 760px;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Sur petit écran, le cadre de téléphone laisse place au plein écran */
+  .case-proto__phone {
+    display: none;
+  }
+}
+
 /* ==========================================================================
    Visionneuse
    ========================================================================== */

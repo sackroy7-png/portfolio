@@ -12,6 +12,7 @@ import Skills from "./sections/Skills.jsx";
 import Documents from "./sections/Documents.jsx";
 import Contact from "./sections/Contact.jsx";
 import ProjectPage from "./pages/ProjectPage.jsx";
+import PrototypePage from "./pages/PrototypePage.jsx";
 
 const homeTitle = `${profile.name} — ${profile.title}`;
 
@@ -43,7 +44,7 @@ export default function App() {
     const changedPage = previous.current !== route.name;
     previous.current = route.name;
 
-    if (route.name === "project") {
+    if (route.name === "project" || route.name === "prototype") {
       window.scrollTo({ top: 0, behavior: "instant" });
       return;
     }
@@ -52,6 +53,8 @@ export default function App() {
     if (target && changedPage) target.scrollIntoView({ behavior: "instant" });
     else if (!target && changedPage) window.scrollTo({ top: 0, behavior: "instant" });
   }, [route]);
+
+  if (route.name === "prototype") return <PrototypePage slug={route.slug} />;
 
   return (
     <div id="top">

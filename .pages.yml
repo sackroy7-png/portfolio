@@ -172,9 +172,10 @@ content:
       - name: status
         label: Statut
         type: select
-        options: { values: [Réalisé, En cours, À venir] }
+        options: { values: [Réalisé, En cours, Prototype, À venir] }
       - { name: period, label: Période, type: string }
       - { name: role, label: Rôle, type: string }
+      - { name: highlight, label: "Point fort (facultatif)", type: string }
       - { name: summary, label: Résumé (une phrase), type: text }
       - { name: categories, label: Catégories, type: string, list: true }
       - name: cover
@@ -185,6 +186,7 @@ content:
           - { name: alt, label: Description de la photo, type: string }
           - { name: position, label: "Cadrage (facultatif, ex. center 20%)", type: string }
       - { name: context, label: Présentation, type: text }
+      - { name: approachLabel, label: "Titre des étapes (vide = Ce que j'ai fait)", type: string }
       - name: approach
         label: Ce que j'ai fait (étapes)
         type: object
@@ -201,6 +203,8 @@ content:
           - { name: alt, label: Description de la photo, type: string }
           - { name: caption, label: Légende, type: string }
           - { name: wide, label: Pleine largeur, type: boolean }
+      - { name: notes, label: Hypothèses et suite, type: text, list: true }
+      - { name: prototype, label: "Prototype intégré (ne pas modifier)", type: string }
       - name: links
         label: Liens
         type: object

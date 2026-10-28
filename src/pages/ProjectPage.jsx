@@ -1,10 +1,15 @@
-import { useCallback, useEffect, useState } from "react";
+import { Suspense, lazy, useCallback, useEffect, useState } from "react";
 import { projects } from "../data/projects.js";
 import { slugify } from "../lib/asset.js";
 import Img from "../components/Img.jsx";
 import Text from "../components/Text.jsx";
 import Reveal from "../components/Reveal.jsx";
 import Lightbox from "../components/Lightbox.jsx";
+
+// Prototypes interactifs, chargés seulement sur la page du projet concerné.
+export const PROTOTYPES = {
+  saisonia: lazy(() => import("../components/prototypes/Saisonia.jsx")),
+};
 
 // Bloc de texte avec un libellé dans la colonne de gauche.
 function Row({ label, children }) {
@@ -36,6 +41,7 @@ export default function ProjectPage({ slug }) {
   }
 
   const next = projects[(index + 1) % projects.length];
+  const Prototype = PROTOTYPES[project.prototype];
   const gallery = project.gallery ?? [];
 
   return (
@@ -49,6 +55,7 @@ export default function ProjectPage({ slug }) {
           </p>
           <h1 className="case__title">{project.title}</h1>
           <p className="case__summary">{project.summary}</p>
+          {project.highlight && <p className="exp__highlight">{project.highlight}</p>}
 
           <dl className="case__meta">
             {project.period && (
@@ -93,7 +100,7 @@ export default function ProjectPage({ slug }) {
         )}
 
         {project.approach?.length > 0 && (
-          <Row label="Ce que j'ai fait">
+          <Row label={project.approachLabel || "Ce que j'ai fait"}>
             <ol className="steps">
               {project.approach.map((step, i) => (
                 <li key={i} className="step">
@@ -104,6 +111,22 @@ export default function ProjectPage({ slug }) {
               ))}
             </ol>
           </Row>
+        )}
+
+        {Prototype && (
+          <Reveal className="case-proto">
+            <div className="case-proto__phone">
+              <Suspense fallback={<p className="mono-label">Chargement du prototype…</p>}>
+                <Prototype />
+              </Suspense>
+            </div>
+            <div className="case-proto__text">
+              <h2 className="mono-label case-proto__label">Prototype interactif</h2>
+              <p className="case__lead">Teste l'application comme un utilisateur : filtre les offres, ouvre une fiche, postule, puis retrouve ta candidature et modifie ton profil.</p>
+              <p className="case-proto__note">Données fictives : entreprises, offres et profil sont inventés pour la démonstration.</p>
+              <a className="btn" href={`#/prototype/${project.prototype}`}>Ouvrir en plein écran</a>
+            </div>
+          </Reveal>
         )}
 
         {gallery.length > 0 && (
@@ -142,6 +165,16 @@ export default function ProjectPage({ slug }) {
           <Row label="Apprentissages">
             <ul className="check-list">
               {project.learnings.map((d, i) => (
+                <Text as="li" key={i} value={d} />
+              ))}
+            </ul>
+          </Row>
+        )}
+
+        {project.notes?.length > 0 && (
+          <Row label="Hypothèses et suite">
+            <ul className="check-list">
+              {project.notes.map((d, i) => (
                 <Text as="li" key={i} value={d} />
               ))}
             </ul>

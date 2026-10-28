@@ -1,0 +1,481 @@
+[
+  {
+    "id": 1,
+    "title": "Stage d'observation de 3e",
+    "company": "Au Fournil des Dômes",
+    "companyAbout": "Boulangerie artisanale de quartier, 6 salariés.",
+    "city": "Clermont-Ferrand",
+    "contract": "Stage",
+    "domain": "Artisanat",
+    "levels": [
+      "3e"
+    ],
+    "minAge": 14,
+    "season": "Hiver",
+    "dates": "7 → 11 déc. 2026",
+    "pay": "Non rémunéré (stage d'observation)",
+    "hours": "Journée, 8 h – 15 h",
+    "flexible": false,
+    "skills": [
+      "Curiosité",
+      "Ponctualité"
+    ],
+    "missions": [
+      "Découvrir la fabrication du pain",
+      "Observer la vente en boutique",
+      "Participer à la mise en rayon"
+    ],
+    "featured": false,
+    "isNew": false,
+    "posted": "il y a 6 j"
+  },
+  {
+    "id": 2,
+    "title": "Vendeur·se en magasin de sport",
+    "company": "Altitude Sport Riom",
+    "companyAbout": "Magasin indépendant spécialisé randonnée et trail.",
+    "city": "Riom",
+    "contract": "Job d'été",
+    "domain": "Commerce",
+    "levels": [
+      "Seconde",
+      "Première / Terminale",
+      "Bac +1 / +2",
+      "Bac +3 et plus"
+    ],
+    "minAge": 16,
+    "season": "Été",
+    "dates": "1er juil. → 31 août 2027",
+    "pay": "11,88 € brut / h",
+    "hours": "20 h / semaine",
+    "flexible": true,
+    "skills": [
+      "Vente",
+      "Accueil client",
+      "Sport"
+    ],
+    "missions": [
+      "Conseiller les clients",
+      "Mettre en rayon et étiqueter",
+      "Encaisser"
+    ],
+    "featured": true,
+    "isNew": true,
+    "posted": "aujourd'hui"
+  },
+  {
+    "id": 3,
+    "title": "Serveur·se en saison thermale",
+    "company": "Brasserie du Parc",
+    "companyAbout": "Brasserie face au parc des Sources, 40 couverts en terrasse.",
+    "city": "Vichy",
+    "contract": "Saisonnier",
+    "domain": "Restauration",
+    "levels": [
+      "Première / Terminale",
+      "Bac +1 / +2",
+      "Bac +3 et plus"
+    ],
+    "minAge": 16,
+    "season": "Printemps",
+    "dates": "1er avr. → 31 oct. 2027",
+    "pay": "11,88 € brut / h + pourboires",
+    "hours": "Week-ends et vacances",
+    "flexible": true,
+    "skills": [
+      "Service",
+      "Travail en équipe",
+      "Accueil client"
+    ],
+    "missions": [
+      "Prendre les commandes",
+      "Servir en salle et en terrasse",
+      "Préparer les boissons"
+    ],
+    "featured": false,
+    "isNew": false,
+    "posted": "il y a 3 j"
+  },
+  {
+    "id": 4,
+    "title": "Alternance assistant·e marketing digital",
+    "company": "Volcans Digital",
+    "companyAbout": "Agence de communication de 12 personnes, clients locaux.",
+    "city": "Clermont-Ferrand",
+    "contract": "Alternance",
+    "domain": "Marketing",
+    "levels": [
+      "Bac +1 / +2",
+      "Bac +3 et plus"
+    ],
+    "minAge": 16,
+    "season": "Automne",
+    "dates": "Rentrée sept. 2027 · 12 à 24 mois",
+    "pay": "Selon âge et barème de l'apprentissage",
+    "hours": "Rythme école / entreprise",
+    "flexible": false,
+    "skills": [
+      "Réseaux sociaux",
+      "Canva",
+      "Rédaction"
+    ],
+    "missions": [
+      "Créer des contenus pour Instagram",
+      "Suivre les statistiques",
+      "Préparer des newsletters"
+    ],
+    "featured": true,
+    "isNew": true,
+    "posted": "hier"
+  },
+  {
+    "id": 5,
+    "title": "Équipier·e polyvalent·e",
+    "company": "Le Comptoir Bourbonnais",
+    "companyAbout": "Restauration rapide de produits locaux en centre-ville.",
+    "city": "Moulins",
+    "contract": "Job étudiant",
+    "domain": "Restauration",
+    "levels": [
+      "Première / Terminale",
+      "Bac +1 / +2",
+      "Bac +3 et plus"
+    ],
+    "minAge": 16,
+    "season": "Toute l'année",
+    "dates": "Dès que possible",
+    "pay": "11,88 € brut / h",
+    "hours": "12 h / semaine, soirs et week-ends",
+    "flexible": true,
+    "skills": [
+      "Rapidité",
+      "Travail en équipe"
+    ],
+    "missions": [
+      "Préparer les commandes",
+      "Accueillir et encaisser",
+      "Entretenir la salle"
+    ],
+    "featured": false,
+    "isNew": false,
+    "posted": "il y a 1 sem"
+  },
+  {
+    "id": 6,
+    "title": "Préparateur·rice de commandes",
+    "company": "Logistique Allier Express",
+    "companyAbout": "Entrepôt de distribution régionale.",
+    "city": "Montluçon",
+    "contract": "Job d'été",
+    "domain": "Logistique",
+    "levels": [
+      "Première / Terminale",
+      "Bac +1 / +2",
+      "Bac +3 et plus"
+    ],
+    "minAge": 18,
+    "season": "Été",
+    "dates": "5 juil. → 27 août 2027",
+    "pay": "11,88 € brut / h + prime d'été",
+    "hours": "35 h / semaine, en équipe",
+    "flexible": false,
+    "skills": [
+      "Rigueur",
+      "Endurance"
+    ],
+    "missions": [
+      "Préparer les commandes",
+      "Contrôler les colis",
+      "Charger les camions"
+    ],
+    "featured": false,
+    "isNew": false,
+    "posted": "il y a 4 j"
+  },
+  {
+    "id": 7,
+    "title": "Stage commercial (2 mois)",
+    "company": "Fromagerie des Monts du Cantal",
+    "companyAbout": "Fromagerie familiale, vente en boutique et en ligne.",
+    "city": "Aurillac",
+    "contract": "Stage",
+    "domain": "Commerce",
+    "levels": [
+      "Bac +1 / +2",
+      "Bac +3 et plus"
+    ],
+    "minAge": 18,
+    "season": "Printemps",
+    "dates": "5 avr. → 28 mai 2027",
+    "pay": "Gratification légale de stage",
+    "hours": "35 h / semaine",
+    "flexible": false,
+    "skills": [
+      "Vente",
+      "Excel",
+      "E-commerce"
+    ],
+    "missions": [
+      "Développer la vente en ligne",
+      "Préparer les marchés de producteurs",
+      "Analyser les ventes"
+    ],
+    "featured": false,
+    "isNew": true,
+    "posted": "hier"
+  },
+  {
+    "id": 8,
+    "title": "Animateur·rice centre de loisirs",
+    "company": "Centre de loisirs Les Copains",
+    "companyAbout": "Accueil d'enfants de 6 à 12 ans pendant les vacances.",
+    "city": "Le Puy-en-Velay",
+    "contract": "Job d'été",
+    "domain": "Animation",
+    "levels": [
+      "Première / Terminale",
+      "Bac +1 / +2",
+      "Bac +3 et plus"
+    ],
+    "minAge": 17,
+    "season": "Été",
+    "dates": "7 → 30 juil. 2027",
+    "pay": "Forfait journalier (contrat d'engagement éducatif)",
+    "hours": "Journée, 8 h 30 – 17 h 30",
+    "flexible": false,
+    "skills": [
+      "Animation",
+      "Pédagogie"
+    ],
+    "missions": [
+      "Préparer des activités",
+      "Encadrer un groupe d'enfants",
+      "Accompagner les sorties"
+    ],
+    "featured": false,
+    "isNew": false,
+    "posted": "il y a 5 j"
+  },
+  {
+    "id": 9,
+    "title": "Réceptionniste de week-end",
+    "company": "Hôtel des Volcans",
+    "companyAbout": "Hôtel 3 étoiles de 45 chambres, clientèle d'affaires et touristes.",
+    "city": "Clermont-Ferrand",
+    "contract": "Job étudiant",
+    "domain": "Hôtellerie",
+    "levels": [
+      "Bac +1 / +2",
+      "Bac +3 et plus"
+    ],
+    "minAge": 18,
+    "season": "Toute l'année",
+    "dates": "Dès janvier 2027",
+    "pay": "11,88 € brut / h",
+    "hours": "Samedi et dimanche",
+    "flexible": true,
+    "skills": [
+      "Anglais",
+      "Accueil client"
+    ],
+    "missions": [
+      "Accueillir les clients",
+      "Gérer les arrivées et départs",
+      "Répondre au téléphone"
+    ],
+    "featured": false,
+    "isNew": false,
+    "posted": "il y a 2 sem"
+  },
+  {
+    "id": 10,
+    "title": "Cueilleur·se de petits fruits",
+    "company": "Ferme du Haut-Velay",
+    "companyAbout": "Exploitation de fruits rouges et lentilles du Puy.",
+    "city": "Le Puy-en-Velay",
+    "contract": "Saisonnier",
+    "domain": "Agriculture",
+    "levels": [
+      "Seconde",
+      "Première / Terminale",
+      "Bac +1 / +2",
+      "Bac +3 et plus"
+    ],
+    "minAge": 16,
+    "season": "Été",
+    "dates": "1er juil. → 15 août 2027",
+    "pay": "11,88 € brut / h",
+    "hours": "Matinées, 6 h – 12 h",
+    "flexible": true,
+    "skills": [
+      "Endurance",
+      "Travail en équipe"
+    ],
+    "missions": [
+      "Cueillir les fruits",
+      "Trier et conditionner",
+      "Préparer les livraisons"
+    ],
+    "featured": false,
+    "isNew": false,
+    "posted": "il y a 1 sem"
+  },
+  {
+    "id": 11,
+    "title": "Conseiller·ère de vente cycle",
+    "company": "Cycles du Bourbonnais",
+    "companyAbout": "Magasin et atelier vélo, route, VTT et vélo électrique.",
+    "city": "Vichy",
+    "contract": "Premier emploi",
+    "domain": "Commerce",
+    "levels": [
+      "Première / Terminale",
+      "Bac +1 / +2",
+      "Bac +3 et plus"
+    ],
+    "minAge": 18,
+    "season": "Hiver",
+    "dates": "CDI · dès janvier 2027",
+    "pay": "1 900 € brut / mois",
+    "hours": "35 h / semaine",
+    "flexible": false,
+    "skills": [
+      "Vente",
+      "Vélo",
+      "Atelier"
+    ],
+    "missions": [
+      "Conseiller les clients",
+      "Préparer et régler les vélos",
+      "Gérer le rayon accessoires"
+    ],
+    "featured": true,
+    "isNew": false,
+    "posted": "il y a 3 j"
+  },
+  {
+    "id": 12,
+    "title": "Stage de seconde (2 semaines)",
+    "company": "Auvergne Évasion",
+    "companyAbout": "Agence de voyages et d'excursions en Auvergne.",
+    "city": "Issoire",
+    "contract": "Stage",
+    "domain": "Tourisme",
+    "levels": [
+      "Seconde"
+    ],
+    "minAge": 15,
+    "season": "Été",
+    "dates": "14 → 25 juin 2027",
+    "pay": "Non rémunéré (stage d'observation)",
+    "hours": "Journée, 9 h – 17 h",
+    "flexible": false,
+    "skills": [
+      "Curiosité",
+      "Accueil client"
+    ],
+    "missions": [
+      "Découvrir la préparation d'un voyage",
+      "Observer l'accueil en agence",
+      "Aider à créer une brochure"
+    ],
+    "featured": false,
+    "isNew": true,
+    "posted": "aujourd'hui"
+  },
+  {
+    "id": 13,
+    "title": "Alternance BTS vente",
+    "company": "Jardinerie des Combrailles",
+    "companyAbout": "Jardinerie et animalerie de 2 000 m².",
+    "city": "Montluçon",
+    "contract": "Alternance",
+    "domain": "Commerce",
+    "levels": [
+      "Première / Terminale",
+      "Bac +1 / +2"
+    ],
+    "minAge": 16,
+    "season": "Automne",
+    "dates": "Rentrée sept. 2027 · 24 mois",
+    "pay": "Selon âge et barème de l'apprentissage",
+    "hours": "Rythme école / entreprise",
+    "flexible": false,
+    "skills": [
+      "Vente",
+      "Accueil client"
+    ],
+    "missions": [
+      "Conseiller les clients",
+      "Gérer un rayon",
+      "Participer aux opérations commerciales"
+    ],
+    "featured": false,
+    "isNew": false,
+    "posted": "il y a 2 sem"
+  },
+  {
+    "id": 14,
+    "title": "Moniteur·rice de ski débutants",
+    "company": "École de glisse du Lioran",
+    "companyAbout": "École de ski indépendante, station du Lioran.",
+    "city": "Le Lioran",
+    "contract": "Saisonnier",
+    "domain": "Sport",
+    "levels": [
+      "Bac +1 / +2",
+      "Bac +3 et plus"
+    ],
+    "minAge": 18,
+    "season": "Hiver",
+    "dates": "19 déc. 2026 → 21 mars 2027",
+    "pay": "1 750 € net / mois, logé",
+    "hours": "6 jours sur 7",
+    "flexible": false,
+    "skills": [
+      "Ski",
+      "Pédagogie",
+      "Sport"
+    ],
+    "missions": [
+      "Encadrer des cours collectifs",
+      "Accompagner les enfants sur les pistes",
+      "Accueillir les familles"
+    ],
+    "featured": false,
+    "isNew": false,
+    "posted": "il y a 4 j"
+  },
+  {
+    "id": 15,
+    "title": "Hôte·sse de caisse le samedi",
+    "company": "Marché des Volcans",
+    "companyAbout": "Supermarché de produits frais et locaux.",
+    "city": "Issoire",
+    "contract": "Job étudiant",
+    "domain": "Commerce",
+    "levels": [
+      "Première / Terminale",
+      "Bac +1 / +2",
+      "Bac +3 et plus"
+    ],
+    "minAge": 16,
+    "season": "Toute l'année",
+    "dates": "Dès que possible",
+    "pay": "11,88 € brut / h",
+    "hours": "Samedi, 7 h par semaine",
+    "flexible": true,
+    "skills": [
+      "Accueil client",
+      "Rigueur"
+    ],
+    "missions": [
+      "Encaisser les clients",
+      "Renseigner sur les produits",
+      "Ranger les rayons en fin de journée"
+    ],
+    "featured": false,
+    "isNew": true,
+    "posted": "aujourd'hui"
+  }
+]

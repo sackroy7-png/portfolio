@@ -74,5 +74,61 @@
         "url": "https://www.instagram.com/whocares.ms/"
       }
     ]
+  },
+  {
+    "slug": "saisonia",
+    "title": "Saisonia — l'appli emploi des jeunes d'Auvergne",
+    "kicker": "Création d'entreprise · Application mobile",
+    "period": "",
+    "status": "Prototype",
+    "role": "Cofondateur · chef de produit",
+    "highlight": "Accompagné par PEPITE · statut d'étudiant-entrepreneur",
+    "summary": "Une application qui réunit les stages, alternances et jobs proposés aux jeunes d'Auvergne par les entreprises locales.",
+    "categories": [
+      "Entrepreneuriat",
+      "Produit",
+      "Application mobile"
+    ],
+    "cover": {
+      "src": "images/projets/saisonia-cover.jpg",
+      "alt": "Écran d'accueil du prototype Saisonia sur fond bleu",
+      "position": ""
+    },
+    "context": "Saisonia est un projet de création d'entreprise mené avec un ami, accompagné par PEPITE, ce qui nous a valu le statut d'étudiant-entrepreneur. L'application regroupe les stages, alternances, jobs d'été, jobs étudiants, jobs saisonniers et premiers emplois proposés aux jeunes d'Auvergne par les entreprises locales. Plus simple et plus locale que les plateformes généralistes, elle mise sur quatre promesses : proximité, simplicité, rapidité et accompagnement.",
+    "approachLabel": "Du terrain au produit",
+    "approach": [
+      {
+        "title": "Des filtres utiles",
+        "text": "Les jeunes veulent filtrer par compétences, domaine, dates et niveau d'études : ce sont les filtres principaux de l'application."
+      },
+      {
+        "title": "De la flexibilité",
+        "text": "Horaires et disponibilités comptent : un filtre « horaires flexibles » et des disponibilités dans le profil."
+      },
+      {
+        "title": "La simplicité d'abord",
+        "text": "Les entreprises reçoivent déjà beaucoup de candidatures : notre avantage, c'est un parcours simple et rapide pour les jeunes."
+      },
+      {
+        "title": "Le local",
+        "text": "Les offres proches sont mises en avant, et l'âge minimum est affiché pour protéger les plus jeunes."
+      }
+    ],
+    "prototype": "saisonia",
+    "gallery": [
+      {
+        "src": "images/projets/saisonia-logo.png",
+        "alt": "Logo Saisonia",
+        "caption": "Le logo de Saisonia.",
+        "wide": false
+      }
+    ],
+    "notes": [
+      "Modèle économique envisagé : gratuit pour les jeunes, publication gratuite pour les entreprises, avec des options payantes (offre mise en avant, pack recruteur) et de la publicité locale.",
+      "Prochaine étape : un espace entreprise pour publier une offre et trier les candidatures avec les mêmes filtres.",
+      "À tester : les notifications d'offres correspondant au profil, et l'accompagnement des plus jeunes (stages de 3e et de seconde).",
+      "Prototype : données fictives, distances calculées à vol d'oiseau depuis la ville choisie."
+    ],
+    "links": []
   }
 ]

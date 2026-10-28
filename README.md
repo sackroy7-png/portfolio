@@ -45,3 +45,19 @@ scripts/             vérification du contenu, optimisation des images
   contrastes AA, animations désactivées si `prefers-reduced-motion`.
 - **Pages CMS** édite les fichiers JSON directement dans le dépôt GitHub : pas de base de données, pas de clé API.
 - Aucune clé API, aucun secret, aucun traceur.
+
+## Prototype Saisonia
+
+Prototype cliquable de l'application Saisonia (emploi des jeunes en Auvergne), intégré à la page
+projet `#/projets/saisonia` et disponible en plein écran sur `#/prototype/saisonia`.
+
+- Code : `src/components/prototypes/Saisonia.jsx`, styles : `src/styles/saisonia.css`
+  (chargés uniquement sur ces pages).
+- Données fictives : `src/content/saisonia-offres.json` (15 offres, entreprises inventées, villes d'Auvergne).
+- Parcours « jeune » : offres (recherche, filtres contrat / domaine / niveau / période / compétences /
+  horaires flexibles / distance, « Pour moi », « Près de toi », offres mises en avant), fiche d'offre
+  avec âge minimum, candidature, suivi des statuts, profil modifiable, notifications simulées.
+- Le profil et les candidatures sont gardés dans le navigateur du visiteur (`localStorage`),
+  bouton « Réinitialiser la démo » dans le profil. Rien n'est envoyé à un serveur.
+- Distances à vol d'oiseau depuis la ville choisie ; rémunérations indicatives.
+- Hors périmètre : espace entreprise, authentification, paiement, messagerie.
