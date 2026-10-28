@@ -68,9 +68,10 @@
         "wide": false
       },
       {
-        "src": "images/projets/whocares-coulisses.jpg",
-        "alt": "Coulisses d'un contenu Instagram",
-        "caption": "Coulisses d'un contenu.",
+        "src": "images/projets/whocares-coulisses-video.jpg",
+        "video": "videos/whocares-coulisses.mp4",
+        "alt": "Vidéo : une personne en t-shirt WhoCares tague « Who Cares » sur un mur",
+        "caption": "Coulisses d'un contenu, en vidéo.",
         "wide": false
       }
     ],

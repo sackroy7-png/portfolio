@@ -1599,12 +1599,15 @@ a:hover .link-arrow {
   cursor: zoom-in;
 }
 
-.case-gallery__btn img {
+.case-gallery__btn img,
+.case-gallery__btn video {
+  display: block;
   width: 100%;
   transition: transform 1.2s var(--ease);
 }
 
-.case-gallery__btn:hover img {
+.case-gallery__btn:hover img,
+.case-gallery__btn:hover video {
   transform: scale(1.03);
 }
 
@@ -1756,7 +1759,8 @@ a:hover .link-arrow {
   min-height: 0;
 }
 
-.lightbox__media img {
+.lightbox__media img,
+.lightbox__media video {
   max-height: calc(100vh - 80px);
   max-height: calc(100dvh - 80px);
   width: auto;
@@ -1804,7 +1808,8 @@ a:hover .link-arrow {
     gap: 1rem;
   }
 
-  .lightbox__media img {
+  .lightbox__media img,
+  .lightbox__media video {
     max-height: 62vh;
     max-height: 62dvh;
   }

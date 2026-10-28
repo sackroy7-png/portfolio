@@ -183,6 +183,7 @@ content:
         type: object
         fields:
           - { name: src, label: Photo, type: image, options: { media: images, path: projets } }
+          - { name: video, label: "Vidéo MP4 (facultatif, la photo sert d'aperçu)", type: string }
           - { name: alt, label: Description de la photo, type: string }
           - { name: position, label: "Cadrage (facultatif, ex. center 20%)", type: string }
       - { name: context, label: Présentation, type: text }
@@ -200,6 +201,7 @@ content:
         list: true
         fields:
           - { name: src, label: Photo, type: image, options: { media: images, path: projets } }
+          - { name: video, label: "Vidéo MP4 (facultatif, la photo sert d'aperçu)", type: string }
           - { name: alt, label: Description de la photo, type: string }
           - { name: caption, label: Légende, type: string }
           - { name: wide, label: Pleine largeur, type: boolean }

@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react";
 import Img from "./Img.jsx";
 import Text from "./Text.jsx";
+import { asset } from "../lib/asset.js";
 
 // Visionneuse plein écran : flèches ← → pour naviguer, Échap pour fermer.
 export default function Lightbox({ items, index, onClose, onNavigate }) {
@@ -34,7 +35,11 @@ export default function Lightbox({ items, index, onClose, onNavigate }) {
     <div className="lightbox" role="dialog" aria-modal="true" aria-label={item.title || item.alt || "Image"} onClick={onClose}>
       <div className="lightbox__inner" onClick={(e) => e.stopPropagation()}>
         <div className="lightbox__media">
-          <Img image={item} eager />
+          {item.video ? (
+            <video key={item.video} src={asset(item.video)} poster={asset(item.src)} controls autoPlay playsInline aria-label={item.alt} />
+          ) : (
+            <Img image={item} eager />
+          )}
         </div>
         <div className="lightbox__info">
           <p className="mono-label">

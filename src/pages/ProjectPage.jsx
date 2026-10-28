@@ -129,7 +129,11 @@ export default function ProjectPage({ slug }) {
             {gallery.map((image, i) => (
               <Reveal as="figure" key={image.src} className={`case-gallery__item ${image.wide ? "is-wide" : ""}`}>
                 <button type="button" className="case-gallery__btn" onClick={() => setOpen(i)} aria-label={`Agrandir : ${image.alt}`}>
-                  <Img image={image} sizes={image.wide ? "100vw" : "(min-width: 900px) 45vw, 100vw"} />
+                  {image.video ? (
+                    <video src={asset(image.video)} poster={asset(image.src)} autoPlay muted loop playsInline preload="metadata" />
+                  ) : (
+                    <Img image={image} sizes={image.wide ? "100vw" : "(min-width: 900px) 45vw, 100vw"} />
+                  )}
                 </button>
                 <figcaption className="caption">
                   <span>Fig. {String(i + 1).padStart(2, "0")}</span>

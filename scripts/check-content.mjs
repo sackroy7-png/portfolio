@@ -19,7 +19,7 @@ function walk(value, path) {
   }
   if (Array.isArray(value)) return value.forEach((v, i) => walk(v, `${path}[${i}]`));
   if (value && typeof value === "object") {
-    for (const key of ["src", "file"]) {
+    for (const key of ["src", "file", "video"]) {
       const file = value[key];
       if (typeof file === "string" && file && !/^https?:/.test(file)) {
         if (!existsSync(join(root, "public", file.replace(/^\/+/, "")))) missing.push(`${path}.${key} → public/${file.replace(/^\/+/, "")}`);
