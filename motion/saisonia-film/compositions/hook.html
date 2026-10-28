@@ -1,0 +1,71 @@
+<template>
+  <style>
+    #root {
+      position: absolute;
+      inset: 0;
+      font-family: "Inter", sans-serif;
+      color: #0b1220;
+    }
+    .widget {
+      position: absolute;
+      background: #fff;
+      border-radius: 56px;
+      box-shadow: 0 30px 60px rgba(11, 18, 32, 0.12);
+      overflow: hidden;
+    }
+    #hook-cal { left: 180px; top: 540px; width: 340px; height: 340px; padding: 40px 44px; }
+    #hook-cal .day { color: #e5484d; font-size: 34px; font-weight: 700; letter-spacing: 0.04em; }
+    #hook-cal .num { font-size: 168px; font-weight: 400; line-height: 1; letter-spacing: -0.04em; margin-top: 8px; }
+    #hook-cal .month { font-size: 34px; color: #586071; margin-top: 6px; }
+    #hook-weather { left: 560px; top: 540px; width: 340px; height: 340px; padding: 40px 44px; color: #fff;
+      background: linear-gradient(170deg, #3f86f0 0%, #2a5fd1 100%); }
+    #hook-weather .city { font-size: 30px; font-weight: 700; }
+    #hook-weather .deg { font-size: 128px; font-weight: 400; line-height: 1.05; letter-spacing: -0.04em; }
+    #hook-weather .sky { font-size: 30px; margin-top: 30px; }
+    #hook-weather .sun { position: absolute; right: 46px; top: 46px; width: 52px; height: 52px; border-radius: 50%; background: #ffd15c; }
+    #hook-msg { left: 180px; top: 920px; width: 720px; height: 380px; padding: 38px 44px; }
+    #hook-msg .head { display: flex; align-items: center; gap: 18px; font-size: 32px; font-weight: 700; }
+    #hook-msg .avatars { display: flex; }
+    #hook-msg .avatars i { width: 54px; height: 54px; border-radius: 50%; border: 4px solid #fff; margin-right: -16px; display: grid; place-items: center; font-style: normal; color: #fff; font-size: 24px; }
+    #hook-msg .head span { margin-left: 22px; }
+    #hook-msg .when { margin-left: auto; font-size: 28px; font-weight: 400; color: #8a91a0; }
+    .bubble { position: absolute; font-size: 34px; padding: 20px 30px; border-radius: 34px; line-height: 1.2; }
+    #hook-b1 { left: 44px; top: 140px; background: #eef1f5; }
+    #hook-b2 { right: 44px; top: 250px; background: #316fdf; color: #fff; }
+  </style>
+  <div id="root" data-composition-id="hook" data-width="1080" data-height="1920">
+    <div id="hook-widgets" class="clip" data-start="0" data-duration="3.9">
+      <div class="widget" id="hook-cal">
+        <p class="day">VENDREDI</p>
+        <p class="num">15</p>
+        <p class="month">mai</p>
+      </div>
+      <div class="widget" id="hook-weather">
+        <i class="sun"></i>
+        <p class="city">Clermont-Ferrand</p>
+        <p class="deg">21°</p>
+        <p class="sky">Ensoleillé</p>
+      </div>
+      <div class="widget" id="hook-msg">
+        <div class="head">
+          <span class="avatars" data-layout-ignore><i style="background:#f08a5d">T</i><i style="background:#3fb6a8">N</i><i style="background:#8b6cf0">J</i></span>
+          <span>Les potes</span>
+          <span class="when">17:02</span>
+        </div>
+        <p class="bubble" id="hook-b1">Vous faites quoi cet été ?</p>
+        <p class="bubble" id="hook-b2">Je cherche un job</p>
+      </div>
+    </div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    // Les bulles du message arrivent : c'est le besoin.
+    tl.fromTo("#hook-b1", { opacity: 0, scale: 0.8, transformOrigin: "0% 100%" }, { opacity: 1, scale: 1, duration: 0.45, ease: "back.out(1.6)" }, 0.6);
+    tl.fromTo("#hook-b2", { opacity: 0, scale: 0.8, transformOrigin: "100% 100%" }, { opacity: 1, scale: 1, duration: 0.45, ease: "back.out(1.6)" }, 1.6);
+    // Les widgets s'écartent quand le téléphone monte.
+    tl.fromTo("#hook-cal", { x: 0, y: 0, opacity: 1 }, { x: -520, y: -220, opacity: 0, duration: 0.5, ease: "power3.in" }, 3.25);
+    tl.fromTo("#hook-weather", { x: 0, y: 0, opacity: 1 }, { x: 520, y: -220, opacity: 0, duration: 0.5, ease: "power3.in" }, 3.3);
+    tl.fromTo("#hook-msg", { y: 0, opacity: 1 }, { y: -700, opacity: 0, duration: 0.5, ease: "power3.in" }, 3.35);
+    window.__timelines["hook"] = tl;
+  </script>
+</template>

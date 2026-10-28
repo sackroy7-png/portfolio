@@ -1,0 +1,57 @@
+<template>
+  <style>
+    #root {
+      position: absolute;
+      inset: 0;
+      font-family: "Inter", sans-serif;
+    }
+    .line {
+      position: absolute;
+      left: 70px;
+      right: 70px;
+      top: 230px;
+      text-align: center;
+      font-size: 84px;
+      font-weight: 700;
+      line-height: 1.08;
+      letter-spacing: -0.03em;
+      color: #0b1220;
+    }
+    .w { display: inline-block; }
+    .a { color: #316fdf; }
+  </style>
+  <div id="root" data-composition-id="titles" data-width="1080" data-height="1920">
+    <h2 id="tt-l1" class="line clip" data-start="0.0" data-duration="1.75"><span class="w">Vendredi,</span> <span class="w a">17 h.</span></h2>
+    <h2 id="tt-l2" class="line clip" data-start="1.85" data-duration="1.6"><span class="w a">L'été</span> <span class="w">approche.</span></h2>
+    <h2 id="tt-l3" class="line clip" data-start="3.6" data-duration="1.6"><span class="w">Elle</span> <span class="w">ouvre</span> <span class="w a">Saisonia.</span></h2>
+    <h2 id="tt-l4" class="line clip" data-start="5.3" data-duration="1.7"><span class="w">Elle</span> <span class="w">cherche</span> <span class="w">un</span> <span class="w a">job&nbsp;d'été.</span></h2>
+    <h2 id="tt-l5" class="line clip" data-start="7.1" data-duration="2.2"><span class="w">À</span> <span class="w a">13 km</span> <span class="w">de</span> <span class="w">chez</span> <span class="w">elle.</span></h2>
+    <h2 id="tt-l6" class="line clip" data-start="9.5" data-duration="2.3"><span class="w">Elle</span> <span class="w a">postule.</span></h2>
+    <h2 id="tt-l7" class="line clip" data-start="12.0" data-duration="1.75"><span class="w">Son</span> <span class="w">dossier</span> <span class="w">est</span> <span class="w a">prêt.</span></h2>
+    <h2 id="tt-l8" class="line clip" data-start="13.9" data-duration="2.5"><span class="w a">Envoyé</span> <span class="w">en</span> <span class="w">deux</span> <span class="w">étapes.</span></h2>
+    <h2 id="tt-l9" class="line clip" data-start="16.6" data-duration="2.0"><span class="w">L'entreprise</span> <span class="w a">répond.</span></h2>
+    <h2 id="tt-l10" class="line clip" data-start="18.8" data-duration="2.45"><span class="w a">Entretien</span> <span class="w">mardi,</span> <span class="w">10 h.</span></h2>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    // Mot par mot : flou 6 px → net, 0,067 s d'écart ; sortie floutée 0,18 s.
+    function line(sel, start, dur, already) {
+      const words = document.querySelectorAll(sel + " .w");
+      if (!already) {
+        tl.fromTo(words, { opacity: 0, filter: "blur(6px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.13, ease: "power4.out", stagger: 0.067 }, start);
+      }
+      tl.to(words, { opacity: 0, filter: "blur(8px)", duration: 0.18, ease: "power2.in", stagger: 0.03 }, start + dur - 0.25);
+    }
+  line("#tt-l1", 0.0, 1.75, true);
+  line("#tt-l2", 1.85, 1.6);
+  line("#tt-l3", 3.6, 1.6);
+  line("#tt-l4", 5.3, 1.7);
+  line("#tt-l5", 7.1, 2.2);
+  line("#tt-l6", 9.5, 2.3);
+  line("#tt-l7", 12.0, 1.75);
+  line("#tt-l8", 13.9, 2.5);
+  line("#tt-l9", 16.6, 2.0);
+  line("#tt-l10", 18.8, 2.45);
+    window.__timelines["titles"] = tl;
+  </script>
+</template>

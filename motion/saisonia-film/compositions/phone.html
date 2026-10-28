@@ -1,0 +1,144 @@
+<template>
+  <style>
+    #root {
+      position: absolute;
+      inset: 0;
+      font-family: "Inter", sans-serif;
+    }
+    /* iPhone : écran 390 x 844 pt affiché à 1,5 (585 x 1266 px), cadre de 16 px. */
+    #ph-phone {
+      position: absolute;
+      left: 231px;
+      top: 470px;
+      width: 617px;
+      height: 1298px;
+      border-radius: 96px;
+      background: #0d0f14;
+      box-shadow: 0 50px 90px rgba(11, 18, 32, 0.22), inset 0 0 0 3px #2a2e36;
+    }
+    #ph-screen {
+      position: absolute;
+      left: 16px;
+      top: 16px;
+      width: 585px;
+      height: 1266px;
+      border-radius: 80px;
+      overflow: hidden;
+      background: #eef2f8;
+    }
+    .shot {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 585px;
+      height: 1266px;
+    }
+    #ph-explore, #ph-offer, #ph-apply1, #ph-apply2, #ph-success, #ph-detail { opacity: 0; }
+    .crop {
+      position: absolute;
+      overflow: hidden;
+    }
+    .crop img {
+      position: absolute;
+      width: 585px;
+      height: 1266px;
+    }
+    #ph-sheet { left: 0; top: 557px; width: 585px; height: 709px; border-radius: 42px 42px 0 0; }
+    #ph-sheet img { left: 0; top: -557px; }
+    #ph-toast { left: 68px; top: 90px; width: 449px; height: 64px; border-radius: 32px; box-shadow: 0 14px 30px rgba(11, 18, 32, 0.14); }
+    #ph-toast img { left: -68px; top: -90px; }
+    #ph-veil { position: absolute; inset: 0; background: #eef2f8; opacity: 0; }
+    #ph-status { position: absolute; left: 0; right: 0; top: 0; height: 84px; z-index: 5; display: flex; align-items: center; justify-content: space-between; padding: 6px 62px 0 70px; font-size: 28px; font-weight: 700; color: #0b1220; }
+    #ph-status .bat { width: 40px; height: 19px; border: 2.5px solid #0b1220; border-radius: 6px; padding: 2px; opacity: 0.9; }
+    #ph-status .bat i { display: block; width: 70%; height: 100%; background: #0b1220; border-radius: 2px; }
+    #ph-island { position: absolute; left: 214px; top: 32px; width: 189px; height: 55px; border-radius: 28px; background: #000; z-index: 6; }
+    /* Éléments sortis de l'écran (même position que dans l'écran, cadre compris). */
+    #ph-card { left: 40px; top: 501.6px; width: 537px; height: 352px; border-radius: 33px; box-shadow: 0 40px 80px rgba(11, 18, 32, 0.18); opacity: 0; }
+    #ph-card img { left: -24px; top: -485.6px; }
+    #ph-cta { left: 58px; top: 1159px; width: 501px; height: 102px; border-radius: 51px; box-shadow: 0 30px 60px rgba(11, 18, 32, 0.2); opacity: 0; }
+    #ph-cta img { left: -42px; top: -1143px; }
+    #ph-fill { position: absolute; left: 65.5px; top: 680px; width: 486px; height: 75px; border-radius: 37.5px; background: #316fdf; opacity: 0; z-index: 10; }
+  </style>
+  <div id="root" data-composition-id="phone" data-width="1080" data-height="1920">
+    <div id="ph-wrap" class="clip" data-start="0" data-duration="21.9">
+      <div id="ph-phone">
+        <div id="ph-screen" data-layout-allow-overflow>
+          <img class="shot" id="ph-home" src="assets/ui/10-home.png" alt="Accueil Saisonia : Bonjour Léa" />
+          <img class="shot" id="ph-explore" src="assets/ui/21-explore-ete.png" alt="Rechercher : Job d'été" />
+          <img class="shot" id="ph-offer" src="assets/ui/30-offer.png" alt="Fiche : Vendeur·se en magasin de sport" />
+          <img class="shot" id="ph-apply1" src="assets/ui/40-apply1.png" alt="Ton dossier, étape 1" />
+          <div class="crop" id="ph-sheet"><img src="assets/ui/40-apply1.png" alt="" /></div>
+          <img class="shot" id="ph-apply2" src="assets/ui/42-apply2.png" alt="Un petit mot, étape 2" />
+          <img class="shot" id="ph-success" src="assets/ui/44-success.png" alt="Candidature envoyée" />
+          <img class="shot" id="ph-detail" src="assets/ui/54-detail-entretien-clean.png" alt="Suivi : entretien mardi 10 nov., 10 h" />
+          <div class="crop" id="ph-toast"><img src="assets/ui/53-detail-entretien.png" alt="Nouvelle réponse de l'entreprise" /></div>
+          <div id="ph-veil"></div>
+          <div id="ph-status"><span>17:02</span><span class="bat"><i></i></span></div>
+          <div id="ph-island"></div>
+        </div>
+        <div class="crop" id="ph-card"><img src="assets/ui/21-explore-ete.png" alt="Vendeur·se en magasin de sport, Altitude Sport Riom, Job d'été, Riom 13 km" /></div>
+        <div class="crop" id="ph-cta"><img src="assets/ui/30-offer.png" alt="Postuler" /></div>
+        <div id="ph-fill"></div>
+      </div>
+    </div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    const hide = (sel, t) => tl.set(sel, { opacity: 0 }, t);
+    const show = (sel, t) => tl.set(sel, { opacity: 1 }, t);
+
+    // Écrans masqués au départ, sauf l'accueil.
+
+    // 1. Le téléphone monte (les widgets s'écartent).
+    tl.fromTo("#ph-phone", { y: 1500 }, { y: 0, duration: 0.9, ease: "expo.out" }, 3.3);
+
+    // 2. Push iOS : Accueil → Rechercher, filtre « Job d'été ».
+    show("#ph-explore", 5.2);
+    tl.fromTo("#ph-explore", { x: 585 }, { x: 0, duration: 0.5, ease: "power3.out" }, 5.2);
+    tl.fromTo("#ph-home", { x: 0 }, { x: -175, duration: 0.5, ease: "power3.out" }, 5.2);
+
+    // 3. La carte de l'offre sort de l'écran.
+    show("#ph-card", 6.9);
+    tl.fromTo("#ph-card", { scale: 1, y: 0 }, { scale: 1.6, y: -148, duration: 0.6, ease: "power2.inOut" }, 6.9);
+    tl.fromTo("#ph-veil", { opacity: 0 }, { opacity: 0.6, duration: 0.5, ease: "power2.inOut" }, 6.95);
+    tl.to("#ph-card", { scale: 1, y: 0, duration: 0.45, ease: "power2.inOut" }, 9.0);
+    tl.to("#ph-veil", { opacity: 0, duration: 0.35, ease: "power2.inOut" }, 9.0);
+
+    // 4. La carte devient la fiche de l'offre.
+    show("#ph-offer", 9.45);
+    tl.fromTo("#ph-offer", { opacity: 0, scale: 1.04 }, { opacity: 1, scale: 1, duration: 0.4, ease: "power2.out" }, 9.45);
+    tl.to("#ph-card", { opacity: 0, scale: 1.06, duration: 0.3, ease: "power2.in" }, 9.45);
+
+    // 5. Le bouton Postuler, isolé puis pressé.
+    show("#ph-cta", 10.4);
+    tl.fromTo("#ph-cta", { scale: 1, y: 0 }, { scale: 1.5, y: -380, duration: 0.6, ease: "power2.inOut" }, 10.4);
+    tl.to("#ph-veil", { opacity: 0.6, duration: 0.45, ease: "power2.inOut" }, 10.45);
+    tl.to("#ph-cta", { scale: 1.4, duration: 0.1, ease: "power2.out" }, 11.25);
+    tl.to("#ph-cta", { scale: 1.5, duration: 0.22, ease: "power2.out" }, 11.35);
+    tl.to("#ph-cta", { scale: 1, y: 0, opacity: 0, duration: 0.35, ease: "power3.in" }, 11.6);
+    tl.to("#ph-veil", { opacity: 0, duration: 0.3, ease: "power2.inOut" }, 11.6);
+
+    // 6. La feuille « Ton dossier » monte, puis étape 2 et envoi.
+    show("#ph-sheet", 11.7);
+    tl.fromTo("#ph-apply1", { opacity: 0 }, { opacity: 1, duration: 0.3, ease: "power1.out" }, 11.75);
+    tl.fromTo("#ph-sheet", { y: 709 }, { y: 0, duration: 0.55, ease: "expo.out" }, 11.7);
+    hide("#ph-sheet", 12.4);
+    tl.fromTo("#ph-apply2", { opacity: 0 }, { opacity: 1, duration: 0.25, ease: "power1.out" }, 13.6);
+    tl.fromTo("#ph-success", { opacity: 0 }, { opacity: 1, duration: 0.25, ease: "power1.out" }, 14.8);
+
+    // 7. Push vers le suivi, l'entreprise répond.
+    show("#ph-detail", 16.6);
+    tl.fromTo("#ph-detail", { x: 585 }, { x: 0, duration: 0.5, ease: "power3.out" }, 16.6);
+    tl.to("#ph-success", { x: -175, duration: 0.5, ease: "power3.out" }, 16.6);
+    tl.fromTo("#ph-toast", { y: -140 }, { y: 0, duration: 0.6, ease: "expo.out" }, 17.1);
+    tl.to("#ph-toast", { y: -140, duration: 0.3, ease: "power3.in" }, 18.6);
+
+    // 8. Zoom sur l'entretien, puis le bouton bleu remplit l'écran.
+    tl.fromTo("#ph-phone", { scale: 1, transformOrigin: "50% 646px" }, { scale: 1.22, y: 40, duration: 0.8, ease: "power2.inOut" }, 18.9);
+    show("#ph-fill", 20.9);
+    tl.fromTo("#ph-fill", { scaleX: 1, borderRadius: 37.5 }, { scaleX: 4.6, borderRadius: 0, duration: 0.55, ease: "power3.in" }, 20.9);
+    tl.fromTo("#ph-fill", { scaleY: 1 }, { scaleY: 42, duration: 0.55, ease: "power2.in" }, 20.9);
+
+    window.__timelines["phone"] = tl;
+  </script>
+</template>
