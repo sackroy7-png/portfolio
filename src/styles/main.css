@@ -1680,51 +1680,24 @@ a:hover .link-arrow {
   font-size: 0.95rem;
 }
 
-.proto-page {
-  min-height: 100vh;
-  background: #e9edf5;
+/* Cadre de téléphone autour du site du prototype */
+.proto-frame {
+  width: 402px;
+  max-width: 100%;
+  height: 820px;
+  padding: 11px;
+  border-radius: 58px;
+  background: linear-gradient(145deg, #2b2f38, #0d0f14);
+  box-shadow: 0 40px 80px -30px rgba(15, 27, 51, 0.5), inset 0 0 0 1.5px rgba(255, 255, 255, 0.12);
 }
 
-.proto-page__back {
-  position: fixed;
-  z-index: 60;
-  top: 10px;
-  left: 10px;
-  padding: 0.45rem 0.8rem;
-  border-radius: 999px;
-  background: var(--charcoal);
-  color: var(--ivory);
-  font-size: 0.8rem;
-}
-
-@media (min-width: 700px) {
-  .proto-page {
-    display: grid;
-    place-items: center;
-    padding: 2rem;
-  }
-
-  .proto-page .sz-full {
-    height: min(860px, calc(100vh - 4rem));
-    border-radius: 28px;
-    overflow: hidden;
-    box-shadow: 0 30px 60px -30px rgba(15, 27, 51, 0.4);
-  }
-}
-
-@media (max-width: 700px) {
-  /* Mobile : une barre fine au-dessus de l'application */
-  .proto-page__back {
-    position: static;
-    display: block;
-    border-radius: 0;
-    padding: 0.55rem 1rem;
-  }
-
-  .proto-page .sz-full {
-    height: calc(100vh - 36px);
-    height: calc(100dvh - 36px);
-  }
+.proto-frame iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  border-radius: 47px;
+  background: #eef2f8;
 }
 
 @media (max-width: 860px) {
@@ -1739,7 +1712,7 @@ a:hover .link-arrow {
     max-width: 410px;
   }
 
-  .case-proto__phone .sz-phone {
+  .case-proto__phone {
     height: 760px;
   }
 }

@@ -1,6 +1,7 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import { existsSync, readdirSync } from "node:fs";
+import { resolve } from "node:path";
 
 // Liste les photos déposées dans public/images/moodboard/<catégorie>/
 // pour qu'elles apparaissent sur le site même sans être décrites dans moodboard.json.
@@ -31,4 +32,13 @@ function moodboardFolders() {
 export default defineConfig({
   base: "./",
   plugins: [react(), moodboardFolders()],
+  // Deux sites : le portfolio (index.html) et le prototype Saisonia (saisonia/index.html → /saisonia/).
+  build: {
+    rollupOptions: {
+      input: {
+        main: resolve(import.meta.dirname, "index.html"),
+        saisonia: resolve(import.meta.dirname, "saisonia/index.html"),
+      },
+    },
+  },
 });

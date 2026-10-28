@@ -46,18 +46,25 @@ scripts/             vérification du contenu, optimisation des images
 - **Pages CMS** édite les fichiers JSON directement dans le dépôt GitHub : pas de base de données, pas de clé API.
 - Aucune clé API, aucun secret, aucun traceur.
 
-## Prototype Saisonia
+## Site Saisonia (prototype)
 
-Prototype cliquable de l'application Saisonia (emploi des jeunes en Auvergne), intégré à la page
-projet `#/projets/saisonia` et disponible en plein écran sur `#/prototype/saisonia`.
+Site à part entière, publié sur `/saisonia/` (ex. https://sackroy7-png.github.io/portfolio/saisonia/)
+et affiché dans un cadre de téléphone sur la page projet du portfolio (`?embed=1`).
 
-- Code : `src/components/prototypes/Saisonia.jsx`, styles : `src/styles/saisonia.css`
-  (chargés uniquement sur ces pages).
-- Données fictives : `src/content/saisonia-offres.json` (15 offres, entreprises inventées, villes d'Auvergne).
-- Parcours « jeune » : offres (recherche, filtres contrat / domaine / niveau / période / compétences /
-  horaires flexibles / distance, « Pour moi », « Près de toi », offres mises en avant), fiche d'offre
-  avec âge minimum, candidature, suivi des statuts, profil modifiable, notifications simulées.
-- Le profil et les candidatures sont gardés dans le navigateur du visiteur (`localStorage`),
-  bouton « Réinitialiser la démo » dans le profil. Rien n'est envoyé à un serveur.
-- Distances à vol d'oiseau depuis la ville choisie ; rémunérations indicatives.
-- Hors périmètre : espace entreprise, authentification, paiement, messagerie.
+```
+saisonia/
+  index.html               entrée du site (deuxième page du build Vite)
+  src/App.jsx              navigation : onglets, écrans empilés, retour navigateur
+  src/store.js             profil, candidatures, favoris (localStorage du visiteur)
+  src/data.js              villes, contrats, distance, règle « cette offre te correspond »
+  src/screens/             Onboarding, Accueil, Rechercher, Fiche offre, Candidatures, Profil
+  src/components/ui.jsx    icônes, cartes, panneaux, étapes de suivi
+  src/styles.css           interface style iOS, effets « Liquid Glass »
+src/content/saisonia-offres.json   15 offres fictives (partagées)
+```
+
+Parcours : introduction personnalisée (âge, niveau, contrats, ville) → accueil « Pour toi » →
+recherche et filtres → fiche avec âge minimum et « Pourquoi cette offre » → candidature en 2 étapes →
+écran de confirmation → suivi (envoyée, vue, entretien, réponse) avec simulation de la réponse →
+notifications, favoris, profil modifiable. Rien n'est envoyé à un serveur ; distances à vol d'oiseau,
+rémunérations indicatives. Hors périmètre : espace entreprise, authentification, paiement, messagerie.

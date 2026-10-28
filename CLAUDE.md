@@ -8,7 +8,7 @@ fais la modification, publie, puis confirme en une ou deux phrases.
 - Textes du profil, stage, compétences, outils, CV, contact : `src/content/profile.json`
 - Expérience (stage Decathlon) : `experiences` dans `src/content/profile.json`
 - Projets (WhoCares, Saisonia) : `src/content/projects.json`
-- Prototype Saisonia : `src/components/prototypes/Saisonia.jsx` + offres fictives `src/content/saisonia-offres.json`
+- Site Saisonia (prototype, publié sur /saisonia/) : dossier `saisonia/` + offres fictives `src/content/saisonia-offres.json`
   (projet mené avec un ami, accompagné par PEPITE, statut étudiant-entrepreneur — ne pas parler de SAE)
 - Moodboard : `src/content/moodboard.json` + images dans `public/images/moodboard/<catégorie>/`
   (une image déposée dans un dossier de catégorie apparaît automatiquement, voir `vite.config.js`)

@@ -1,15 +1,11 @@
-import { Suspense, lazy, useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { projects } from "../data/projects.js";
-import { slugify } from "../lib/asset.js";
+import { asset, slugify } from "../lib/asset.js";
 import Img from "../components/Img.jsx";
 import Text from "../components/Text.jsx";
 import Reveal from "../components/Reveal.jsx";
 import Lightbox from "../components/Lightbox.jsx";
 
-// Prototypes interactifs, chargés seulement sur la page du projet concerné.
-export const PROTOTYPES = {
-  saisonia: lazy(() => import("../components/prototypes/Saisonia.jsx")),
-};
 
 // Bloc de texte avec un libellé dans la colonne de gauche.
 function Row({ label, children }) {
@@ -41,7 +37,8 @@ export default function ProjectPage({ slug }) {
   }
 
   const next = projects[(index + 1) % projects.length];
-  const Prototype = PROTOTYPES[project.prototype];
+  // "prototype" = dossier d'un site intégré (ex. "saisonia" → ./saisonia/).
+  const prototypeUrl = project.prototype ? asset(`${project.prototype}/`) : "";
   const gallery = project.gallery ?? [];
 
   return (
@@ -113,18 +110,16 @@ export default function ProjectPage({ slug }) {
           </Row>
         )}
 
-        {Prototype && (
+        {prototypeUrl && (
           <Reveal className="case-proto">
-            <div className="case-proto__phone">
-              <Suspense fallback={<p className="mono-label">Chargement du prototype…</p>}>
-                <Prototype />
-              </Suspense>
+            <div className="case-proto__phone proto-frame">
+              <iframe src={`${prototypeUrl}?embed=1`} title={`Prototype interactif : ${project.title}`} loading="lazy" />
             </div>
             <div className="case-proto__text">
               <h2 className="mono-label case-proto__label">Prototype interactif</h2>
               <p className="case__lead">Teste l'application comme un utilisateur : filtre les offres, ouvre une fiche, postule, puis retrouve ta candidature et modifie ton profil.</p>
               <p className="case-proto__note">Données fictives : entreprises, offres et profil sont inventés pour la démonstration.</p>
-              <a className="btn" href={`#/prototype/${project.prototype}`}>Ouvrir en plein écran</a>
+              <a className="btn" href={prototypeUrl} target="_blank" rel="noopener">Ouvrir le site du prototype ↗</a>
             </div>
           </Reveal>
         )}
