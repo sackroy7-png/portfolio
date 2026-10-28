@@ -1023,6 +1023,7 @@ a:hover .link-arrow {
 }
 
 .mood-item__source {
+  color: var(--muted);
   display: inline-block;
   margin-top: 0.4rem;
   font-family: var(--font-mono);

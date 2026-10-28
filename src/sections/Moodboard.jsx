@@ -57,10 +57,12 @@ export default function Moodboard() {
                 </p>
                 <Text as="h3" className="mood-item__title" value={item.title} />
                 <Text as="p" className="mood-item__caption" value={item.caption} />
-                {item.source?.url && (
+                {item.source?.url ? (
                   <a className="mood-item__source" href={item.source.url} target="_blank" rel="noopener noreferrer">
                     {item.source.label || "Source"} ↗
                   </a>
+                ) : (
+                  item.source?.label && <p className="mood-item__source">© {item.source.label}</p>
                 )}
               </div>
             </Reveal>

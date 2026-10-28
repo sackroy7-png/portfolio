@@ -1,97 +1,97 @@
 [
   {
-    "src": "images/moodboard/outdoor-01.jpg",
-    "category": "Outdoor",
-    "title": "Ligne de crête",
-    "caption": "Visuel temporaire. Idée : un paysage de montagne qui t'inspire.",
-    "sourceLabel": "",
-    "sourceUrl": ""
-  },
-  {
-    "src": "images/moodboard/footwear-01.jpg",
+    "src": "images/moodboard/semelle-vue-eclatee.jpg",
     "category": "Footwear",
-    "title": "Semelle crantée",
-    "caption": "Visuel temporaire. Idée : gros plan sur une semelle de trail.",
+    "title": "Vue éclatée d'une semelle",
+    "caption": "Chaque couche de la chaussure, de la tige à la semelle crantée.",
     "sourceLabel": "",
     "sourceUrl": ""
   },
   {
-    "src": "images/moodboard/matieres-01.jpg",
+    "src": "images/moodboard/test-labo-tapis.jpg",
+    "category": "Performance",
+    "title": "Test d'effort en laboratoire",
+    "caption": "Mesurer l'effort pour concevoir le produit.",
+    "sourceLabel": "",
+    "sourceUrl": ""
+  },
+  {
+    "src": "images/moodboard/capuche-perforee.jpg",
     "category": "Matières",
-    "title": "Maille technique",
-    "caption": "Visuel temporaire. Idée : texture d'un mesh ou d'un ripstop.",
-    "sourceLabel": "",
+    "title": "Capuche perforée",
+    "caption": "Un textile blanc travaillé par perforations.",
+    "sourceLabel": "Franck Glenisson pour Schön Magazine",
     "sourceUrl": ""
   },
   {
-    "src": "images/moodboard/design-01.jpg",
+    "src": "images/moodboard/atelier-sneakers.jpg",
     "category": "Design",
-    "title": "Forme et fonction",
-    "caption": "Visuel temporaire. Idée : un objet dont le design t'a marqué.",
+    "title": "Atelier de création",
+    "caption": "Croquis, échantillons et prototypes sur la table de travail.",
     "sourceLabel": "",
     "sourceUrl": ""
   },
   {
-    "src": "images/moodboard/ecommerce-01.jpg",
-    "category": "E-commerce",
-    "title": "Fiche produit",
-    "caption": "Visuel temporaire. Idée : une page produit que tu trouves réussie.",
+    "src": "images/moodboard/veste-technique-annotee.jpg",
+    "category": "Matières",
+    "title": "Veste technique annotée",
+    "caption": "Une veste translucide et ses fonctions, détaillées une à une.",
     "sourceLabel": "",
     "sourceUrl": ""
   },
   {
-    "src": "images/moodboard/branding-01.jpg",
-    "category": "Branding",
-    "title": "Système graphique",
-    "caption": "Visuel temporaire. Idée : une identité de marque outdoor.",
+    "src": "images/moodboard/running-notes.jpg",
+    "category": "Performance",
+    "title": "Running Notes",
+    "caption": "Analyse du geste de course, mise en page éditoriale.",
     "sourceLabel": "",
     "sourceUrl": ""
   },
   {
-    "src": "images/moodboard/outdoor-02.jpg",
-    "category": "Outdoor",
-    "title": "Relief",
-    "caption": "Visuel temporaire. Idée : une carte, un itinéraire, un terrain.",
-    "sourceLabel": "",
-    "sourceUrl": ""
-  },
-  {
-    "src": "images/moodboard/footwear-02.jpg",
+    "src": "images/moodboard/nike-capsule-basket.jpg",
     "category": "Footwear",
-    "title": "Tige et laçage",
-    "caption": "Visuel temporaire. Idée : détail de construction d'une chaussure.",
-    "sourceLabel": "",
+    "title": "Capsule basket durable",
+    "caption": "Les composants d'une chaussure étalés pièce par pièce.",
+    "sourceLabel": "Nike",
     "sourceUrl": ""
   },
   {
-    "src": "images/moodboard/matieres-02.jpg",
-    "category": "Matières",
-    "title": "Tissage",
-    "caption": "Visuel temporaire. Idée : échantillons, nuancier, toile enduite.",
-    "sourceLabel": "",
-    "sourceUrl": ""
-  },
-  {
-    "src": "images/moodboard/design-02.jpg",
+    "src": "images/moodboard/plan-de-collection.jpg",
     "category": "Design",
-    "title": "Esquisse",
-    "caption": "Visuel temporaire. Idée : croquis ou dessin technique produit.",
+    "title": "Plan de collection",
+    "caption": "Une gamme organisée au mur : produits, coloris, échantillons.",
     "sourceLabel": "",
     "sourceUrl": ""
   },
   {
-    "src": "images/moodboard/branding-02.jpg",
+    "src": "images/moodboard/stone-island-veste.jpg",
+    "category": "Matières",
+    "title": "Veste translucide",
+    "caption": "Une matière transparente qui laisse voir la construction.",
+    "sourceLabel": "Stone Island",
+    "sourceUrl": ""
+  },
+  {
+    "src": "images/moodboard/whoop-test-effort.jpg",
+    "category": "Performance",
+    "title": "Mesure de la performance",
+    "caption": "Course sur tapis et analyse des données.",
+    "sourceLabel": "SR_A × WHOOP",
+    "sourceUrl": ""
+  },
+  {
+    "src": "images/moodboard/ripstop-north-face.jpg",
+    "category": "Matières",
+    "title": "Toile ripstop",
+    "caption": "Le quadrillage qui renforce le tissu contre les déchirures.",
+    "sourceLabel": "The North Face",
+    "sourceUrl": ""
+  },
+  {
+    "src": "images/moodboard/next-time-better.jpg",
     "category": "Branding",
-    "title": "Étiquette",
-    "caption": "Visuel temporaire. Idée : packaging, étiquette, hangtag.",
-    "sourceLabel": "",
-    "sourceUrl": ""
-  },
-  {
-    "src": "images/moodboard/ecommerce-02.jpg",
-    "category": "E-commerce",
-    "title": "Parcours mobile",
-    "caption": "Visuel temporaire. Idée : capture d'un parcours d'achat sur mobile.",
+    "title": "« Next time better »",
+    "caption": "Ne jamais être satisfait de son travail : la prochaine fois, mieux.",
     "sourceLabel": "",
     "sourceUrl": ""
   }

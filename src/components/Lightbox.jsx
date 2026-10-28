@@ -43,10 +43,12 @@ export default function Lightbox({ items, index, onClose, onNavigate }) {
           </p>
           <Text as="h3" className="lightbox__title" value={item.title} />
           <Text as="p" className="lightbox__caption" value={item.caption} />
-          {item.source?.url && (
+          {item.source?.url ? (
             <a className="link-arrow" href={item.source.url} target="_blank" rel="noopener noreferrer">
               Source : {item.source.label || item.source.url}
             </a>
+          ) : (
+            item.source?.label && <p className="mono-label">© {item.source.label}</p>
           )}
           <div className="lightbox__controls">
             {many && (
