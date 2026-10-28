@@ -1,0 +1,440 @@
+<!doctype html>
+<html lang="fr" data-resolution="landscape" data-composition-variables='[{"id": "ecran1_titre", "type": "string", "label": "Écran 1 : titre (| = retour à la ligne, * = mot en bleu)", "default": "Crée ton|*profil."}, {"id": "ecran1_phrase", "type": "string", "label": "Écran 1 : phrase", "default": "Âge, niveau, ce que tu cherches, ta ville."}, {"id": "ecran2_titre", "type": "string", "label": "Écran 2 : titre (| = retour à la ligne, * = mot en bleu)", "default": "Des offres|*pour *toi."}, {"id": "ecran2_phrase", "type": "string", "label": "Écran 2 : phrase", "default": "Adaptées à ton âge, ton niveau et ta zone."}, {"id": "ecran3_titre", "type": "string", "label": "Écran 3 : titre (| = retour à la ligne, * = mot en bleu)", "default": "Filtre par|*contrat."}, {"id": "ecran3_phrase", "type": "string", "label": "Écran 3 : phrase", "default": "Stage, alternance, job d’été, saisonnier…"}, {"id": "ecran4_titre", "type": "string", "label": "Écran 4 : titre (| = retour à la ligne, * = mot en bleu)", "default": "Tout voir avant|de *postuler."}, {"id": "ecran4_phrase", "type": "string", "label": "Écran 4 : phrase", "default": "Salaire, dates, horaires, distance."}, {"id": "ecran5_titre", "type": "string", "label": "Écran 5 : titre (| = retour à la ligne, * = mot en bleu)", "default": "Postule en|*deux *étapes."}, {"id": "ecran5_phrase", "type": "string", "label": "Écran 5 : phrase", "default": "Ton dossier est déjà rempli."}, {"id": "ecran6_titre", "type": "string", "label": "Écran 6 : titre (| = retour à la ligne, * = mot en bleu)", "default": "Suis ta|*candidature."}, {"id": "ecran6_phrase", "type": "string", "label": "Écran 6 : phrase", "default": "Envoyée, vue, entretien."}, {"id": "final_mot1", "type": "string", "label": "Final : mot 1", "default": "TROUVE"}, {"id": "final_mot2", "type": "string", "label": "Final : mot 2", "default": "TON"}, {"id": "final_mot3", "type": "string", "label": "Final : mot 3", "default": "JOB"}, {"id": "final_mot4", "type": "string", "label": "Final : mot 4", "default": "EN AUVERGNE."}, {"id": "contrat1", "type": "string", "label": "Début : contrat 1", "default": "STAGE"}, {"id": "contrat2", "type": "string", "label": "Début : contrat 2", "default": "ALTERNANCE"}, {"id": "contrat3", "type": "string", "label": "Début : contrat 3", "default": "JOB D’ÉTÉ"}]'>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1920, height=1080" />
+<script src="assets/gsap.min.js"></script>
+<style>
+  @font-face { font-family: "Inter"; src: url("assets/inter-var.woff2") format("woff2"); font-weight: 100 900; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 1920px; height: 1080px; overflow: hidden; background: #fff; }
+  #root { position: relative; width: 100%; height: 100%; }
+  #reel { position: absolute; inset: 0; }
+  svg { display: block; }
+</style>
+</head>
+<body>
+<div id="root" data-composition-id="main" data-start="0" data-duration="35" data-width="1920" data-height="1080">
+  <div id="reel" class="clip" data-start="0" data-duration="35" data-track-index="1" data-track-kind="graphics">
+    <svg id="sv" width="1920" height="1080" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg"></svg>
+  </div>
+  <audio id="soundtrack" class="clip" data-start="0" data-duration="35" data-track-index="2" data-volume="1" src="assets/soundtrack.wav"></audio>
+</div>
+<script>
+
+// « La diagonale » — 15 s, 120 BPM. Tout l'état visuel est calculé depuis t dans window.seek(t).
+const W = 1920, H = 1080, CX = 960, CY = 540, DUR = 35;
+const COL = { blue: "#316fdf", teal: "#38bdb4", peach: "#ffaa78", ink: "#0b1220", white: "#ffffff" };
+
+// ---------- Courbes (fonctions du temps, sans état) ----------
+const cl = (x) => Math.max(0, Math.min(1, x));
+const mix = (a, b, p) => a + (b - a) * p;
+const eo = (x) => { x = cl(x); return x >= 1 ? 1 : 1 - Math.pow(2, -10 * x); };
+const ei = (x) => { x = cl(x); return x <= 0 ? 0 : Math.pow(2, 10 * x - 10); };
+const eio = (x) => { x = cl(x); return x < 0.5 ? Math.pow(2, 20 * x - 10) / 2 : (2 - Math.pow(2, -20 * x + 10)) / 2; };
+// Ressort amorti critique (aucun rebond), normalisé pour valoir exactement 1 à « dur ».
+const sp = (dt, w) => (dt <= 0 ? 0 : 1 - (1 + w * dt) * Math.exp(-w * dt));
+const spn = (dt, dur, w = 18) => cl(sp(dt, w) / sp(dur, w));
+const rgb = (h) => [1, 3, 5].map((i) => parseInt(h.slice(i, i + 2), 16));
+const mixC = (a, b, p) => { const A = rgb(a), B = rgb(b); return `rgb(${A.map((v, i) => Math.round(v + (B[i] - v) * cl(p))).join(",")})`; };
+const f1 = (n) => n.toFixed(1);
+const pts = (a) => a.map((p) => f1(p[0]) + "," + f1(p[1])).join(" ");
+const esc = (s) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;");
+
+// ---------- Défs par image : flous directionnels et masques ----------
+let defs = [], uid = 0;
+function blur(vx, vy, k = 0.0024, max = 14) {
+  const sx = Math.min(max, Math.abs(vx) * k), sy = Math.min(max, Math.abs(vy) * k);
+  if (sx < 0.35 && sy < 0.35) return "";
+  const id = "f" + uid++;
+  defs.push(`<filter id="${id}" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="${sx.toFixed(2)} ${sy.toFixed(2)}"/></filter>`);
+  return ` filter="url(#${id})"`;
+}
+function clipPoly(p) { const id = "c" + uid++; defs.push(`<clipPath id="${id}"><polygon points="${pts(p)}"/></clipPath>`); return ` clip-path="url(#${id})"`; }
+function clipRect(x, y, w, h, r = 0) { const id = "c" + uid++; defs.push(`<clipPath id="${id}"><rect x="${f1(x)}" y="${f1(y)}" width="${f1(Math.max(0, w))}" height="${f1(Math.max(0, h))}" rx="${r}"/></clipPath>`); return ` clip-path="url(#${id})"`; }
+const DT = 1 / 120;
+const vel = (fn, t) => { const a = fn(t), b = fn(t - DT); return [(a[0] - b[0]) / DT, (a[1] - b[1]) / DT]; };
+const text = (s, x, y, size, weight, fill, extra = "") =>
+  `<text x="${f1(x)}" y="${f1(y)}" font-family="Inter" font-size="${size}" font-weight="${weight}" fill="${fill}"${extra}>${esc(s)}</text>`;
+
+// ---------- Mesures typographiques ----------
+const cv = document.createElement("canvas").getContext("2d");
+const meas = (s, w, sz) => { cv.font = `${w} ${sz}px Inter`; return cv.measureText(s).width; };
+
+// ---------- Logo : le vrai fichier, coupé le long de sa diagonale ----------
+const D = [0.7969, -0.604], N = [0.604, 0.7969];
+const ANG = (Math.atan2(D[1], D[0]) * 180) / Math.PI; // -37,2°
+const MW = 769 * 0.45, MS = 0.45;
+let WORDW, LOCKX, WORDX, WORDB;
+const WORD = "Saisonia", WSIZE = 200;
+
+function markState(t) {
+  let mx = CX, a = 0, s = 0, wv = 0;
+  if (t < 0.5) { mx = mix(LOCKX, CX, spn(t - 0.04, 0.42, 16)); wv = 1 - eo((t - 0.04) / 0.36); }
+  else if (t < 1) { const p = spn(t - 0.5, 0.45, 18); a = 60 * p; s = 75 * p; }
+  else if (t < 1.5) { a = 60 + 1500 * ei((t - 1) / 0.5); s = 75 + 75 * eo((t - 1) / 0.4); }
+  else if (t >= 34 && t < 34.5) { a = 1500 * (1 - eo((t - 34) / 0.5)); s = mix(1100, 40, eo((t - 34) / 0.45)); }
+  else if (t >= 34.5) { const p = spn(t - 34.5, 0.45, 16); s = 40 * (1 - p); mx = mix(CX, LOCKX, p); wv = eo((t - 34.55) / 0.4); }
+  return { mx, a, s, wv };
+}
+const halfPos = (t, sign) => { const m = markState(t); return [m.mx + sign * (D[0] * m.a - N[0] * m.s), CY + sign * (D[1] * m.a - N[1] * m.s)]; };
+function drawMark(t) {
+  const m = markState(t);
+  if (m.a > 1450 && t < 2) return "";
+  let o = "";
+  [1, -1].forEach((sign) => {
+    const p = halfPos(t, sign), v = vel((tt) => halfPos(tt, sign), t);
+    o += `<g transform="translate(${f1(p[0])},${f1(p[1])}) scale(${MS})"${blur(v[0], v[1])}><image href="assets/logo.png" x="-384.5" y="-400" width="769" height="800" clip-path="url(#${sign > 0 ? "cu" : "cl"})"/></g>`;
+  });
+  if (m.wv > 0.001) o += `<g${clipRect(WORDX - 10, CY - 200, (WORDW + 30) * m.wv, 400)}>${text(WORD, WORDX, WORDB, WSIZE, 700, COL.ink, ' letter-spacing="-6"')}</g>`;
+  return o;
+}
+
+// ---------- La bande noire : l'écart du logo, puis la fente des mots ----------
+function bandState(t) {
+  const m = markState(t);
+  if (t >= 0.5 && t < 1.5) {
+    const L = t < 1 ? 400 : 400 + 3400 * eo((t - 1) / 0.5);
+    return { c: [m.mx, CY], ang: ANG, L, w: 2 * m.s + 26 * cl(m.s / 15) };
+  }
+  if (t >= 1.5 && t < 2) { const p = spn(t - 1.5, 0.45, 16); return { c: [CX, CY], ang: ANG * (1 - p), L: 3800, w: mix(326, 300, p) }; }
+  if (t >= 2 && t < 4) return { c: [CX, CY], ang: 0, L: 3800, w: 300 * (1 - eo((t - 3.75) / 0.22)) };
+  if (t >= 34) return { c: [m.mx, CY], ang: ANG, L: 3800, w: 2 * m.s + 26 * cl(m.s / 15) };
+  return null;
+}
+function bandPoly(b) {
+  const r = (b.ang * Math.PI) / 180, u = [Math.cos(r), Math.sin(r)], v = [-Math.sin(r), Math.cos(r)];
+  const hl = b.L / 2, hw = b.w / 2;
+  return [[1, 1], [1, -1], [-1, -1], [-1, 1]].map(([i, j]) => [b.c[0] + u[0] * hl * i + v[0] * hw * j, b.c[1] + u[1] * hl * i + v[1] * hw * j]);
+}
+
+// ---------- Mesure 2 : typo cinétique dans la fente ----------
+const WSZ = 230, WBASE = CY + (0.727 * WSZ) / 2;
+const WORDS = [{ s: "STAGE", c: COL.white }, { s: "ALTERNANCE", c: COL.white }, { s: "JOB D’ÉTÉ", c: COL.peach }, { s: "SAISONNIER", c: COL.white }];
+let OINFO = null;
+function wordY(i, t) {
+  const T = 2 + 0.5 * i; let y = 300 * (1 - spn(t - T, 0.4, 22));
+  if (i < 3) y -= 340 * ei((t - T - 0.5) / 0.18);
+  return y;
+}
+function drawWords(t) {
+  if (t < 2 || t >= 4.0) return "";
+  const b = bandState(t); const bc = clipPoly(bandPoly(b));
+  let o = "";
+  WORDS.forEach((w, i) => {
+    const T = 2 + 0.5 * i;
+    if (t < T || (i < 3 && t > T + 0.7)) return;
+    const y = wordY(i, t), vy = (wordY(i, t) - wordY(i, t - DT)) / DT;
+    const ww = meas(w.s, 900, WSZ), x0 = CX - ww / 2;
+    if (i < 3) { o += `<g${bc}><g${blur(0, vy)}>${text(w.s, x0, WBASE + y, WSZ, 900, w.c)}</g></g>`; return; }
+    // SAISONNIER : lettre par lettre, tout tombe sauf le O.
+    [...w.s].forEach((ch, j) => {
+      const x = x0 + meas(w.s.slice(0, j), 900, WSZ);
+      if (j === 4) {
+        const col = mixC(COL.white, COL.peach, (t - 3.72) / 0.08);
+        const g = text(ch, x, WBASE + y, WSZ, 900, col);
+        o += t < 3.75 ? `<g${bc}><g${blur(0, vy)}>${g}</g></g>` : g;
+        return;
+      }
+      const fy = (tt) => wordY(3, tt) + 360 * ei((tt - 3.75 - 0.016 * j) / 0.2);
+      const vy2 = (fy(t) - fy(t - DT)) / DT;
+      o += `<g${bc}><g${blur(0, vy2)}>${text(ch, x, WBASE + fy(t), WSZ, 900, w.c)}</g></g>`;
+    });
+  });
+  return o;
+}
+
+// ---------- Mesure 3 : les saisons, une forme qui se transforme ----------
+const NS = 240, TH = [...Array(NS)].map((_, i) => -Math.PI / 2 + (2 * Math.PI * i) / NS);
+const shEll = (rx, ry) => TH.map((th) => 1 / Math.sqrt((Math.cos(th) / rx) ** 2 + (Math.sin(th) / ry) ** 2));
+const shCirc = (R) => TH.map(() => R);
+const shTri = (R) => TH.map((th) => { const k = (2 * Math.PI) / 3; const a = (((th + Math.PI / 2) % k) + k) % k - k / 2; return R / 2 / Math.cos(a); });
+const shDrop = (R) => TH.map((th) => R * (0.6 + 0.4 * Math.pow(Math.max(0, Math.cos(th + Math.PI / 2)), 2.2)));
+const shCard = (a, b, n) => TH.map((th) => Math.pow(Math.pow(Math.abs(Math.cos(th)) / a, n) + Math.pow(Math.abs(Math.sin(th)) / b, n), -1 / n));
+const lerpR = (A, B, p) => A.map((v, i) => v + (B[i] - v) * p);
+const polar = (r, cx, cy, rotDeg = 0) => { const rr = (rotDeg * Math.PI) / 180; return r.map((v, i) => [cx + v * Math.cos(TH[i] + rr), cy + v * Math.sin(TH[i] + rr)]); };
+let MORPHS;
+function shapeState(t) {
+  // [début, durée, forme d'arrivée, couleur, centre y, sens de rotation]
+  let r = MORPHS[0].r, col = COL.peach, cy = CY - 40, rot = 0;
+  for (let i = 1; i < MORPHS.length; i++) {
+    const M = MORPHS[i], P = MORPHS[i - 1];
+    if (t < M.t) break;
+    const p = spn(t - M.t, M.d, 20);
+    r = lerpR(P.r, M.r, p); col = mixC(P.c, M.c, (p - 0.35) / 0.3);
+    cy = mix(P.cy, M.cy, p); rot = M.spin * Math.sin(Math.PI * p);
+  }
+  return { r, col, cy, rot };
+}
+const SEASONS = [{ s: "ÉTÉ", t: 4.25 }, { s: "HIVER", t: 4.5 }, { s: "PRINTEMPS", t: 5.0 }];
+function drawSeasons(t) {
+  if (t < 3.98 || t >= 6) return "";
+  let o = "";
+  if (t < 4.35) {
+    // Le O sort du mot : il grossit, s'épaissit et vient au centre.
+    const p = spn(t - 3.98, 0.37, 16), k = mix(1, 2.35, p), sw = 96 * spn(t - 3.98, 0.24, 22);
+    const pos = (tt) => { const q = spn(tt - 3.98, 0.37, 16); return [mix(OINFO.cx, CX, q), mix(OINFO.cy, CY - 40, q)]; };
+    const c = pos(t), v = vel(pos, t);
+    o += `<g transform="translate(${f1(c[0])},${f1(c[1])}) scale(${k.toFixed(3)}) translate(${f1(-OINFO.cx)},${f1(-OINFO.cy)})"${blur(v[0], v[1])}>` +
+      text("O", OINFO.x, WBASE, WSZ, 900, COL.peach, ` stroke="${COL.peach}" stroke-width="${sw.toFixed(1)}" stroke-linejoin="round" paint-order="stroke"`) + `</g>`;
+  } else {
+    const s = shapeState(t);
+    o += `<polygon points="${pts(polar(s.r, CX, s.cy, s.rot))}" fill="${s.col}"/>`;
+  }
+  // Étiquette de saison, en roulement vertical.
+  const wy = CY + 300;
+  let lab = "";
+  SEASONS.forEach((L, i) => {
+    const nxt = SEASONS[i + 1] ? SEASONS[i + 1].t : 5.5;
+    if (t < L.t || t > nxt + 0.2) return;
+    const fy = (tt) => 70 * (1 - spn(tt - L.t, 0.3, 24)) - 80 * ei((tt - nxt) / 0.16);
+    const vy = (fy(t) - fy(t - DT)) / DT;
+    lab += `<g${blur(0, vy)}>${text(L.s, CX, wy + fy(t), 44, 800, COL.ink, ' text-anchor="middle" letter-spacing="14"')}</g>`;
+  });
+  o += `<g${clipRect(0, wy - 50, W, 66)}>${lab}</g>`;
+  return o;
+}
+
+// ---------- Mesures 4 à 16 : la carte devient le téléphone, puis six écrans réels de l'appli ----------
+const CARD = { a: 330, b: 210 };
+const UI = "assets/ui/";
+const PX = 1330, SS = 410 / 390, SW = 410, SHh = 844 * SS; // écran : captures 390 x 844 pt
+const SX0 = PX - SW / 2, SY0 = CY - SHh / 2;
+const PHONE = { a: 219, b: SHh / 2 + 14, n: 14 };
+// Changements d'écran, calés sur les temps.
+const SCREENS = [
+  { t: 7.0, src: "00-welcome", ty: "wipe" },
+  { t: 9.0, src: "01-qui", ty: "push" },
+  { t: 10.0, src: "02-cherche", ty: "push" },
+  { t: 11.0, src: "03-ou", ty: "push" },
+  { t: 12.0, src: "10-home", ty: "push" },
+  { t: 16.0, src: "21-explore-ete", ty: "push" },
+  { t: 20.0, src: "30-offer", ty: "push" },
+  { t: 24.0, src: "40-apply1", ty: "sheet" },
+  { t: 25.5, src: "42-apply2", ty: "push" },
+  { t: 26.75, src: "44-success", ty: "up" },
+  { t: 28.0, src: "54-detail-entretien-clean", ty: "push" },
+];
+// Ce que chaque écran explique (deux lignes, un mot en bleu) et où la caméra s'approche.
+const SECTIONS = [
+  { t: 8, l: [["Crée", "ton"], ["profil.", 1]], sub: "Âge, niveau, ce que tu cherches, ta ville." },
+  { t: 12, l: [["Des", "offres"], ["pour", 1, "toi.", 1]], sub: "Adaptées à ton âge, ton niveau et ta zone." },
+  { t: 16, l: [["Filtre", "par"], ["contrat.", 1]], sub: "Stage, alternance, job d’été, saisonnier…" },
+  { t: 20, l: [["Tout", "voir", "avant"], ["de", "postuler.", 1]], sub: "Salaire, dates, horaires, distance." },
+  { t: 24, l: [["Postule", "en"], ["deux", 1, "étapes.", 1]], sub: "Ton dossier est déjà rempli." },
+  { t: 28, l: [["Suis", "ta"], ["candidature.", 1]], sub: "Envoyée, vue, entretien." },
+];
+const ZOOMS = [
+  { t0: 13.0, t1: 15.3, f: [[195, 394]] },
+  { t0: 17.0, t1: 19.3, f: [[230, 300]] },
+  { t0: 20.8, t1: 23.3, f: [[195, 330], [290, 790]], pan: 22.2 },
+  { t0: 29.2, t1: 31.4, f: [[195, 420]] },
+];
+const ZOOM = 1.5;
+const toFrame = (p) => [SX0 + p[0] * SS, SY0 + p[1] * SS];
+function camState(t) {
+  for (const z of ZOOMS) {
+    if (t < z.t0 || t > z.t1 + 0.5) continue;
+    const k = eio((t - z.t0) / 0.6) * (1 - eio((t - z.t1) / 0.5));
+    let f = toFrame(z.f[0]);
+    if (z.f[1]) { const q = eio((t - z.pan) / 0.6); const g = toFrame(z.f[1]); f = [mix(f[0], g[0], q), mix(f[1], g[1], q)]; }
+    return { s: mix(1, ZOOM, k), f };
+  }
+  return { s: 1, f: [PX, CY] };
+}
+const img = (src, x, y, extra = "") => `<image href="${UI}${src}.png" x="${f1(x)}" y="${f1(y)}" width="${SW}" height="${f1(SHh)}"${extra}/>`;
+function drawScreens(t) {
+  let k = -1;
+  SCREENS.forEach((s, i) => { if (t >= s.t) k = i; });
+  if (k < 0) return "";
+  const cur = SCREENS[k], prev = SCREENS[k - 1], p = eo((t - cur.t) / 0.5);
+  const vx = (tt) => SW * (1 - eo((tt - cur.t) / 0.5));
+  let o = "";
+  if (cur.ty === "wipe") {
+    const off = mix(-700, 700, eio((t - cur.t) / 0.45));
+    const c = [PX, CY];
+    const poly = [[c[0] + D[0] * 2000 + N[0] * off, c[1] + D[1] * 2000 + N[1] * off], [c[0] - D[0] * 2000 + N[0] * off, c[1] - D[1] * 2000 + N[1] * off], [c[0] - D[0] * 2000 - N[0] * 2000, c[1] - D[1] * 2000 - N[1] * 2000], [c[0] + D[0] * 2000 - N[0] * 2000, c[1] + D[1] * 2000 - N[1] * 2000]];
+    return `<g${clipPoly(poly)}>${img(cur.src, SX0, SY0)}</g>`;
+  }
+  if (p < 1 && prev) {
+    if (cur.ty === "push") o += img(prev.src, SX0 - 130 * p, SY0);
+    if (cur.ty === "up") o += img(prev.src, SX0, SY0 - 160 * p);
+    if (cur.ty === "sheet") o += img(prev.src, SX0, SY0);
+  }
+  if (cur.ty === "push") { const v = (vx(t) - vx(t - DT)) / DT; o += `<g${blur(v, 0)}>${img(cur.src, SX0 + SW * (1 - p), SY0)}</g>`; }
+  else if (cur.ty === "up") o += img(cur.src, SX0, SY0 + SHh * (1 - p));
+  else if (cur.ty === "sheet") {
+    const top = 371.4 * SS;
+    if (p < 1) {
+      o += `<g opacity="${p.toFixed(3)}"${clipRect(SX0, SY0, SW, top)}>${img(cur.src, SX0, SY0)}</g>`;
+      o += `<g${clipRect(SX0, SY0 + top + (SHh - top) * (1 - p), SW, SHh - top)}>${img(cur.src, SX0, SY0 + (SHh - top) * (1 - p))}</g>`;
+    } else o += img(cur.src, SX0, SY0);
+  }
+  // notification de réponse de l'entreprise
+  if (t >= 28.6 && t < 30.4) {
+    const ty = -90 * (1 - eo((t - 28.6) / 0.6)) - 90 * ei((t - 30.0) / 0.3);
+    const b = [45.2 * SS, 60 * SS, 299.5 * SS, 42.7 * SS];
+    o += `<g${clipRect(SX0 + b[0], SY0 + b[1] + ty, b[2], b[3], b[3] / 2)}>${img("53-detail-entretien", SX0, SY0 + ty)}</g>`;
+  }
+  return o;
+}
+function drawPhone(t) {
+  if (t < 6 || t >= 32.05) return "";
+  // 6,0 s : la carte noire devient le téléphone.
+  const p = spn(t - 6, 0.6, 14);
+  const a = mix(CARD.a, PHONE.a, p), b = mix(CARD.b, PHONE.b, p), n = mix(5, PHONE.n, p), cx = mix(CX, PX, p);
+  const v = vel((tt) => [mix(CX, PX, spn(tt - 6, 0.6, 14)), CY], t);
+  const cam = camState(t);
+  let inner = `<g${blur(v[0], 0)}><polygon points="${pts(polar(shCard(a, b, n), cx, CY, 0))}" fill="${COL.ink}"/></g>`;
+  if (t >= 7) {
+    inner += `<g${clipRect(SX0, SY0, SW, SHh, 50)}><rect x="${f1(SX0)}" y="${f1(SY0)}" width="${SW}" height="${f1(SHh)}" fill="#eef2f8"/>${drawScreens(t)}</g>`;
+    const ip = spn(t - 7.5, 0.35, 22);
+    inner += `<rect x="${f1(PX - 66 * ip)}" y="${f1(SY0 + 11)}" width="${f1(132 * ip)}" height="39" rx="19.5" fill="#000"/>`;
+    if (ip > 0.5) inner += text("17:02", SX0 + 46, SY0 + 38, 18, 700, COL.ink);
+  }
+  // le bouton bleu « Ajouter au calendrier » envahit l'image
+  if (t >= 31.75) {
+    const q = ei((t - 31.75) / 0.25);
+    const x = SX0 + 33 * SS, y = SY0 + 442.6 * SS, w = 324 * SS, h = 50 * SS;
+    inner += `<rect x="${f1(mix(x, -40, q))}" y="${f1(mix(y, -40, q))}" width="${f1(mix(w, W + 80, q))}" height="${f1(mix(h, H + 80, q))}" rx="${f1(26 * (1 - q))}" fill="${COL.blue}"/>`;
+  }
+  return `<g transform="translate(${f1(cam.f[0])},${f1(cam.f[1])}) scale(${cam.s.toFixed(4)}) translate(${f1(-cam.f[0])},${f1(-cam.f[1])})">${inner}</g>`;
+}
+function drawCaptions(t) {
+  if (t < 8 || t >= 32) return "";
+  let o = "";
+  SECTIONS.forEach((S, si) => {
+    const end = si === SECTIONS.length - 1 ? 31.55 : S.t + 3.72;
+    if (t < S.t || t > end + 0.3) return;
+    let wi = 0;
+    S.l.forEach((line, li) => {
+      let x = 150;
+      for (let j = 0; j < line.length; j++) {
+        const w = line[j]; if (typeof w !== "string") continue;
+        const accent = line[j + 1] === 1;
+        const tin = S.t + 0.07 * wi++, a = cl((t - tin) / 0.14) * (1 - cl((t - end) / 0.2));
+        const bl = 6 * (1 - cl((t - tin) / 0.14)) + 8 * cl((t - end) / 0.2);
+        if (a > 0.01) {
+          const id = "f" + uid++; defs.push(`<filter id="${id}" x="-20%" y="-40%" width="140%" height="180%"><feGaussianBlur stdDeviation="${bl.toFixed(2)}"/></filter>`);
+          o += `<g opacity="${a.toFixed(3)}"${bl > 0.3 ? ` filter="url(#${id})"` : ""}>${text(w, x, 440 + li * 108, 100, 900, accent ? COL.blue : COL.ink, ' letter-spacing="-3"')}</g>`;
+        }
+        x += meas(w, 900, 100) - 3 * (w.length - 1) + 26;
+      }
+    });
+    const ts = S.t + 0.35, a = cl((t - ts) / 0.2) * (1 - cl((t - end) / 0.2));
+    const sy = 24 * (1 - eo((t - ts) / 0.4));
+    if (a > 0.01) o += `<g opacity="${a.toFixed(3)}">${text(S.sub, 152, 625 + sy, 38, 500, COL.ink, ' fill-opacity="0.7"')}</g>`;
+  });
+  // progression : six points, un par écran
+  const cur = SECTIONS.reduce((k, S, i) => (t >= S.t ? i : k), 0);
+  const da = cl((t - 8) / 0.3) * (1 - cl((t - 31.55) / 0.2));
+  for (let i = 0; i < 6; i++) {
+    const on = i === cur, r = on ? mix(7, 11, spn(t - SECTIONS[i].t, 0.3, 24)) : 7;
+    o += `<circle cx="${156 + i * 36}" cy="720" r="${r.toFixed(2)}" fill="${on ? COL.blue : COL.ink}" fill-opacity="${(on ? da : 0.2 * da).toFixed(3)}"/>`;
+  }
+  return o;
+}
+
+// ---------- Mesure 7 : le moment fort, des coupes en diagonale ----------
+const LAYERS = [
+  { t: 32.0, bg: COL.blue, s: "TROUVE", c: COL.white, size: 340 },
+  { t: 32.5, bg: COL.teal, s: "TON", c: COL.ink, size: 420 },
+  { t: 33.0, bg: COL.peach, s: "JOB", c: COL.ink, size: 440 },
+  { t: 33.5, bg: COL.ink, s: "EN AUVERGNE.", c: COL.white, size: 205 },
+];
+function wipePoly(off) {
+  const big = 3200;
+  return [
+    [CX + D[0] * big + N[0] * off, CY + D[1] * big + N[1] * off],
+    [CX - D[0] * big + N[0] * off, CY - D[1] * big + N[1] * off],
+    [CX - D[0] * big - N[0] * big, CY - D[1] * big - N[1] * big],
+    [CX + D[0] * big - N[0] * big, CY + D[1] * big - N[1] * big],
+  ];
+}
+function layerWord(L, t) {
+  const pos = (tt) => { const p = spn(tt - L.t, 0.42, 20); return [CX - D[0] * 260 * (1 - p), CY - D[1] * 260 * (1 - p)]; };
+  const p = spn(t - L.t, 0.42, 20), c = pos(t), v = vel(pos, t), sc = mix(1.32, 1, p);
+  const ww = meas(L.s, 900, L.size);
+  return `<g transform="translate(${f1(c[0])},${f1(c[1])}) scale(${sc.toFixed(3)})"${blur(v[0], v[1])}>${text(L.s, -ww / 2, (0.727 * L.size) / 2, L.size, 900, L.c, ' letter-spacing="-8"')}</g>`;
+}
+function drawBig(t) {
+  if (t < 32 || t >= 34) return "";
+  let o = "";
+  LAYERS.forEach((L, i) => {
+    if (t < L.t) return;
+    if (LAYERS[i + 1] && t > LAYERS[i + 1].t + 0.4) return;
+    const inner = `<rect x="0" y="0" width="${W}" height="${H}" fill="${L.bg}"/>` + layerWord(L, t);
+    if (i === 0) { o += inner; return; }
+    const off = mix(-1400, 1400, eio((t - L.t) / 0.34));
+    o += `<g${clipPoly(wipePoly(off))}>${inner}</g>`;
+  });
+  return o;
+}
+function drawEnd(t) {
+  if (t < 34) return "";
+  const b = bandState(t), bp = bandPoly(b);
+  return `<polygon points="${pts(bp)}" fill="${COL.ink}"/><g${clipPoly(bp)}>${layerWord(LAYERS[3], t)}</g>`;
+}
+
+// ---------- Rendu ----------
+const sv = document.getElementById("sv");
+const STATIC = `<clipPath id="cu"><polygon points="-384.5,-400 384.5,-400 384.5,-289.4 -384.5,293.5"/></clipPath><clipPath id="cl"><polygon points="-384.5,293.5 384.5,-289.4 384.5,400 -384.5,400"/></clipPath>`;
+let lastT = 0;
+function renderAt(t) {
+  lastT = t;
+  if (!MORPHS) return; // pas encore initialisé : on redessine à la fin de init()
+  t = ((t % DUR) + DUR) % DUR;
+  defs = []; uid = 0;
+  let body = `<rect x="0" y="0" width="${W}" height="${H}" fill="${COL.white}"/>`;
+  const b = bandState(t);
+  if (b && t < 4) body += `<polygon points="${pts(bandPoly(b))}" fill="${COL.ink}"/>`;
+  body += drawWords(t) + drawSeasons(t) + drawPhone(t) + drawCaptions(t) + drawBig(t) + drawEnd(t);
+  if (t < 1.5 || t >= 34) body += drawMark(t);
+  sv.innerHTML = `<defs>${STATIC}${defs.join("")}</defs>${body}`;
+}
+
+// Textes modifiables dans le panneau Variables de HyperFrames.
+function applyVariables() {
+  const v = (window.__hyperframes && window.__hyperframes.getVariables && window.__hyperframes.getVariables()) || {};
+  SECTIONS.forEach((S, i) => {
+    const ti = v[`ecran${i + 1}_titre`], su = v[`ecran${i + 1}_phrase`];
+    if (ti) S.l = ti.split("|").map((line) => line.trim().split(/\s+/).flatMap((w) => (w.startsWith("*") ? [w.slice(1), 1] : [w])));
+    if (su) S.sub = su;
+  });
+  LAYERS.forEach((L, i) => { const w = v[`final_mot${i + 1}`]; if (w) L.s = w; });
+  WORDS.forEach((W2, i) => { const w = v[`contrat${i + 1}`]; if (w && i < 3) W2.s = w; });
+}
+async function init() {
+  applyVariables();
+  await document.fonts.load("900 230px Inter"); await document.fonts.load("700 200px Inter"); await document.fonts.load("500 28px Inter");
+  await document.fonts.ready;
+  const img = new Image(); img.src = "assets/logo.png"; await img.decode();
+  WORDW = meas(WORD, 700, WSIZE) - 6 * (WORD.length - 1);
+  const total = MW + 56 + WORDW;
+  LOCKX = CX - total / 2 + MW / 2; WORDX = CX - total / 2 + MW + 56; WORDB = CY + (0.727 * WSIZE) / 2;
+  // Position exacte du O de SAISONNIER.
+  const ww = meas("SAISONNIER", 900, WSZ), ox = CX - ww / 2 + meas("SAIS", 900, WSZ);
+  sv.innerHTML = text("O", ox, WBASE, WSZ, 900, "#000", ' id="otest"');
+  const bb = document.getElementById("otest").getBBox();
+  OINFO = { x: ox, cx: bb.x + bb.width / 2, cy: bb.y + bb.height / 2, rx: bb.width / 2, ry: bb.height / 2 };
+  const k = 2.35, sw = 96;
+  MORPHS = [
+    { t: 0, r: shEll((OINFO.rx + sw / 2) * k, (OINFO.ry + sw / 2) * k), c: COL.peach, cy: CY - 40, d: 0.1, spin: 0 },
+    { t: 4.35, r: shCirc(250), c: COL.peach, cy: CY - 40, d: 0.15, spin: 0 },
+    { t: 4.5, r: shTri(320), c: COL.blue, cy: CY - 20, d: 0.42, spin: 24 },
+    { t: 5.0, r: shDrop(290), c: COL.teal, cy: CY - 40, d: 0.42, spin: -24 },
+    { t: 5.5, r: shCard(330, 210, 5), c: COL.ink, cy: CY, d: 0.42, spin: 18 },
+  ];
+  renderAt(lastT);
+}
+window.addEventListener("hf-seek", (e) => renderAt(e.detail.time));
+window.__hf = window.__hf || {}; window.__hf.buildReady = window.__hf.buildReady || {};
+window.__hf.buildReady["reel"] = init();
+
+
+// Le dessin est piloté par l'heure HyperFrames (hf-seek) ; ce timeline vide fixe la durée.
+window.__timelines = window.__timelines || {};
+window.__timelines["main"] = gsap.timeline({ paused: true }).set({}, {}, 35);
+</script>
+</body>
+</html>
