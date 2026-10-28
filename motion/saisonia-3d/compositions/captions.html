@@ -1,0 +1,72 @@
+<html data-composition-variables='[{"id": "phrase1", "type": "string", "label": "Plan 1 : phrase", "default": "Âge, niveau, ce que tu cherches, ta ville."}, {"id": "phrase2", "type": "string", "label": "Plan 2 : phrase", "default": "Adaptées à ton âge, ton niveau et ta zone."}, {"id": "phrase3", "type": "string", "label": "Plan 3 : phrase", "default": "Stage, alternance, job d’été, saisonnier…"}, {"id": "phrase4", "type": "string", "label": "Plan 4 : phrase", "default": "Salaire, dates, horaires, distance."}, {"id": "phrase5", "type": "string", "label": "Plan 5 : phrase", "default": "Ton dossier est déjà rempli."}, {"id": "phrase6", "type": "string", "label": "Plan 6 : phrase", "default": "Envoyée, vue, entretien."}, {"id": "phrase7", "type": "string", "label": "Plan 7 : phrase", "default": "Une seule appli."}]'>
+<template>
+  <style>
+    #root { position: absolute; inset: 0; font-family: "Inter", sans-serif; color: #0b1220; }
+    .cap { position: absolute; left: 150px; top: 330px; width: 860px; }
+    .ttl { font-size: 100px; font-weight: 900; line-height: 1.06; letter-spacing: -0.035em; }
+    .ln { display: block; }
+    .w { display: inline-block; }
+    .a { color: #316fdf; }
+    .sub { margin-top: 34px; font-size: 40px; font-weight: 400; color: #3a4252; }
+    #cp-dots { position: absolute; left: 154px; top: 760px; display: flex; gap: 22px; align-items: center; }
+    .dot { display: block; width: 14px; height: 14px; border-radius: 50%; background: #0b1220; opacity: 0.18; }
+  </style>
+  <div id="root" data-composition-id="captions" data-width="1920" data-height="1080">
+    <div id="cp-1" class="cap clip" data-start="0.3" data-duration="4.02">
+      <h2 class="ttl"><span class="ln"><span class="w">Crée</span> <span class="w">ton</span></span><span class="ln"><span class="w a">profil.</span></span></h2>
+      <p class="sub" id="cp-1-sub" data-var-text="phrase1">Âge, niveau, ce que tu cherches, ta ville.</p>
+    </div>
+    <div id="cp-2" class="cap clip" data-start="4.3" data-duration="4.02">
+      <h2 class="ttl"><span class="ln"><span class="w">Des</span> <span class="w">offres</span></span><span class="ln"><span class="w a">pour</span> <span class="w a">toi.</span></span></h2>
+      <p class="sub" id="cp-2-sub" data-var-text="phrase2">Adaptées à ton âge, ton niveau et ta zone.</p>
+    </div>
+    <div id="cp-3" class="cap clip" data-start="8.3" data-duration="4.02">
+      <h2 class="ttl"><span class="ln"><span class="w">Filtre</span> <span class="w">par</span></span><span class="ln"><span class="w a">contrat.</span></span></h2>
+      <p class="sub" id="cp-3-sub" data-var-text="phrase3">Stage, alternance, job d’été, saisonnier…</p>
+    </div>
+    <div id="cp-4" class="cap clip" data-start="12.3" data-duration="4.02">
+      <h2 class="ttl"><span class="ln"><span class="w">Tout</span> <span class="w">voir</span> <span class="w">avant</span></span><span class="ln"><span class="w">de</span> <span class="w a">postuler.</span></span></h2>
+      <p class="sub" id="cp-4-sub" data-var-text="phrase4">Salaire, dates, horaires, distance.</p>
+    </div>
+    <div id="cp-5" class="cap clip" data-start="16.3" data-duration="4.02">
+      <h2 class="ttl"><span class="ln"><span class="w">Postule</span> <span class="w">en</span></span><span class="ln"><span class="w a">deux</span> <span class="w a">étapes.</span></span></h2>
+      <p class="sub" id="cp-5-sub" data-var-text="phrase5">Ton dossier est déjà rempli.</p>
+    </div>
+    <div id="cp-6" class="cap clip" data-start="20.3" data-duration="4.02">
+      <h2 class="ttl"><span class="ln"><span class="w">Suis</span> <span class="w">ta</span></span><span class="ln"><span class="w a">candidature.</span></span></h2>
+      <p class="sub" id="cp-6-sub" data-var-text="phrase6">Envoyée, vue, entretien.</p>
+    </div>
+    <div id="cp-7" class="cap clip" data-start="24.3" data-duration="1.7">
+      <h2 class="ttl"><span class="ln"><span class="w">Du</span> <span class="w">profil</span></span><span class="ln"><span class="w">à</span> <span class="w a">l'entretien.</span></span></h2>
+      <p class="sub" id="cp-7-sub" data-var-text="phrase7">Une seule appli.</p>
+    </div>
+    <div id="cp-dots" class="clip" data-start="0.3" data-duration="23.7"><i class="dot" id="cp-d0"></i><i class="dot" id="cp-d1"></i><i class="dot" id="cp-d2"></i><i class="dot" id="cp-d3"></i><i class="dot" id="cp-d4"></i><i class="dot" id="cp-d5"></i></div>
+  </div>
+  <script>
+    const T0 = 7, at = (t) => t - T0;
+    const tl = gsap.timeline({ paused: true });
+    // Titre mot par mot (flou → net), phrase ensuite ; sortie floutée.
+    function cap(i, tin, tout) {
+      const w = document.querySelectorAll("#cp-" + i + " .w");
+      tl.fromTo(w, { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.16, ease: "power4.out", stagger: 0.07 }, at(tin));
+      tl.fromTo("#cp-" + i + "-sub", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.45, ease: "expo.out" }, at(tin + 0.35));
+      tl.to(w, { opacity: 0, filter: "blur(8px)", duration: 0.18, ease: "power2.in", stagger: 0.03 }, at(tout - 0.25));
+      tl.to("#cp-" + i + "-sub", { opacity: 0, duration: 0.18, ease: "power2.in" }, at(tout - 0.25));
+    }
+  cap(1, 7.3, 10.72);
+  cap(2, 11.3, 14.72);
+  cap(3, 15.3, 18.72);
+  cap(4, 19.3, 22.72);
+  cap(5, 23.3, 26.72);
+  cap(6, 27.3, 30.72);
+  cap(7, 31.3, 32.4);
+    // Six points : l'écran en cours en bleu.
+    for (let i = 0; i < 6; i++) {
+      const t = 7 + 4 * i;
+      tl.fromTo("#cp-d" + i, { opacity: 0.18, scale: 1, backgroundColor: "#0b1220" }, { opacity: 1, scale: 1.45, backgroundColor: "#316fdf", duration: 0.3, ease: "expo.out" }, at(t + 0.3));
+      if (i < 5) tl.to("#cp-d" + i, { opacity: 0.18, scale: 1, backgroundColor: "#0b1220", duration: 0.3, ease: "power2.out" }, at(t + 4.3));
+    }
+    window.__timelines["captions"] = tl;
+  </script>
+</template>
+</html>

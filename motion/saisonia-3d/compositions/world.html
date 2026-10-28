@@ -1,0 +1,108 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; font-family: "Inter", sans-serif; }
+    /* Caméra : perspective → décalage de cadre → rotations → déplacement dans le monde. */
+    #w-persp { position: absolute; inset: 0; perspective: 1800px; perspective-origin: 50% 50%; overflow: hidden; }
+    #w-shift, #w-rig, #w-track { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; transform-style: preserve-3d; }
+    #w-floor { position: absolute; left: -6000px; top: 540px; width: 20000px; height: 9000px; margin-top: -4500px;
+      background-image: linear-gradient(rgba(11, 18, 32, 0.07) 2px, transparent 2px), linear-gradient(90deg, rgba(11, 18, 32, 0.07) 2px, transparent 2px);
+      background-size: 160px 160px; }
+    .phone { position: absolute; left: 741px; top: 82px; width: 438px; height: 915px; border-radius: 66px; background: #0d0f14;
+      box-shadow: inset 0 0 0 3px #2a2e36; transform-style: flat; }
+    .screen { position: absolute; left: 14px; top: 14px; width: 410px; height: 887px; border-radius: 54px; overflow: hidden; background: #eef2f8; }
+    .shot { position: absolute; left: 0; top: 0; width: 410px; height: 887px; }
+    .island { position: absolute; left: 139px; top: 11px; width: 132px; height: 39px; border-radius: 20px; background: #000; }
+    .clock { position: absolute; left: 44px; top: 18px; font-size: 18px; font-weight: 700; color: #0b1220; }
+    .toast { position: absolute; left: 47.5px; top: 63px; width: 315px; height: 45px; border-radius: 23px; overflow: hidden; box-shadow: 0 10px 24px rgba(11, 18, 32, 0.16); }
+    .toast img { position: absolute; left: -47.5px; top: -63px; width: 410px; height: 887px; }
+    .shadow { position: absolute; left: 700px; top: 860px; width: 520px; height: 260px; border-radius: 50%;
+      background: radial-gradient(closest-side, rgba(11, 18, 32, 0.22), rgba(11, 18, 32, 0)); }
+  </style>
+  <div id="root" data-composition-id="world" data-width="1920" data-height="1080">
+    <div id="w-persp" class="clip" data-start="0" data-duration="27.4" data-layout-allow-overflow>
+      <div id="w-shift"><div id="w-rig"><div id="w-track">
+        <div id="w-floor"></div>
+        <div class="shadow" id="p1-shadow"></div>
+        <div class="phone" id="p1"><div class="screen"><img class="shot" id="p1-s0" src="assets/ui/00-welcome.png" alt="" /><img class="shot" id="p1-s1" src="assets/ui/01-qui.png" alt="" /><img class="shot" id="p1-s2" src="assets/ui/02-cherche.png" alt="" /><img class="shot" id="p1-s3" src="assets/ui/03-ou.png" alt="" /><i class="island"></i><span class="clock" data-layout-ignore>17:02</span></div></div>
+        <div class="shadow" id="p2-shadow"></div>
+        <div class="phone" id="p2"><div class="screen"><img class="shot" id="p2-s0" src="assets/ui/10-home.png" alt="" /><i class="island"></i><span class="clock" data-layout-ignore>17:02</span></div></div>
+        <div class="shadow" id="p3-shadow"></div>
+        <div class="phone" id="p3"><div class="screen"><img class="shot" id="p3-s0" src="assets/ui/20-explore.png" alt="" /><img class="shot" id="p3-s1" src="assets/ui/21-explore-ete.png" alt="" /><i class="island"></i><span class="clock" data-layout-ignore>17:02</span></div></div>
+        <div class="shadow" id="p4-shadow"></div>
+        <div class="phone" id="p4"><div class="screen"><img class="shot" id="p4-s0" src="assets/ui/30-offer.png" alt="" /><img class="shot" id="p4-s1" src="assets/ui/31-offer-mid.png" alt="" /><i class="island"></i><span class="clock" data-layout-ignore>17:02</span></div></div>
+        <div class="shadow" id="p5-shadow"></div>
+        <div class="phone" id="p5"><div class="screen"><img class="shot" id="p5-s0" src="assets/ui/40-apply1.png" alt="" /><img class="shot" id="p5-s1" src="assets/ui/42-apply2.png" alt="" /><img class="shot" id="p5-s2" src="assets/ui/44-success.png" alt="" /><i class="island"></i><span class="clock" data-layout-ignore>17:02</span></div></div>
+        <div class="shadow" id="p6-shadow"></div>
+        <div class="phone" id="p6"><div class="screen"><img class="shot" id="p6-s0" src="assets/ui/54-detail-entretien-clean.png" alt="" /><div class="toast" id="p6-toast"><img src="assets/ui/53-detail-entretien.png" alt="Nouvelle réponse de l'entreprise" /></div><i class="island"></i><span class="clock" data-layout-ignore>17:02</span></div></div>
+      </div></div></div>
+    </div>
+  </div>
+  <script>
+    // Temps locaux : cette scène commence à 6 s dans la vidéo.
+    const T0 = 6;
+    const at = (t) => t - T0;
+    const tl = gsap.timeline({ paused: true });
+    const GAP = 2400, TILT = [-8, 9, -9, 8, -8, 7];
+
+    // Placement statique : six téléphones en ligne sur le sol, chacun légèrement tourné.
+    for (let i = 0; i < 6; i++) {
+      gsap.set("#p" + (i + 1), { x: i * GAP, rotationY: TILT[i] });
+      gsap.set("#p" + (i + 1) + "-shadow", { x: i * GAP, rotationX: 90, z: 40 });
+      document.querySelectorAll("#p" + (i + 1) + " .shot").forEach((im, j) => { if (j > 0) gsap.set(im, { x: 410 }); });
+    }
+    gsap.set("#w-floor", { rotationX: 90, y: 458 });
+    gsap.set("#w-rig", { transformOrigin: "960px 540px" });
+    gsap.set("#p6-toast", { y: -90 });
+
+    // Plans de caméra : arrivée (A), puis un 2e angle plus proche (B) 2 s plus tard.
+    // rx/ry : angles (plongée, contre-plongée, côté), z : distance, dy : partie de l'écran visée.
+    const STOPS = [
+      { t: 7, A: { rx: 0, ry: -14, z: 0 }, B: { rx: -6, ry: 12, z: 260, dy: 0 } },
+      { t: 11, A: { rx: -14, ry: 20, z: 80 }, B: { rx: -4, ry: 6, z: 520, dy: -30 } },
+      { t: 15, A: { rx: 20, ry: -18, z: 0 }, B: { rx: 10, ry: -6, z: 480, dy: -170 } },
+      { t: 19, A: { rx: 4, ry: 32, z: 150 }, B: { rx: 0, ry: 10, z: 520, dy: -95 } },
+      { t: 23, A: { rx: -10, ry: -26, z: 120 }, B: { rx: -4, ry: -8, z: 450, dy: 100 } },
+      { t: 27, A: { rx: 12, ry: 16, z: 60 }, B: { rx: 2, ry: 4, z: 500, dy: 0 } },
+    ];
+    const SHIFT = 380;
+    const cam = (t, c, i, dur, ease) => {
+      tl.to("#w-rig", { rotationX: c.rx, rotationY: c.ry, duration: dur, ease }, at(t));
+      tl.to("#w-track", { x: -i * GAP, y: -(c.dy || 0), z: c.z, duration: dur, ease }, at(t));
+      tl.to("#w-shift", { x: c.sx === undefined ? SHIFT : c.sx, duration: dur, ease }, at(t));
+    };
+    // Entrée : vue haute et lointaine, le premier téléphone sort du sol.
+    tl.fromTo("#w-rig", { rotationX: 38, rotationY: -30 }, { rotationX: 0, rotationY: -14, duration: 1.2, ease: "power2.inOut" }, at(6.0));
+    tl.fromTo("#w-track", { x: 0, y: 0, z: -1200 }, { x: 0, y: 0, z: 0, duration: 1.2, ease: "power2.inOut" }, at(6.0));
+    tl.fromTo("#w-shift", { x: 0 }, { x: SHIFT, duration: 1.2, ease: "power2.inOut" }, at(6.0));
+    tl.fromTo("#p1", { y: 1100 }, { y: 0, duration: 0.9, ease: "expo.out" }, at(6.15));
+    STOPS.forEach((s, i) => {
+      if (i > 0) cam(s.t - 0.35, s.A, i, 0.7, "power2.inOut");
+      cam(s.t + 2 - 0.25, s.B, i, 0.55, "power2.inOut");
+    });
+
+    // Changements d'écran dans chaque téléphone (glissement iOS).
+    const SWAPS = [["p1", 1, 8.0], ["p1", 2, 9.0], ["p1", 3, 10.0], ["p3", 1, 16.4], ["p4", 1, 21.2], ["p5", 1, 24.5], ["p5", 2, 25.7]];
+    SWAPS.forEach(([p, j, t]) => {
+      tl.fromTo(`#${p}-s${j}`, { x: 410 }, { x: 0, duration: 0.45, ease: "power3.out" }, at(t));
+      tl.fromTo(`#${p}-s${j - 1}`, { x: 0 }, { x: -130, duration: 0.45, ease: "power3.out" }, at(t));
+    });
+    // Réponse de l'entreprise.
+    tl.fromTo("#p6-toast", { y: -90 }, { y: 0, duration: 0.6, ease: "expo.out" }, at(27.6));
+    tl.to("#p6-toast", { y: -90, duration: 0.3, ease: "power3.in" }, at(29.6));
+
+    // 31 s : grand recul en plongée, les six écrans à la suite.
+    // les téléphones se rapprochent pour tenir dans le cadre
+    for (let i = 0; i < 6; i++) {
+      tl.to("#p" + (i + 1), { x: i * 520, rotationY: 0, duration: 0.9, ease: "power2.inOut" }, at(30.75));
+      tl.to("#p" + (i + 1) + "-shadow", { x: i * 520, duration: 0.9, ease: "power2.inOut" }, at(30.75));
+    }
+    tl.to("#w-rig", { rotationX: 14, rotationY: 0, duration: 1.0, ease: "power2.inOut" }, at(30.75));
+    tl.to("#w-track", { x: -2.5 * 520, y: 0, z: -2700, duration: 1.0, ease: "power2.inOut" }, at(30.75));
+    tl.to("#w-shift", { x: 400, duration: 1.0, ease: "power2.inOut" }, at(30.75));
+    // 32,5 s : la caméra plonge dans le dernier écran.
+    tl.to("#w-rig", { rotationX: 0, duration: 0.55, ease: "power3.in" }, at(32.45));
+    tl.to("#w-track", { x: -5 * 520, y: 0, z: 1650, duration: 0.55, ease: "power3.in" }, at(32.45));
+    tl.to("#w-shift", { x: 0, duration: 0.55, ease: "power3.in" }, at(32.45));
+    window.__timelines["world"] = tl;
+  </script>
+</template>

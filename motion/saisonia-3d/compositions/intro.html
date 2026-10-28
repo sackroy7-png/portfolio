@@ -1,0 +1,73 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; font-family: "Inter", sans-serif; color: #0b1220; }
+    #in-persp { position: absolute; inset: 0; perspective: 1700px; perspective-origin: 50% 45%; }
+    /* Logo en relief : 14 couches du vrai logo, la face avant en bleu. */
+    #in-logo { position: absolute; left: 790px; top: 230px; width: 340px; height: 354px; transform-style: preserve-3d; }
+    #in-logo img { position: absolute; inset: 0; width: 340px; height: 354px; }
+    #in-name { position: absolute; left: 0; right: 0; top: 650px; text-align: center; font-size: 150px; font-weight: 900; letter-spacing: -0.04em; }
+    #in-tag { position: absolute; left: 0; right: 0; top: 830px; text-align: center; font-size: 40px; font-weight: 400; color: #586071; }
+    /* Anneau des contrats */
+    #in-title { position: absolute; left: 0; right: 0; top: 120px; text-align: center; font-size: 84px; font-weight: 900; letter-spacing: -0.03em; }
+    #in-title b { color: #316fdf; font-weight: 900; }
+    #in-ringwrap { position: absolute; left: 960px; top: 640px; width: 0; height: 0; transform-style: preserve-3d; }
+    #in-ring { position: absolute; left: 0; top: 0; transform-style: preserve-3d; }
+    .rw { position: absolute; left: -500px; top: -70px; width: 1000px; height: 140px; text-align: center; font-size: 120px; font-weight: 900; letter-spacing: -0.04em; line-height: 140px; backface-visibility: hidden; color: #0b1220; }
+  </style>
+  <div id="root" data-composition-id="intro" data-width="1920" data-height="1080">
+    <div id="in-persp" class="clip" data-start="0" data-duration="6.7">
+      <div id="in-logo">
+        <img src="assets/logo-dark.png" alt="" data-depth="13" /><img src="assets/logo-dark.png" alt="" data-depth="12" />
+        <img src="assets/logo-dark.png" alt="" data-depth="11" /><img src="assets/logo-dark.png" alt="" data-depth="10" />
+        <img src="assets/logo-dark.png" alt="" data-depth="9" /><img src="assets/logo-dark.png" alt="" data-depth="8" />
+        <img src="assets/logo-dark.png" alt="" data-depth="7" /><img src="assets/logo-dark.png" alt="" data-depth="6" />
+        <img src="assets/logo-dark.png" alt="" data-depth="5" /><img src="assets/logo-dark.png" alt="" data-depth="4" />
+        <img src="assets/logo-dark.png" alt="" data-depth="3" /><img src="assets/logo-dark.png" alt="" data-depth="2" />
+        <img src="assets/logo-dark.png" alt="" data-depth="1" /><img src="assets/logo.png" alt="Logo Saisonia" data-depth="0" />
+      </div>
+      <h1 id="in-name">Saisonia</h1>
+      <p id="in-tag">L'appli emploi des jeunes d'Auvergne</p>
+      <h2 id="in-title">Six types de <b>contrats.</b></h2>
+      <div id="in-ringwrap">
+        <div id="in-ring">
+          <p class="rw" data-layout-allow-overlap id="in-w0">Stage</p>
+          <p class="rw" data-layout-allow-overlap id="in-w1">Alternance</p>
+          <p class="rw" data-layout-allow-overlap id="in-w2">Job d'été</p>
+          <p class="rw" data-layout-allow-overlap id="in-w3">Job étudiant</p>
+          <p class="rw" data-layout-allow-overlap id="in-w4">Saisonnier</p>
+          <p class="rw" data-layout-allow-overlap id="in-w5">Premier emploi</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    // Placement statique des couches du logo et des mots de l'anneau.
+    document.querySelectorAll("#in-logo img").forEach((im) => gsap.set(im, { z: -6 * +im.dataset.depth }));
+    const R = 560;
+    for (let i = 0; i < 6; i++) gsap.set("#in-w" + i, { rotationY: i * 60, z: R, transformOrigin: "50% 50% " + -R + "px" });
+
+    // 0–2,5 s : le logo en relief tourne et se pose, le nom s'écrit.
+    tl.fromTo("#in-logo", { rotationY: -130, rotationX: 18, z: -900 }, { rotationY: -18, rotationX: 6, z: 0, duration: 1.2, ease: "expo.out" }, 0);
+    tl.to("#in-logo", { rotationY: 0, rotationX: 0, duration: 0.5, ease: "power2.inOut" }, 1.2);
+    tl.fromTo("#in-name", { clipPath: "inset(0 100% 0 0)" }, { clipPath: "inset(0 0% 0 0)", duration: 0.5, ease: "power3.out" }, 0.5);
+    tl.fromTo("#in-tag", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.4, ease: "power3.out" }, 0.75);
+    // 2,0 s : le logo pivote sur la tranche et file, l'anneau arrive.
+    tl.to("#in-logo", { rotationY: 92, z: 600, y: -1400, duration: 0.5, ease: "power3.in" }, 2.0);
+    tl.to("#in-name, #in-tag", { y: -500, opacity: 0, duration: 0.4, ease: "power3.in" }, 2.05);
+    tl.fromTo("#in-ringwrap", { rotationX: 70, y: 500, opacity: 0 }, { rotationX: -12, y: 0, opacity: 1, duration: 0.7, ease: "expo.out" }, 2.4);
+    tl.fromTo("#in-title", { opacity: 0, filter: "blur(10px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.25, ease: "power3.out" }, 2.6);
+    // un cran par temps : chaque contrat passe devant, en bleu
+    for (let k = 0; k < 6; k++) {
+      const t = 2.5 + 0.5 * k;
+      if (k === 0) tl.fromTo("#in-ring", { rotationY: 60 }, { rotationY: 0, duration: 0.42, ease: "expo.out" }, t);
+      else tl.to("#in-ring", { rotationY: -60 * k, duration: 0.42, ease: "expo.out" }, t);
+      tl.fromTo("#in-w" + k, { color: "#0b1220" }, { color: "#316fdf", duration: 0.15, ease: "power1.out" }, t + 0.05);
+      if (k > 0) tl.to("#in-w" + (k - 1), { color: "#0b1220", duration: 0.15, ease: "power1.out" }, t + 0.05);
+    }
+    // 5,5–6,7 s : l'anneau se couche et tombe, on entre dans le monde des écrans.
+    tl.to("#in-ringwrap", { rotationX: 80, y: 700, duration: 0.6, ease: "power3.in" }, 5.8);
+    tl.to("#in-title", { y: -300, opacity: 0, duration: 0.35, ease: "power3.in" }, 5.85);
+    window.__timelines["intro"] = tl;
+  </script>
+</template>
