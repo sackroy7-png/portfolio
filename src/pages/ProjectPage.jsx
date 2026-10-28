@@ -40,6 +40,9 @@ export default function ProjectPage({ slug }) {
   // "prototype" = dossier d'un site intégré (ex. "saisonia" → ./saisonia/).
   const prototypeUrl = project.prototype ? asset(`${project.prototype}/`) : "";
   const gallery = project.gallery ?? [];
+  const approachImages = project.approachImages ?? [];
+  // La visionneuse fait défiler les images des étapes puis celles de la galerie.
+  const media = [...approachImages, ...gallery];
 
   return (
     <main id="contenu" tabIndex={-1} className="case">
@@ -107,6 +110,20 @@ export default function ProjectPage({ slug }) {
                 </li>
               ))}
             </ol>
+            {approachImages.length > 0 && (
+              <div className="step-images">
+                {approachImages.map((image, i) => (
+                  <figure key={image.src}>
+                    <button type="button" className="case-gallery__btn" onClick={() => setOpen(i)} aria-label={`Agrandir : ${image.alt}`}>
+                      <Img image={image} sizes="(min-width: 900px) 30vw, 100vw" />
+                    </button>
+                    <figcaption className="caption">
+                      <Text value={image.caption} />
+                    </figcaption>
+                  </figure>
+                ))}
+              </div>
+            )}
           </Row>
         )}
 
@@ -128,7 +145,7 @@ export default function ProjectPage({ slug }) {
           <div className="case-gallery">
             {gallery.map((image, i) => (
               <Reveal as="figure" key={image.src} className={`case-gallery__item ${image.wide ? "is-wide" : ""}`}>
-                <button type="button" className="case-gallery__btn" onClick={() => setOpen(i)} aria-label={`Agrandir : ${image.alt}`}>
+                <button type="button" className="case-gallery__btn" onClick={() => setOpen(approachImages.length + i)} aria-label={`Agrandir : ${image.alt}`}>
                   {image.video ? (
                     <video src={asset(image.video)} poster={asset(image.src)} autoPlay muted loop playsInline preload="metadata" />
                   ) : (
@@ -204,7 +221,7 @@ export default function ProjectPage({ slug }) {
 
       {open !== null && (
         <Lightbox
-          items={gallery.map((g) => ({ ...g, title: g.alt }))}
+          items={media.map((g) => ({ ...g, title: g.alt }))}
           index={open}
           onClose={close}
           onNavigate={setOpen}

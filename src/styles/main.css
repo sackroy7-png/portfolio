@@ -1535,6 +1535,17 @@ a:hover .link-arrow {
   color: var(--ink-2);
 }
 
+.step-images {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem var(--gutter);
+  margin-top: 2.5rem;
+}
+
+.step-images .case-gallery__btn {
+  border: 1px solid var(--line-strong);
+}
+
 .step .todo {
   display: inline;
 }
@@ -1649,7 +1660,8 @@ a:hover .link-arrow {
     grid-column: 1 / -1;
   }
 
-  .steps {
+  .steps,
+  .step-images {
     grid-template-columns: 1fr;
   }
 

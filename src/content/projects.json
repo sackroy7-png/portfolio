@@ -17,23 +17,39 @@
       "position": "center 18%"
     },
     "context": "WhoCares est la marque de vêtements que j'ai créée. Le produit présenté ici est un t-shirt blanc de 320 GSM avec le logo en rose sur le devant et la signature « Made it simple » au dos.",
-    "approachLabel": "J’ai imaginé l’identité visuelle de ma marque en dessinant le logo et en choisissant la typographie ainsi que les couleurs. J’ai ensuite conçu le tech pack du t-shirt, qui présente les détails nécessaires à sa fabrication, puis je l’ai transmis à un collectif parisien spécialisé dans la sérigraphie. Le collectif a imprimé les t-shirts, et j’ai ensuite fait connaître ma marque en la promouvant sur les réseaux sociaux. ",
+    "approachLabel": "Les étapes de création",
     "approach": [
       {
-        "title": "Logo",
-        "text": "Un logo simple et reconnaissable : un visage abstrait dessiné d'un trait continu, en rose."
+        "title": "Identité visuelle",
+        "text": "J'ai dessiné le logo, un visage abstrait tracé d'un trait continu, et choisi la typographie et les couleurs de la marque."
       },
       {
-        "title": "Produit",
-        "text": "Un t-shirt blanc sérigraphié recto verso."
+        "title": "Tech pack",
+        "text": "J'ai conçu le tech pack du t-shirt : le document qui réunit tous les détails nécessaires à sa fabrication."
       },
       {
-        "title": "Photo et contenus",
-        "text": "Photos produit, séance photo portée en studio "
+        "title": "BAT et impression",
+        "text": "J'ai transmis le tech pack à un collectif parisien spécialisé dans la sérigraphie. Le BAT (bon à tirer) ci-dessous a servi à valider le t-shirt avant l'impression."
+      },
+      {
+        "title": "Photos et contenus",
+        "text": "Photos produit et séance photo portée en studio."
       },
       {
         "title": "Communication",
-        "text": "Le compte Instagram @whocares.ms, qui réunit l'univers de la marque."
+        "text": "J'ai fait connaître la marque sur Instagram, avec le compte @whocares.ms."
+      }
+    ],
+    "approachImages": [
+      {
+        "src": "images/projets/whocares-bat-tshirt.jpg",
+        "alt": "BAT du t-shirt WhoCares : dessin technique de face et de dos",
+        "caption": "BAT : le t-shirt de face et de dos."
+      },
+      {
+        "src": "images/projets/whocares-bat-technique.jpg",
+        "alt": "BAT technique : sérigraphie, tailles, dimensions et placement des motifs",
+        "caption": "BAT : technique, tailles, dimensions et placement des motifs."
       }
     ],
     "gallery": [

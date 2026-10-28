@@ -201,6 +201,14 @@ content:
         fields:
           - { name: title, label: Titre, type: string }
           - { name: text, label: Texte, type: text }
+      - name: approachImages
+        label: Images sous les étapes (ex. BAT)
+        type: object
+        list: true
+        fields:
+          - { name: src, label: Image, type: image, options: { media: images, path: projets } }
+          - { name: alt, label: Description de l'image, type: string }
+          - { name: caption, label: Légende, type: string }
       - name: gallery
         label: Photos du projet
         type: object
