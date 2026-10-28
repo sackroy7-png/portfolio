@@ -3,7 +3,8 @@
 export function asset(path) {
   if (!path) return "";
   if (/^(https?:)?\/\//.test(path) || path.startsWith("data:")) return path;
-  return import.meta.env.BASE_URL + path.replace(/^\/+/, "");
+  // encodeURI : les noms avec espaces ou caractères spéciaux fonctionnent aussi.
+  return import.meta.env.BASE_URL + encodeURI(path.replace(/^\/+/, ""));
 }
 
 // Un texte commençant par "[À compléter" est un contenu à remplir.

@@ -1,6 +1,6 @@
 [
   {
-    "src": "images/moodboard/semelle-vue-eclatee.jpg",
+    "src": "images/moodboard/footwear/semelle-vue-eclatee.jpg",
     "category": "Footwear",
     "title": "Vue éclatée d'une semelle",
     "caption": "Chaque couche de la chaussure, de la tige à la semelle crantée.",
@@ -8,7 +8,7 @@
     "sourceUrl": ""
   },
   {
-    "src": "images/moodboard/test-labo-tapis.jpg",
+    "src": "images/moodboard/performance/test-labo-tapis.jpg",
     "category": "Performance",
     "title": "Test d'effort en laboratoire",
     "caption": "Mesurer l'effort pour concevoir le produit.",
@@ -16,7 +16,7 @@
     "sourceUrl": ""
   },
   {
-    "src": "images/moodboard/capuche-perforee.jpg",
+    "src": "images/moodboard/matieres/capuche-perforee.jpg",
     "category": "Matières",
     "title": "Capuche perforée",
     "caption": "Un textile blanc travaillé par perforations.",
@@ -24,7 +24,7 @@
     "sourceUrl": ""
   },
   {
-    "src": "images/moodboard/atelier-sneakers.jpg",
+    "src": "images/moodboard/design/atelier-sneakers.jpg",
     "category": "Design",
     "title": "Atelier de création",
     "caption": "Croquis, échantillons et prototypes sur la table de travail.",
@@ -32,7 +32,7 @@
     "sourceUrl": ""
   },
   {
-    "src": "images/moodboard/veste-technique-annotee.jpg",
+    "src": "images/moodboard/matieres/veste-technique-annotee.jpg",
     "category": "Matières",
     "title": "Veste technique annotée",
     "caption": "Une veste translucide et ses fonctions, détaillées une à une.",
@@ -40,7 +40,7 @@
     "sourceUrl": ""
   },
   {
-    "src": "images/moodboard/running-notes.jpg",
+    "src": "images/moodboard/performance/running-notes.jpg",
     "category": "Performance",
     "title": "Running Notes",
     "caption": "Analyse du geste de course, mise en page éditoriale.",
@@ -48,7 +48,7 @@
     "sourceUrl": ""
   },
   {
-    "src": "images/moodboard/nike-capsule-basket.jpg",
+    "src": "images/moodboard/footwear/nike-capsule-basket.jpg",
     "category": "Footwear",
     "title": "Capsule basket durable",
     "caption": "Les composants d'une chaussure étalés pièce par pièce.",
@@ -56,7 +56,7 @@
     "sourceUrl": ""
   },
   {
-    "src": "images/moodboard/plan-de-collection.jpg",
+    "src": "images/moodboard/design/plan-de-collection.jpg",
     "category": "Design",
     "title": "Plan de collection",
     "caption": "Une gamme organisée au mur : produits, coloris, échantillons.",
@@ -64,7 +64,7 @@
     "sourceUrl": ""
   },
   {
-    "src": "images/moodboard/stone-island-veste.jpg",
+    "src": "images/moodboard/matieres/stone-island-veste.jpg",
     "category": "Matières",
     "title": "Veste translucide",
     "caption": "Une matière transparente qui laisse voir la construction.",
@@ -72,7 +72,7 @@
     "sourceUrl": ""
   },
   {
-    "src": "images/moodboard/whoop-test-effort.jpg",
+    "src": "images/moodboard/performance/whoop-test-effort.jpg",
     "category": "Performance",
     "title": "Mesure de la performance",
     "caption": "Course sur tapis et analyse des données.",
@@ -80,7 +80,7 @@
     "sourceUrl": ""
   },
   {
-    "src": "images/moodboard/ripstop-north-face.jpg",
+    "src": "images/moodboard/matieres/ripstop-north-face.jpg",
     "category": "Matières",
     "title": "Toile ripstop",
     "caption": "Le quadrillage qui renforce le tissu contre les déchirures.",
@@ -88,10 +88,58 @@
     "sourceUrl": ""
   },
   {
-    "src": "images/moodboard/next-time-better.jpg",
+    "src": "images/moodboard/branding/next-time-better.jpg",
     "category": "Branding",
     "title": "« Next time better »",
     "caption": "Ne jamais être satisfait de son travail : la prochaine fois, mieux.",
+    "sourceLabel": "",
+    "sourceUrl": ""
+  },
+  {
+    "src": "images/moodboard/matieres/imprime-maille.jpg",
+    "category": "Matières",
+    "title": "Imprimé sur maille",
+    "caption": "Un motif d'arbre imprimé en transparence sur un tissu technique blanc.",
+    "sourceLabel": "",
+    "sourceUrl": ""
+  },
+  {
+    "src": "images/moodboard/matieres/gilet-trail-perfore.jpg",
+    "category": "Matières",
+    "title": "Gilet de trail perforé",
+    "caption": "Perforations, cordons de serrage et flasques intégrées.",
+    "sourceLabel": "",
+    "sourceUrl": ""
+  },
+  {
+    "src": "images/moodboard/matieres/membrane-impermeable.jpg",
+    "category": "Matières",
+    "title": "Tissu imperméable 3 couches",
+    "caption": "Les gouttes perlent sur la surface : Arctic Stretch 3-Ply.",
+    "sourceLabel": "",
+    "sourceUrl": ""
+  },
+  {
+    "src": "images/moodboard/matieres/mesh-3d.jpg",
+    "category": "Matières",
+    "title": "Mesh 3D",
+    "caption": "Une maille alvéolée, légère et respirante.",
+    "sourceLabel": "@theo_csx",
+    "sourceUrl": ""
+  },
+  {
+    "src": "images/moodboard/matieres/short-leger-respirant.jpg",
+    "category": "Matières",
+    "title": "Short léger et respirant",
+    "caption": "Tissu fin, ceinture élastique et cordon de serrage.",
+    "sourceLabel": "Roark",
+    "sourceUrl": ""
+  },
+  {
+    "src": "images/moodboard/matieres/superposition-couches.jpg",
+    "category": "Matières",
+    "title": "Superposition de couches",
+    "caption": "Coque, isolation et couche de base : le système multicouche.",
     "sourceLabel": "",
     "sourceUrl": ""
   }

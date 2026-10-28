@@ -47,6 +47,26 @@ Si rien ne change, va sur https://github.com/sackroy7-png/portfolio/actions :
 - ❌ rouge : clique dessus, l'étape **npm run check** indique ce qui ne va pas
   (le plus souvent une photo supprimée mais encore utilisée). L'ancienne version du site reste en ligne en attendant.
 
+## Ajouter une image au moodboard sans rien remplir
+
+Dépose ta photo directement dans le dossier de sa catégorie, sur GitHub :
+
+| Catégorie | Dossier |
+|---|---|
+| Outdoor | `public/images/moodboard/outdoor/` |
+| Footwear | `public/images/moodboard/footwear/` |
+| Matières | `public/images/moodboard/matieres/` |
+| Performance | `public/images/moodboard/performance/` |
+| Design | `public/images/moodboard/design/` |
+| Branding | `public/images/moodboard/branding/` |
+| E-commerce | `public/images/moodboard/ecommerce/` |
+
+Sur GitHub : ouvre le dossier → **Add file → Upload files** → glisse tes photos → **Commit changes**.
+L'image apparaît dans la bonne catégorie 2 minutes après, avec son nom de fichier comme titre.
+Pour lui donner un vrai titre, une légende ou une source : rubrique **Moodboard** de Pages CMS.
+
+⚠️ Une photo déposée directement dans `public/images/` (hors de ces dossiers) n'apparaît pas sur le site.
+
 ## Autres possibilités
 
 - **Demander à Claude** : « change ma présentation par… », « ajoute cette photo au projet WhoCares ».
