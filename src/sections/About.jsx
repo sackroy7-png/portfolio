@@ -38,6 +38,17 @@ export default function About() {
             <p className="goal__text">{about.goal}</p>
           </Reveal>
 
+          {about.goalLink?.paragraphs?.length > 0 && (
+            <Reveal className="block">
+              <h3 className="block__title">{about.goalLink.title}</h3>
+              <div className="prose">
+                {about.goalLink.paragraphs.map((p, i) => (
+                  <Text key={i} as="p" value={p} />
+                ))}
+              </div>
+            </Reveal>
+          )}
+
           <Reveal className="block">
             <h3 className="block__title">Centres d'intérêt</h3>
             <ul className="tags">

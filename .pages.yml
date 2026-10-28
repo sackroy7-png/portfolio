@@ -66,6 +66,12 @@ content:
           - { name: paragraphs, label: Paragraphes, type: text, list: true }
           - { name: interests, label: Centres d'intérêt, type: string, list: true }
           - { name: goal, label: Objectif professionnel, type: text }
+          - name: goalLink
+            label: Le lien entre le stage et l'objectif
+            type: object
+            fields:
+              - { name: title, label: Titre, type: string }
+              - { name: paragraphs, label: Paragraphes, type: text, list: true }
       - name: education
         label: Formation
         type: object

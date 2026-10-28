@@ -22,7 +22,15 @@
       "Design produit",
       "Identité de marque"
     ],
-    "goal": "Je souhaite devenir chef de produit dans le secteur du sport, avec une spécialisation dans les chaussures de sport (footwear), notamment dans leur conception, leur développement et leur innovation."
+    "goal": "Je souhaite devenir chef de produit dans le secteur du sport, avec une spécialisation dans les chaussures de sport (footwear), notamment dans leur conception, leur développement et leur innovation.",
+    "goalLink": {
+      "title": "Le lien avec ce stage",
+      "paragraphs": [
+        "Le travail d'un chef de produit ne s'arrête pas à la conception : il prépare aussi la mise en marché du produit, puis analyse ses résultats pour l'améliorer ou préparer la collection suivante.",
+        "Le site e-commerce intervient à ces deux étapes. C'est là que le produit est présenté au client (fiche produit, visuels, arguments, mise en avant), et c'est là qu'on mesure comment il est reçu : ventes, taux de conversion, avis clients, motifs de retour.",
+        "Un stage en marketing digital et en e-commerce me permettrait de voir de l'intérieur comment un produit est mis en valeur en ligne, et quelles données servent ensuite aux équipes produit pour prendre leurs décisions."
+      ]
+    }
   },
   "education": [
     {
