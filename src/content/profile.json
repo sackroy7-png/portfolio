@@ -166,7 +166,8 @@
   "documents": [
     {
       "label": "Curriculum vitæ",
-      "note": "En préparation — disponible sur demande"
+      "file": "documents/cv-sacha-roy.pdf",
+      "updated": "Octobre 2026"
     },
     {
       "label": "Lettre de motivation",
