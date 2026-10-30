@@ -15,6 +15,10 @@ import ProjectPage from "./pages/ProjectPage.jsx";
 
 const homeTitle = `${profile.name} — ${profile.title}`;
 
+// Le navigateur ne doit pas reprendre la position de la dernière visite.
+if ("scrollRestoration" in window.history) window.history.scrollRestoration = "manual";
+const cleanUrl = () => window.history.replaceState(null, "", window.location.pathname + window.location.search);
+
 function Home() {
   useEffect(() => {
     document.title = homeTitle;
@@ -35,8 +39,8 @@ function Home() {
 
 export default function App() {
   const route = useHashRoute();
-  // null au départ : un lien direct vers une section (#projets…) y mène dès l'ouverture.
   const previous = useRef(null);
+  const firstLoad = useRef(true);
 
   // Gère le défilement lors d'un changement de page.
   useLayoutEffect(() => {
@@ -44,13 +48,24 @@ export default function App() {
     previous.current = route.name;
 
     if (route.name === "project" || route.name === "prototype") {
+      firstLoad.current = false;
       window.scrollTo({ top: 0, behavior: "instant" });
+      return;
+    }
+    // À l'ouverture du site, on commence toujours en haut, même si le lien partagé
+    // contient une section (#contact…) ou si le navigateur veut reprendre l'ancienne position.
+    if (firstLoad.current) {
+      firstLoad.current = false;
+      window.scrollTo({ top: 0, behavior: "instant" });
+      if (route.anchor) cleanUrl();
       return;
     }
     const target = route.anchor && route.anchor !== "top" ? document.getElementById(route.anchor) : null;
     // Saut immédiat quand on arrive d'une autre page (pas d'animation sur toute la hauteur).
     if (target && changedPage) target.scrollIntoView({ behavior: "instant" });
     else if (!target && changedPage) window.scrollTo({ top: 0, behavior: "instant" });
+    // L'adresse reste propre (sans #section) : un lien copié ouvre le haut de la page.
+    if (route.anchor) cleanUrl();
   }, [route]);
 
   // Ancienne adresse du prototype : redirige vers son site.

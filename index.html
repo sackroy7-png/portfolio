@@ -1,6 +1,12 @@
 <!doctype html>
 <html lang="fr">
   <head>
+    <script>
+      // Le site s'ouvre toujours en haut : on retire une section (#contact…) d'un lien partagé
+      // avant que le navigateur ne saute dessus. Les pages projet (#/projets/…) sont gardées.
+      if (location.hash && !location.hash.startsWith("#/")) history.replaceState(null, "", location.pathname + location.search);
+      if ("scrollRestoration" in history) history.scrollRestoration = "manual";
+    </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sacha Roy — Marketing digital · E-commerce · Outdoor</title>
