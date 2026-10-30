@@ -1,0 +1,32 @@
+{
+  "headline": "Démarrage réel mais très localisé : l'appli prend autour de Clermont grâce aux lycéens et aux profs, mais elle cale ailleurs et chez les étudiants tant qu'il y a peu d'offres et que les entreprises ne répondent pas toutes.",
+  "scenarios": [
+    { "name": "Le plus probable : succès local", "likelihood": "≈ 55 %", "text": "Dans les lycées où l'appli est relayée (prof + mail aux familles + compte « bons plans »), une part importante des terminales l'essaie (ordre de grandeur : 1 sur 5 à 1 sur 3). Ailleurs en Auvergne, très peu de jeunes la découvrent. Les employeurs qui ont recruté (comme Marc) reviennent ; ceux qui sont débordés (comme Nathalie) laissent des candidats sans réponse, ce qui freine le bouche-à-oreille." },
+    { "name": "Alternative haute : effet boule de neige", "likelihood": "≈ 25 %", "text": "Déclencheur : plusieurs lycées relaient en même temps, des histoires de réussite (« trouvé mon job d'été ») circulent sur Instagram, et le nombre d'offres hors Clermont augmente vite (Vichy, Montluçon, Aurillac, stations). Les étudiants et la Mission locale suivent." },
+    { "name": "Alternative basse : essai puis abandon", "likelihood": "≈ 20 %", "text": "Déclencheur : trop peu d'offres près de chez soi et des candidatures sans réponse. Les jeunes comme Manon, Yanis ou Sarah désinstallent après un premier essai, et le scepticisme de départ (« encore une appli ») l'emporte." }
+  ],
+  "segments": [
+    { "segment": "lyc", "text": "Bascule quand une amie ou une déléguée montre une offre concrète près de chez elle. Freins : la distance sans permis, et l'absence de stages de seconde ou de bac pro hors Clermont." },
+    { "segment": "etu", "text": "Restent sur Indeed tant que l'appli n'apporte pas d'offres exclusives. Le relais du BDE fait essayer ; l'alternance est le point faible (trop peu d'offres)." },
+    { "segment": "jnr", "text": "Quasi absents de la simulation : peu touchés par Instagram et les lycées. Il faut passer par la Mission locale, et rassurer sur le sérieux des offres (peur des fausses annonces)." },
+    { "segment": "par", "text": "Neutres ou méfiants au départ, ils basculent dès que le lycée recommande l'appli. Hors des villes, ils pensent que « tout se trouve par le réseau »." },
+    { "segment": "ent", "text": "Publient si c'est gratuit et rapide, et restent si ça recrute. Leur vrai frein est le temps de réponse aux candidats, pas la publication de l'offre." },
+    { "segment": "acc", "text": "Le levier le plus fort : la prof, le BDE et le compte « bons plans » déclenchent les plus grosses hausses d'avis. Ils ne relaient que ce qui paraît sérieux et vérifié." }
+  ],
+  "quotes": [
+    { "agent": "theo", "text": "encore une appli qui va me demander 15 infos pour me montrer 3 offres" },
+    { "agent": "manon", "text": "ya rien vers Aurillac 😕" },
+    { "agent": "sophie", "text": "Le lycée la recommande, ça me rassure. On a regardé l'offre de Riom avec ma fille, l'entreprise existe bien." },
+    { "agent": "nathalie", "text": "J'ai recruté 1 personne mais 10 candidats attendent encore une réponse. Il faudrait un bouton « réponse rapide »." },
+    { "agent": "lea", "text": "PRISE pour juillet au magasin de sport 🥳🥳 merci Saisonia" }
+  ],
+  "recommendations": [
+    "Avoir assez d'offres avant de communiquer, y compris hors de Clermont (Vichy, Montluçon, Aurillac, Le Puy, stations) : le premier essai décide de tout.",
+    "Lancer par les relais (profs principaux, BDE, Mission locale, comptes « bons plans » locaux) plutôt que par la publicité : ce sont eux qui font basculer les parents et les jeunes.",
+    "Aider les employeurs à répondre : bouton « réponse rapide », réponses toutes faites, rappel au bout de 7 jours, badge « répond vite ».",
+    "Rassurer parents et jeunes méfiants : entreprises vérifiées, page « pour les parents », signalement d'une offre douteuse.",
+    "Ajouter des stages de seconde et de bac pro, et de vraies alternances (partenariat CFA ou CCI) : ce sont les besoins non couverts dans la simulation.",
+    "Mettre en avant les réussites (« trouvé mon job d'été ») : c'est le message qui circule le mieux entre jeunes."
+  ],
+  "limits": "Simulation faite par une IA à partir d'hypothèses : 18 personnages inventés, 6 groupes aux tailles estimées, 4 tours (environ un mois). Les pourcentages sont des ordres de grandeur pour comparer des scénarios, pas des chiffres réels : ne pas les présenter comme des résultats sur le portfolio ou à des partenaires."
+}

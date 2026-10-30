@@ -1,0 +1,40 @@
+{
+  "title": "Lancement de Saisonia en Auvergne",
+  "question": "Au lancement, les jeunes d'Auvergne vont-ils essayer l'appli dans le mois qui suit, et les entreprises locales vont-elles y publier leurs offres ?",
+  "seed": "Saisonia : appli gratuite qui réunit les stages, alternances, jobs d'été, jobs étudiants, saisonniers et premiers emplois proposés aux jeunes par les entreprises d'Auvergne. Profil en 4 étapes, offres adaptées à l'âge, au niveau et à la ville, candidature en deux étapes, suivi (envoyée, vue, entretien).",
+  "assumptions": [
+    "Lancement en avril, avant la saison des jobs d'été",
+    "Communication : compte Instagram Saisonia et affiches dans 3 lycées de Clermont-Ferrand",
+    "Environ 40 vraies offres au départ, surtout autour de Clermont",
+    "Gratuit pour les jeunes et pour les entreprises",
+    "Tailles des segments : estimations à partir de la population de l'Auvergne (≈ 1,4 million d'habitants)"
+  ],
+  "segments": [
+    { "id": "lyc", "name": "Lycéens 15-18 ans", "size": 55000, "description": "Cherchent un stage obligatoire ou un premier job d'été, souvent sans permis." },
+    { "id": "etu", "name": "Étudiants 18-25 ans", "size": 45000, "description": "Clermont surtout, aussi Vichy, Moulins, Aurillac, Le Puy : jobs étudiants, stages, alternances." },
+    { "id": "jnr", "name": "Jeunes 18-25 ans hors études", "size": 30000, "description": "Saisonniers, recherche d'un premier emploi, parfois suivis par la Mission locale." },
+    { "id": "par", "name": "Parents de lycéens", "size": 80000, "description": "Valident, conduisent, s'inquiètent du sérieux des offres." },
+    { "id": "ent", "name": "Employeurs locaux", "size": 12000, "description": "Commerces, hôtellerie-restauration, agriculture, tourisme, PME qui recrutent des jeunes." },
+    { "id": "acc", "name": "Relais (profs, Mission locale, médias locaux)", "size": 3000, "description": "Peu nombreux mais très écoutés : ils font passer l'info." }
+  ],
+  "agents": [
+    { "id": "lea", "name": "Léa", "segment": "lyc", "age": 17, "bio": "Terminale à Clermont-Ferrand, cherche un job d'été pour payer son permis, pas de voiture.", "trait": "suit l'avis de ses amies", "voice": "messages courts, emojis", "stance": 0.1, "influence": 0.4, "follows": ["ines", "elodie", "yanis"] },
+    { "id": "ines", "name": "Inès", "segment": "lyc", "age": 18, "bio": "Déléguée de terminale à Clermont, très active sur Instagram.", "trait": "aime être la première à partager un bon plan", "voice": "enthousiaste, stories", "stance": 0.35, "influence": 0.85, "follows": ["elodie", "lea", "hugo"] },
+    { "id": "theo", "name": "Théo", "segment": "lyc", "age": 16, "bio": "Seconde à Riom, cherche un stage de deux semaines, a déjà abandonné deux applis d'emploi.", "trait": "méfiant envers les nouvelles applis", "voice": "sec, ironique", "stance": -0.3, "influence": 0.2, "follows": ["ines", "elodie"] },
+    { "id": "yanis", "name": "Yanis", "segment": "lyc", "age": 17, "bio": "Bac pro commerce à Montluçon, doit trouver une période de stage en entreprise.", "trait": "pragmatique, teste si ça lui fait gagner du temps", "voice": "direct, fautes de frappe", "stance": 0.2, "influence": 0.35, "follows": ["ines", "rachid"] },
+    { "id": "manon", "name": "Manon", "segment": "lyc", "age": 16, "bio": "Lycéenne près d'Aurillac, dépend du car scolaire.", "trait": "tout se joue sur la distance", "voice": "peu bavarde", "stance": 0.0, "influence": 0.15, "follows": ["elodie", "ines"] },
+    { "id": "camille", "name": "Camille", "segment": "etu", "age": 20, "bio": "L2 à Clermont, trouve ses jobs sur Indeed et StudentJob.", "trait": "« encore une appli de plus »", "voice": "argumentée, un peu blasée", "stance": -0.1, "influence": 0.4, "follows": ["hugo", "elodie"] },
+    { "id": "hugo", "name": "Hugo", "segment": "etu", "age": 22, "bio": "Président du BDE d'un IUT, gère une liste de diffusion de 800 étudiants.", "trait": "relaie ce qui sert vraiment aux étudiants", "voice": "ton de communicant", "stance": 0.3, "influence": 0.8, "follows": ["elodie", "nathalie", "rachid"] },
+    { "id": "sarah", "name": "Sarah", "segment": "etu", "age": 19, "bio": "BTS à Vichy, doit signer une alternance avant septembre sinon elle perd sa place.", "trait": "pressée, prête à tout essayer", "voice": "inquiète, précise", "stance": 0.4, "influence": 0.3, "follows": ["hugo", "nathalie"] },
+    { "id": "kevin", "name": "Kevin", "segment": "jnr", "age": 21, "bio": "Saisonnier : l'hiver au Lioran, l'été dans les campings du Cantal.", "trait": "trouve tout par le bouche-à-oreille", "voice": "familier", "stance": 0.0, "influence": 0.35, "follows": ["elodie", "julien"] },
+    { "id": "amina", "name": "Amina", "segment": "jnr", "age": 23, "bio": "Cherche un premier CDD au Puy-en-Velay, suivie par la Mission locale.", "trait": "s'est déjà fait avoir par une fausse offre", "voice": "polie, méfiante", "stance": 0.1, "influence": 0.25, "follows": ["rachid", "elodie"] },
+    { "id": "sophie", "name": "Sophie", "segment": "par", "age": 46, "bio": "Mère de Léa, infirmière à Clermont.", "trait": "veut savoir qui contacte sa fille", "voice": "phrases complètes, Facebook", "stance": 0.0, "influence": 0.3, "follows": ["claire", "elodie", "lea"] },
+    { "id": "philippe", "name": "Philippe", "segment": "par", "age": 52, "bio": "Père de Théo, agriculteur dans les Combrailles.", "trait": "« ici, les jobs se trouvent par le réseau »", "voice": "rare et bref", "stance": -0.2, "influence": 0.25, "follows": ["claire", "theo"] },
+    { "id": "marc", "name": "Marc", "segment": "ent", "age": 52, "bio": "Gérant d'un magasin de sport à Riom, cherche deux vendeurs pour juillet.", "trait": "essaie si c'est gratuit et rapide", "voice": "pro, concis", "stance": 0.2, "influence": 0.45, "follows": ["nathalie", "elodie"] },
+    { "id": "nathalie", "name": "Nathalie", "segment": "ent", "age": 44, "bio": "Dirige un hôtel-restaurant à Vichy, manque de saisonniers chaque été.", "trait": "convaincue sur le principe, mais aucun temps libre", "voice": "rapide, pragmatique", "stance": 0.3, "influence": 0.5, "follows": ["marc", "hugo"] },
+    { "id": "julien", "name": "Julien", "segment": "ent", "age": 38, "bio": "Responsable RH d'une PME agroalimentaire près d'Aurillac, passe par France Travail.", "trait": "« pas le temps de gérer une plateforme de plus »", "voice": "formel", "stance": -0.2, "influence": 0.4, "follows": ["marc", "rachid"] },
+    { "id": "claire", "name": "Claire", "segment": "acc", "age": 41, "bio": "Professeure principale de terminale à Clermont, aide ses élèves à trouver des stages.", "trait": "ne relaie que ce qui est sérieux et vérifié", "voice": "mesurée", "stance": 0.1, "influence": 0.7, "follows": ["ines", "rachid"] },
+    { "id": "rachid", "name": "Rachid", "segment": "acc", "age": 35, "bio": "Conseiller à la Mission locale de Montluçon.", "trait": "pense d'abord aux jeunes les plus éloignés de l'emploi et à leurs données", "voice": "posé, précis", "stance": 0.2, "influence": 0.6, "follows": ["julien", "hugo", "amina"] },
+    { "id": "elodie", "name": "Élodie", "segment": "acc", "age": 29, "bio": "Anime un compte Instagram de bons plans à Clermont (40 000 abonnés).", "trait": "ne poste que ce qui intéresse sa communauté", "voice": "accrocheuse, emojis", "stance": 0.0, "influence": 0.95, "follows": ["ines", "hugo", "nathalie"] }
+  ]
+}

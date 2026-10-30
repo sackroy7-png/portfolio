@@ -167,7 +167,7 @@ PALETTE = ["#316fdf", "#e0763a", "#2a9d8f", "#9b5de5", "#c44569", "#6c757d"]
 
 def chart_svg(w):
     T = len(w["rounds"])
-    W_, H_, L, R, TOP, B = 760, 300, 48, 150, 20, 36
+    W_, H_, L, R, TOP, B = 860, 320, 52, 270, 20, 36
     xs = lambda t: L + (W_ - L - R) * (t / max(1, T))
     ys = lambda v: TOP + (H_ - TOP - B) * (1 - (v + 1) / 2)
     series = []

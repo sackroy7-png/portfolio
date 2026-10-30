@@ -1,0 +1,1116 @@
+{
+  "title": "Lancement de Saisonia en Auvergne",
+  "question": "Au lancement, les jeunes d'Auvergne vont-ils essayer l'appli dans le mois qui suit, et les entreprises locales vont-elles y publier leurs offres ?",
+  "seed": "Saisonia : appli gratuite qui réunit les stages, alternances, jobs d'été, jobs étudiants, saisonniers et premiers emplois proposés aux jeunes par les entreprises d'Auvergne. Profil en 4 étapes, offres adaptées à l'âge, au niveau et à la ville, candidature en deux étapes, suivi (envoyée, vue, entretien).",
+  "assumptions": [
+    "Lancement en avril, avant la saison des jobs d'été",
+    "Communication : compte Instagram Saisonia et affiches dans 3 lycées de Clermont-Ferrand",
+    "Environ 40 vraies offres au départ, surtout autour de Clermont",
+    "Gratuit pour les jeunes et pour les entreprises",
+    "Tailles des segments : estimations à partir de la population de l'Auvergne (≈ 1,4 million d'habitants)"
+  ],
+  "segments": [
+    {
+      "id": "lyc",
+      "name": "Lycéens 15-18 ans",
+      "size": 55000,
+      "description": "Cherchent un stage obligatoire ou un premier job d'été, souvent sans permis."
+    },
+    {
+      "id": "etu",
+      "name": "Étudiants 18-25 ans",
+      "size": 45000,
+      "description": "Clermont surtout, aussi Vichy, Moulins, Aurillac, Le Puy : jobs étudiants, stages, alternances."
+    },
+    {
+      "id": "jnr",
+      "name": "Jeunes 18-25 ans hors études",
+      "size": 30000,
+      "description": "Saisonniers, recherche d'un premier emploi, parfois suivis par la Mission locale."
+    },
+    {
+      "id": "par",
+      "name": "Parents de lycéens",
+      "size": 80000,
+      "description": "Valident, conduisent, s'inquiètent du sérieux des offres."
+    },
+    {
+      "id": "ent",
+      "name": "Employeurs locaux",
+      "size": 12000,
+      "description": "Commerces, hôtellerie-restauration, agriculture, tourisme, PME qui recrutent des jeunes."
+    },
+    {
+      "id": "acc",
+      "name": "Relais (profs, Mission locale, médias locaux)",
+      "size": 3000,
+      "description": "Peu nombreux mais très écoutés : ils font passer l'info."
+    }
+  ],
+  "agents": [
+    {
+      "id": "lea",
+      "name": "Léa",
+      "segment": "lyc",
+      "age": 17,
+      "bio": "Terminale à Clermont-Ferrand, cherche un job d'été pour payer son permis, pas de voiture.",
+      "trait": "suit l'avis de ses amies",
+      "voice": "messages courts, emojis",
+      "stance": 0.65,
+      "influence": 0.4,
+      "follows": [
+        "ines",
+        "elodie",
+        "yanis"
+      ],
+      "memory": [
+        "T1 · comment → ines : ohh dis moi si ya des trucs sans permis 🙏",
+        "T2 · post : jai trouvé un job d'été vendeuse à Riom 😍 par contre faut y aller en bus… jai postulé quand même",
+        "T3 · post : on m'a appelée pour un entretien mardi 😱😱",
+        "T4 · post : PRISE pour juillet au magasin de sport 🥳🥳 merci Saisonia"
+      ],
+      "history": [
+        0.1,
+        0.2,
+        0.35,
+        0.55,
+        0.65
+      ]
+    },
+    {
+      "id": "ines",
+      "name": "Inès",
+      "segment": "lyc",
+      "age": 18,
+      "bio": "Déléguée de terminale à Clermont, très active sur Instagram.",
+      "trait": "aime être la première à partager un bon plan",
+      "voice": "enthousiaste, stories",
+      "stance": 0.5,
+      "influence": 0.85,
+      "follows": [
+        "elodie",
+        "lea",
+        "hugo"
+      ],
+      "memory": [
+        "T1 · post : Les terminales 👀 une appli qui regroupe les jobs d'été et les stages du coin, avec des offres DÈS 16 ANS. Je teste et je vous dis 🔥",
+        "T2 · post : Bilan : profil fait en 2 min, des offres à mon âge, j'ai postulé à 2 jobs et je vois quand ils ont lu ma candidature. Validé ✅",
+        "T3 · share → elodie",
+        "T4 · comment → lea : TROP BIEN 🔥 moi toujours pas de réponse pour mon 2e job mais je lâche pas"
+      ],
+      "history": [
+        0.35,
+        0.5,
+        0.6,
+        0.6,
+        0.5
+      ]
+    },
+    {
+      "id": "theo",
+      "name": "Théo",
+      "segment": "lyc",
+      "age": 16,
+      "bio": "Seconde à Riom, cherche un stage de deux semaines, a déjà abandonné deux applis d'emploi.",
+      "trait": "méfiant envers les nouvelles applis",
+      "voice": "sec, ironique",
+      "stance": -0.05,
+      "influence": 0.2,
+      "follows": [
+        "ines",
+        "elodie"
+      ],
+      "memory": [
+        "T1 · comment → ines : encore une appli qui va me demander 15 infos pour me montrer 3 offres",
+        "T2 · ignore",
+        "T3 · comment → elodie : ok mais ya des stages de seconde dedans ou que des jobs d'été ?",
+        "T4 · post : jai trouvé 1 stage de seconde… à Issoire. pas fou mais ça existe"
+      ],
+      "history": [
+        -0.3,
+        -0.3,
+        -0.3,
+        -0.15,
+        -0.05
+      ]
+    },
+    {
+      "id": "yanis",
+      "name": "Yanis",
+      "segment": "lyc",
+      "age": 17,
+      "bio": "Bac pro commerce à Montluçon, doit trouver une période de stage en entreprise.",
+      "trait": "pragmatique, teste si ça lui fait gagner du temps",
+      "voice": "direct, fautes de frappe",
+      "stance": -0.1,
+      "influence": 0.35,
+      "follows": [
+        "ines",
+        "rachid"
+      ],
+      "memory": [
+        "T1 · post : vu laffiche, jregarde si ya des stages commerce vers montlucon",
+        "T2 · post : rien pr un stage commerce a montlucon pr linstant, ya surtout clermont",
+        "T3 · ignore",
+        "T4 · ignore"
+      ],
+      "history": [
+        0.2,
+        0.2,
+        0.0,
+        0.0,
+        -0.1
+      ]
+    },
+    {
+      "id": "manon",
+      "name": "Manon",
+      "segment": "lyc",
+      "age": 16,
+      "bio": "Lycéenne près d'Aurillac, dépend du car scolaire.",
+      "trait": "tout se joue sur la distance",
+      "voice": "peu bavarde",
+      "stance": -0.2,
+      "influence": 0.15,
+      "follows": [
+        "elodie",
+        "ines"
+      ],
+      "memory": [
+        "T1 · ignore",
+        "T2 · comment → ines : ya rien vers Aurillac 😕",
+        "T3 · ignore",
+        "T4 · ignore"
+      ],
+      "history": [
+        0.0,
+        0.0,
+        -0.15,
+        -0.15,
+        -0.2
+      ]
+    },
+    {
+      "id": "camille",
+      "name": "Camille",
+      "segment": "etu",
+      "age": 20,
+      "bio": "L2 à Clermont, trouve ses jobs sur Indeed et StudentJob.",
+      "trait": "« encore une appli de plus »",
+      "voice": "argumentée, un peu blasée",
+      "stance": 0.1,
+      "influence": 0.4,
+      "follows": [
+        "hugo",
+        "elodie"
+      ],
+      "memory": [
+        "T1 · ignore",
+        "T2 · ignore",
+        "T3 · comment → elodie : Et pour les étudiants ? Les jobs étudiants de Clermont sont déjà tous sur Indeed.",
+        "T4 · comment → hugo : Testé : 2 jobs étudiants que je n'avais pas vus ailleurs. Ok, je la garde."
+      ],
+      "history": [
+        -0.1,
+        -0.1,
+        -0.1,
+        -0.05,
+        0.1
+      ]
+    },
+    {
+      "id": "hugo",
+      "name": "Hugo",
+      "segment": "etu",
+      "age": 22,
+      "bio": "Président du BDE d'un IUT, gère une liste de diffusion de 800 étudiants.",
+      "trait": "relaie ce qui sert vraiment aux étudiants",
+      "voice": "ton de communicant",
+      "stance": 0.3,
+      "influence": 0.8,
+      "follows": [
+        "elodie",
+        "nathalie",
+        "rachid"
+      ],
+      "memory": [
+        "T1 · ignore",
+        "T2 · ignore",
+        "T3 · post : Liste BDE : vous cherchez un job étudiant ou une alternance dans la région ? Testez Saisonia et dites-moi si les offres sont à jour, je ferai un retour.",
+        "T4 · post : Retours BDE : appli claire et rapide, mais plusieurs candidatures restent sans réponse. Il faudrait relancer les employeurs."
+      ],
+      "history": [
+        0.3,
+        0.3,
+        0.3,
+        0.4,
+        0.3
+      ]
+    },
+    {
+      "id": "sarah",
+      "name": "Sarah",
+      "segment": "etu",
+      "age": 19,
+      "bio": "BTS à Vichy, doit signer une alternance avant septembre sinon elle perd sa place.",
+      "trait": "pressée, prête à tout essayer",
+      "voice": "inquiète, précise",
+      "stance": 0.0,
+      "influence": 0.3,
+      "follows": [
+        "hugo",
+        "nathalie"
+      ],
+      "memory": [
+        "T1 · post : Installée. 2 alternances seulement pour mon BTS, dont une à Clermont… je garde un œil mais ça ne suffira pas.",
+        "T2 · ignore",
+        "T3 · ignore",
+        "T4 · comment → hugo : Pour l'alternance il n'y a presque rien, j'ai fini par passer par la CCI."
+      ],
+      "history": [
+        0.4,
+        0.25,
+        0.15,
+        0.15,
+        0.0
+      ]
+    },
+    {
+      "id": "kevin",
+      "name": "Kevin",
+      "segment": "jnr",
+      "age": 21,
+      "bio": "Saisonnier : l'hiver au Lioran, l'été dans les campings du Cantal.",
+      "trait": "trouve tout par le bouche-à-oreille",
+      "voice": "familier",
+      "stance": 0.0,
+      "influence": 0.35,
+      "follows": [
+        "elodie",
+        "julien"
+      ],
+      "memory": [
+        "T1 · ignore",
+        "T2 · ignore",
+        "T3 · comment → elodie : ya des postes au Lioran cet hiver ou c que Clermont ?",
+        "T4 · ignore"
+      ],
+      "history": [
+        0.0,
+        0.0,
+        0.0,
+        0.05,
+        0.0
+      ]
+    },
+    {
+      "id": "amina",
+      "name": "Amina",
+      "segment": "jnr",
+      "age": 23,
+      "bio": "Cherche un premier CDD au Puy-en-Velay, suivie par la Mission locale.",
+      "trait": "s'est déjà fait avoir par une fausse offre",
+      "voice": "polie, méfiante",
+      "stance": 0.05,
+      "influence": 0.25,
+      "follows": [
+        "rachid",
+        "elodie"
+      ],
+      "memory": [
+        "T1 · ignore",
+        "T2 · ignore",
+        "T3 · comment → elodie : Les offres sont vérifiées ? Je me suis déjà fait avoir par une fausse annonce.",
+        "T4 · ignore"
+      ],
+      "history": [
+        0.1,
+        0.1,
+        0.1,
+        0.1,
+        0.05
+      ]
+    },
+    {
+      "id": "sophie",
+      "name": "Sophie",
+      "segment": "par",
+      "age": 46,
+      "bio": "Mère de Léa, infirmière à Clermont.",
+      "trait": "veut savoir qui contacte sa fille",
+      "voice": "phrases complètes, Facebook",
+      "stance": 0.5,
+      "influence": 0.3,
+      "follows": [
+        "claire",
+        "elodie",
+        "lea"
+      ],
+      "memory": [
+        "T1 · ignore",
+        "T2 · comment → lea : C'est sérieux cette appli ? On sait qui sont les employeurs ? Montre-moi ce soir.",
+        "T3 · comment → claire : Le lycée la recommande, ça me rassure. On a regardé l'offre de Riom avec ma fille, l'entreprise existe bien.",
+        "T4 · share → lea : Fière de ma fille ! Son job d'été trouvé grâce à une appli d'ici."
+      ],
+      "history": [
+        0.0,
+        0.0,
+        0.0,
+        0.3,
+        0.5
+      ]
+    },
+    {
+      "id": "philippe",
+      "name": "Philippe",
+      "segment": "par",
+      "age": 52,
+      "bio": "Père de Théo, agriculteur dans les Combrailles.",
+      "trait": "« ici, les jobs se trouvent par le réseau »",
+      "voice": "rare et bref",
+      "stance": -0.1,
+      "influence": 0.25,
+      "follows": [
+        "claire",
+        "theo"
+      ],
+      "memory": [
+        "T1 · ignore",
+        "T2 · ignore",
+        "T3 · comment → claire : Pour Clermont peut-être. Dans les Combrailles, il n'y a rien dessus.",
+        "T4 · ignore"
+      ],
+      "history": [
+        -0.2,
+        -0.2,
+        -0.2,
+        -0.15,
+        -0.1
+      ]
+    },
+    {
+      "id": "marc",
+      "name": "Marc",
+      "segment": "ent",
+      "age": 52,
+      "bio": "Gérant d'un magasin de sport à Riom, cherche deux vendeurs pour juillet.",
+      "trait": "essaie si c'est gratuit et rapide",
+      "voice": "pro, concis",
+      "stance": 0.6,
+      "influence": 0.45,
+      "follows": [
+        "nathalie",
+        "elodie"
+      ],
+      "memory": [
+        "T1 · post : Testé ce matin : notre offre de vendeur·se pour juillet est en ligne en 10 minutes. On verra si les candidatures suivent.",
+        "T2 · post : 3 candidatures en 4 jours, dont 2 lycéennes motivées. Pour du gratuit, c'est mieux que l'affiche en vitrine.",
+        "T3 · ignore",
+        "T4 · post : 2 embauches pour juillet. Je remets une offre pour août."
+      ],
+      "history": [
+        0.2,
+        0.35,
+        0.45,
+        0.45,
+        0.6
+      ]
+    },
+    {
+      "id": "nathalie",
+      "name": "Nathalie",
+      "segment": "ent",
+      "age": 44,
+      "bio": "Dirige un hôtel-restaurant à Vichy, manque de saisonniers chaque été.",
+      "trait": "convaincue sur le principe, mais aucun temps libre",
+      "voice": "rapide, pragmatique",
+      "stance": 0.3,
+      "influence": 0.5,
+      "follows": [
+        "marc",
+        "hugo"
+      ],
+      "memory": [
+        "T1 · ignore",
+        "T2 · post : Si ça marche pour Marc… J'ai mis mes 4 postes d'été (service, plonge, réception). Je regarde ça dimanche.",
+        "T3 · post : 11 candidatures ce week-end ! Mais je n'ai pas eu le temps de répondre à tout le monde…",
+        "T4 · comment → marc : J'ai recruté 1 personne mais 10 candidats attendent encore une réponse. Il faudrait un bouton « réponse rapide »."
+      ],
+      "history": [
+        0.3,
+        0.3,
+        0.4,
+        0.3,
+        0.3
+      ]
+    },
+    {
+      "id": "julien",
+      "name": "Julien",
+      "segment": "ent",
+      "age": 38,
+      "bio": "Responsable RH d'une PME agroalimentaire près d'Aurillac, passe par France Travail.",
+      "trait": "« pas le temps de gérer une plateforme de plus »",
+      "voice": "formel",
+      "stance": 0.05,
+      "influence": 0.4,
+      "follows": [
+        "marc",
+        "rachid"
+      ],
+      "memory": [
+        "T1 · ignore",
+        "T2 · comment → marc : Et répondre à tous les candidats, ça vous prend combien de temps ? C'est ça qui coince chez nous.",
+        "T3 · ignore",
+        "T4 · comment → marc : Si ça vous a pris si peu de temps, je mettrai nos saisonniers de l'été prochain."
+      ],
+      "history": [
+        -0.2,
+        -0.2,
+        -0.15,
+        -0.15,
+        0.05
+      ]
+    },
+    {
+      "id": "claire",
+      "name": "Claire",
+      "segment": "acc",
+      "age": 41,
+      "bio": "Professeure principale de terminale à Clermont, aide ses élèves à trouver des stages.",
+      "trait": "ne relaie que ce qui est sérieux et vérifié",
+      "voice": "mesurée",
+      "stance": 0.35,
+      "influence": 0.7,
+      "follows": [
+        "ines",
+        "rachid"
+      ],
+      "memory": [
+        "T1 · ignore",
+        "T2 · comment → ines : Inès, tu peux me montrer en fin de cours ? Si c'est sérieux, je le présente aux terminales.",
+        "T3 · post : Message aux familles : Saisonia regroupe des offres d'entreprises locales pour les jeunes. Je l'ai regardée avec les élèves ; restez vigilants comme pour toute candidature.",
+        "T4 · ignore"
+      ],
+      "history": [
+        0.1,
+        0.1,
+        0.2,
+        0.35,
+        0.35
+      ]
+    },
+    {
+      "id": "rachid",
+      "name": "Rachid",
+      "segment": "acc",
+      "age": 35,
+      "bio": "Conseiller à la Mission locale de Montluçon.",
+      "trait": "pense d'abord aux jeunes les plus éloignés de l'emploi et à leurs données",
+      "voice": "posé, précis",
+      "stance": 0.2,
+      "influence": 0.6,
+      "follows": [
+        "julien",
+        "hugo",
+        "amina"
+      ],
+      "memory": [
+        "T1 · ignore",
+        "T2 · ignore",
+        "T3 · ignore",
+        "T4 · post : Pour la Mission locale : utile pour les jeunes autonomes. Pour les autres, il faudra un accompagnement, et il y a encore peu d'offres hors de Clermont."
+      ],
+      "history": [
+        0.2,
+        0.2,
+        0.2,
+        0.2,
+        0.2
+      ]
+    },
+    {
+      "id": "elodie",
+      "name": "Élodie",
+      "segment": "acc",
+      "age": 29,
+      "bio": "Anime un compte Instagram de bons plans à Clermont (40 000 abonnés).",
+      "trait": "ne poste que ce qui intéresse sa communauté",
+      "voice": "accrocheuse, emojis",
+      "stance": 0.3,
+      "influence": 0.95,
+      "follows": [
+        "ines",
+        "hugo",
+        "nathalie"
+      ],
+      "memory": [
+        "T1 · ignore",
+        "T2 · ignore",
+        "T3 · post : 🌞 Jobs d'été DÈS 16 ANS autour de Clermont : l'appli locale que les lycéens s'échangent en ce moment. Offres d'entreprises du coin, gratuit. Lien en bio 👆",
+        "T4 · ignore"
+      ],
+      "history": [
+        0.0,
+        0.0,
+        0.1,
+        0.4,
+        0.3
+      ]
+    }
+  ],
+  "rounds": [
+    {
+      "n": 1,
+      "event": "Lancement : post Instagram de Saisonia et affiches dans 3 lycées de Clermont. Environ 40 offres en ligne, surtout autour de Clermont.",
+      "actions": [
+        {
+          "agent": "ines",
+          "type": "post",
+          "text": "Les terminales 👀 une appli qui regroupe les jobs d'été et les stages du coin, avec des offres DÈS 16 ANS. Je teste et je vous dis 🔥",
+          "stance": 0.5
+        },
+        {
+          "agent": "lea",
+          "type": "comment",
+          "target": "ines",
+          "text": "ohh dis moi si ya des trucs sans permis 🙏",
+          "stance": 0.2
+        },
+        {
+          "agent": "theo",
+          "type": "comment",
+          "target": "ines",
+          "text": "encore une appli qui va me demander 15 infos pour me montrer 3 offres",
+          "stance": -0.3
+        },
+        {
+          "agent": "yanis",
+          "type": "post",
+          "text": "vu laffiche, jregarde si ya des stages commerce vers montlucon",
+          "stance": 0.2
+        },
+        {
+          "agent": "manon",
+          "type": "ignore",
+          "text": "",
+          "stance": 0.0
+        },
+        {
+          "agent": "camille",
+          "type": "ignore",
+          "text": "",
+          "stance": -0.1
+        },
+        {
+          "agent": "hugo",
+          "type": "ignore",
+          "text": "",
+          "stance": 0.3
+        },
+        {
+          "agent": "sarah",
+          "type": "post",
+          "text": "Installée. 2 alternances seulement pour mon BTS, dont une à Clermont… je garde un œil mais ça ne suffira pas.",
+          "stance": 0.25
+        },
+        {
+          "agent": "kevin",
+          "type": "ignore",
+          "text": "",
+          "stance": 0.0
+        },
+        {
+          "agent": "amina",
+          "type": "ignore",
+          "text": "",
+          "stance": 0.1
+        },
+        {
+          "agent": "sophie",
+          "type": "ignore",
+          "text": "",
+          "stance": 0.0
+        },
+        {
+          "agent": "philippe",
+          "type": "ignore",
+          "text": "",
+          "stance": -0.2
+        },
+        {
+          "agent": "marc",
+          "type": "post",
+          "text": "Testé ce matin : notre offre de vendeur·se pour juillet est en ligne en 10 minutes. On verra si les candidatures suivent.",
+          "stance": 0.35
+        },
+        {
+          "agent": "nathalie",
+          "type": "ignore",
+          "text": "",
+          "stance": 0.3
+        },
+        {
+          "agent": "julien",
+          "type": "ignore",
+          "text": "",
+          "stance": -0.2
+        },
+        {
+          "agent": "claire",
+          "type": "ignore",
+          "text": "",
+          "stance": 0.1
+        },
+        {
+          "agent": "rachid",
+          "type": "ignore",
+          "text": "",
+          "stance": 0.2
+        },
+        {
+          "agent": "elodie",
+          "type": "ignore",
+          "text": "",
+          "stance": 0.0
+        }
+      ]
+    },
+    {
+      "n": 2,
+      "event": "",
+      "actions": [
+        {
+          "agent": "lea",
+          "type": "post",
+          "text": "jai trouvé un job d'été vendeuse à Riom 😍 par contre faut y aller en bus… jai postulé quand même",
+          "stance": 0.35
+        },
+        {
+          "agent": "ines",
+          "type": "post",
+          "text": "Bilan : profil fait en 2 min, des offres à mon âge, j'ai postulé à 2 jobs et je vois quand ils ont lu ma candidature. Validé ✅",
+          "stance": 0.6
+        },
+        {
+          "agent": "theo",
+          "type": "ignore",
+          "text": "",
+          "stance": -0.3
+        },
+        {
+          "agent": "yanis",
+          "type": "post",
+          "text": "rien pr un stage commerce a montlucon pr linstant, ya surtout clermont",
+          "stance": 0.0
+        },
+        {
+          "agent": "manon",
+          "type": "comment",
+          "target": "ines",
+          "text": "ya rien vers Aurillac 😕",
+          "stance": -0.15
+        },
+        {
+          "agent": "camille",
+          "type": "ignore",
+          "text": "",
+          "stance": -0.1
+        },
+        {
+          "agent": "hugo",
+          "type": "ignore",
+          "text": "",
+          "stance": 0.3
+        },
+        {
+          "agent": "sarah",
+          "type": "ignore",
+          "text": "",
+          "stance": 0.15
+        },
+        {
+          "agent": "kevin",
+          "type": "ignore",
+          "text": "",
+          "stance": 0.0
+        },
+        {
+          "agent": "amina",
+          "type": "ignore",
+          "text": "",
+          "stance": 0.1
+        },
+        {
+          "agent": "sophie",
+          "type": "comment",
+          "target": "lea",
+          "text": "C'est sérieux cette appli ? On sait qui sont les employeurs ? Montre-moi ce soir.",
+          "stance": 0.0
+        },
+        {
+          "agent": "philippe",
+          "type": "ignore",
+          "text": "",
+          "stance": -0.2
+        },
+        {
+          "agent": "marc",
+          "type": "post",
+          "text": "3 candidatures en 4 jours, dont 2 lycéennes motivées. Pour du gratuit, c'est mieux que l'affiche en vitrine.",
+          "stance": 0.45
+        },
+        {
+          "agent": "nathalie",
+          "type": "post",
+          "text": "Si ça marche pour Marc… J'ai mis mes 4 postes d'été (service, plonge, réception). Je regarde ça dimanche.",
+          "stance": 0.4
+        },
+        {
+          "agent": "julien",
+          "type": "comment",
+          "target": "marc",
+          "text": "Et répondre à tous les candidats, ça vous prend combien de temps ? C'est ça qui coince chez nous.",
+          "stance": -0.15
+        },
+        {
+          "agent": "claire",
+          "type": "comment",
+          "target": "ines",
+          "text": "Inès, tu peux me montrer en fin de cours ? Si c'est sérieux, je le présente aux terminales.",
+          "stance": 0.2
+        },
+        {
+          "agent": "rachid",
+          "type": "ignore",
+          "text": "",
+          "stance": 0.2
+        },
+        {
+          "agent": "elodie",
+          "type": "ignore",
+          "text": "",
+          "stance": 0.1
+        }
+      ]
+    },
+    {
+      "n": 3,
+      "event": "La professeure principale présente l'appli en classe et le lycée la met dans son mail aux familles. Le compte « bons plans Clermont » d'Élodie publie un post sur Saisonia.",
+      "actions": [
+        {
+          "agent": "elodie",
+          "type": "post",
+          "text": "🌞 Jobs d'été DÈS 16 ANS autour de Clermont : l'appli locale que les lycéens s'échangent en ce moment. Offres d'entreprises du coin, gratuit. Lien en bio 👆",
+          "stance": 0.4
+        },
+        {
+          "agent": "claire",
+          "type": "post",
+          "text": "Message aux familles : Saisonia regroupe des offres d'entreprises locales pour les jeunes. Je l'ai regardée avec les élèves ; restez vigilants comme pour toute candidature.",
+          "stance": 0.35
+        },
+        {
+          "agent": "sophie",
+          "type": "comment",
+          "target": "claire",
+          "text": "Le lycée la recommande, ça me rassure. On a regardé l'offre de Riom avec ma fille, l'entreprise existe bien.",
+          "stance": 0.3
+        },
+        {
+          "agent": "philippe",
+          "type": "comment",
+          "target": "claire",
+          "text": "Pour Clermont peut-être. Dans les Combrailles, il n'y a rien dessus.",
+          "stance": -0.15
+        },
+        {
+          "agent": "theo",
+          "type": "comment",
+          "target": "elodie",
+          "text": "ok mais ya des stages de seconde dedans ou que des jobs d'été ?",
+          "stance": -0.15
+        },
+        {
+          "agent": "lea",
+          "type": "post",
+          "text": "on m'a appelée pour un entretien mardi 😱😱",
+          "stance": 0.55
+        },
+        {
+          "agent": "ines",
+          "type": "share",
+          "target": "elodie",
+          "text": "",
+          "stance": 0.6
+        },
+        {
+          "agent": "yanis",
+          "type": "ignore",
+          "text": "",
+          "stance": 0.0
+        },
+        {
+          "agent": "manon",
+          "type": "ignore",
+          "text": "",
+          "stance": -0.15
+        },
+        {
+          "agent": "camille",
+          "type": "comment",
+          "target": "elodie",
+          "text": "Et pour les étudiants ? Les jobs étudiants de Clermont sont déjà tous sur Indeed.",
+          "stance": -0.05
+        },
+        {
+          "agent": "hugo",
+          "type": "post",
+          "text": "Liste BDE : vous cherchez un job étudiant ou une alternance dans la région ? Testez Saisonia et dites-moi si les offres sont à jour, je ferai un retour.",
+          "stance": 0.4
+        },
+        {
+          "agent": "sarah",
+          "type": "ignore",
+          "text": "",
+          "stance": 0.15
+        },
+        {
+          "agent": "kevin",
+          "type": "comment",
+          "target": "elodie",
+          "text": "ya des postes au Lioran cet hiver ou c que Clermont ?",
+          "stance": 0.05
+        },
+        {
+          "agent": "amina",
+          "type": "comment",
+          "target": "elodie",
+          "text": "Les offres sont vérifiées ? Je me suis déjà fait avoir par une fausse annonce.",
+          "stance": 0.1
+        },
+        {
+          "agent": "marc",
+          "type": "ignore",
+          "text": "",
+          "stance": 0.45
+        },
+        {
+          "agent": "nathalie",
+          "type": "post",
+          "text": "11 candidatures ce week-end ! Mais je n'ai pas eu le temps de répondre à tout le monde…",
+          "stance": 0.3
+        },
+        {
+          "agent": "julien",
+          "type": "ignore",
+          "text": "",
+          "stance": -0.15
+        },
+        {
+          "agent": "rachid",
+          "type": "ignore",
+          "text": "",
+          "stance": 0.2
+        }
+      ]
+    },
+    {
+      "n": 4,
+      "event": "Trois semaines après le lancement : les premiers recrutements tombent, mais une partie des entreprises ne répond pas et il y a toujours peu d'offres hors de Clermont.",
+      "actions": [
+        {
+          "agent": "lea",
+          "type": "post",
+          "text": "PRISE pour juillet au magasin de sport 🥳🥳 merci Saisonia",
+          "stance": 0.65
+        },
+        {
+          "agent": "ines",
+          "type": "comment",
+          "target": "lea",
+          "text": "TROP BIEN 🔥 moi toujours pas de réponse pour mon 2e job mais je lâche pas",
+          "stance": 0.5
+        },
+        {
+          "agent": "theo",
+          "type": "post",
+          "text": "jai trouvé 1 stage de seconde… à Issoire. pas fou mais ça existe",
+          "stance": -0.05
+        },
+        {
+          "agent": "yanis",
+          "type": "ignore",
+          "text": "",
+          "stance": -0.1
+        },
+        {
+          "agent": "manon",
+          "type": "ignore",
+          "text": "",
+          "stance": -0.2
+        },
+        {
+          "agent": "camille",
+          "type": "comment",
+          "target": "hugo",
+          "text": "Testé : 2 jobs étudiants que je n'avais pas vus ailleurs. Ok, je la garde.",
+          "stance": 0.1
+        },
+        {
+          "agent": "hugo",
+          "type": "post",
+          "text": "Retours BDE : appli claire et rapide, mais plusieurs candidatures restent sans réponse. Il faudrait relancer les employeurs.",
+          "stance": 0.3
+        },
+        {
+          "agent": "sarah",
+          "type": "comment",
+          "target": "hugo",
+          "text": "Pour l'alternance il n'y a presque rien, j'ai fini par passer par la CCI.",
+          "stance": 0.0
+        },
+        {
+          "agent": "kevin",
+          "type": "ignore",
+          "text": "",
+          "stance": 0.0
+        },
+        {
+          "agent": "amina",
+          "type": "ignore",
+          "text": "",
+          "stance": 0.05
+        },
+        {
+          "agent": "sophie",
+          "type": "share",
+          "target": "lea",
+          "text": "Fière de ma fille ! Son job d'été trouvé grâce à une appli d'ici.",
+          "stance": 0.5
+        },
+        {
+          "agent": "philippe",
+          "type": "ignore",
+          "text": "",
+          "stance": -0.1
+        },
+        {
+          "agent": "marc",
+          "type": "post",
+          "text": "2 embauches pour juillet. Je remets une offre pour août.",
+          "stance": 0.6
+        },
+        {
+          "agent": "nathalie",
+          "type": "comment",
+          "target": "marc",
+          "text": "J'ai recruté 1 personne mais 10 candidats attendent encore une réponse. Il faudrait un bouton « réponse rapide ».",
+          "stance": 0.3
+        },
+        {
+          "agent": "julien",
+          "type": "comment",
+          "target": "marc",
+          "text": "Si ça vous a pris si peu de temps, je mettrai nos saisonniers de l'été prochain.",
+          "stance": 0.05
+        },
+        {
+          "agent": "claire",
+          "type": "ignore",
+          "text": "",
+          "stance": 0.35
+        },
+        {
+          "agent": "rachid",
+          "type": "post",
+          "text": "Pour la Mission locale : utile pour les jeunes autonomes. Pour les autres, il faudra un accompagnement, et il y a encore peu d'offres hors de Clermont.",
+          "stance": 0.2
+        },
+        {
+          "agent": "elodie",
+          "type": "ignore",
+          "text": "",
+          "stance": 0.3
+        }
+      ]
+    }
+  ],
+  "prediction": {
+    "headline": "Démarrage réel mais très localisé : l'appli prend autour de Clermont grâce aux lycéens et aux profs, mais elle cale ailleurs et chez les étudiants tant qu'il y a peu d'offres et que les entreprises ne répondent pas toutes.",
+    "scenarios": [
+      {
+        "name": "Le plus probable : succès local",
+        "likelihood": "≈ 55 %",
+        "text": "Dans les lycées où l'appli est relayée (prof + mail aux familles + compte « bons plans »), une part importante des terminales l'essaie (ordre de grandeur : 1 sur 5 à 1 sur 3). Ailleurs en Auvergne, très peu de jeunes la découvrent. Les employeurs qui ont recruté (comme Marc) reviennent ; ceux qui sont débordés (comme Nathalie) laissent des candidats sans réponse, ce qui freine le bouche-à-oreille."
+      },
+      {
+        "name": "Alternative haute : effet boule de neige",
+        "likelihood": "≈ 25 %",
+        "text": "Déclencheur : plusieurs lycées relaient en même temps, des histoires de réussite (« trouvé mon job d'été ») circulent sur Instagram, et le nombre d'offres hors Clermont augmente vite (Vichy, Montluçon, Aurillac, stations). Les étudiants et la Mission locale suivent."
+      },
+      {
+        "name": "Alternative basse : essai puis abandon",
+        "likelihood": "≈ 20 %",
+        "text": "Déclencheur : trop peu d'offres près de chez soi et des candidatures sans réponse. Les jeunes comme Manon, Yanis ou Sarah désinstallent après un premier essai, et le scepticisme de départ (« encore une appli ») l'emporte."
+      }
+    ],
+    "segments": [
+      {
+        "segment": "lyc",
+        "text": "Bascule quand une amie ou une déléguée montre une offre concrète près de chez elle. Freins : la distance sans permis, et l'absence de stages de seconde ou de bac pro hors Clermont."
+      },
+      {
+        "segment": "etu",
+        "text": "Restent sur Indeed tant que l'appli n'apporte pas d'offres exclusives. Le relais du BDE fait essayer ; l'alternance est le point faible (trop peu d'offres)."
+      },
+      {
+        "segment": "jnr",
+        "text": "Quasi absents de la simulation : peu touchés par Instagram et les lycées. Il faut passer par la Mission locale, et rassurer sur le sérieux des offres (peur des fausses annonces)."
+      },
+      {
+        "segment": "par",
+        "text": "Neutres ou méfiants au départ, ils basculent dès que le lycée recommande l'appli. Hors des villes, ils pensent que « tout se trouve par le réseau »."
+      },
+      {
+        "segment": "ent",
+        "text": "Publient si c'est gratuit et rapide, et restent si ça recrute. Leur vrai frein est le temps de réponse aux candidats, pas la publication de l'offre."
+      },
+      {
+        "segment": "acc",
+        "text": "Le levier le plus fort : la prof, le BDE et le compte « bons plans » déclenchent les plus grosses hausses d'avis. Ils ne relaient que ce qui paraît sérieux et vérifié."
+      }
+    ],
+    "quotes": [
+      {
+        "agent": "theo",
+        "text": "encore une appli qui va me demander 15 infos pour me montrer 3 offres"
+      },
+      {
+        "agent": "manon",
+        "text": "ya rien vers Aurillac 😕"
+      },
+      {
+        "agent": "sophie",
+        "text": "Le lycée la recommande, ça me rassure. On a regardé l'offre de Riom avec ma fille, l'entreprise existe bien."
+      },
+      {
+        "agent": "nathalie",
+        "text": "J'ai recruté 1 personne mais 10 candidats attendent encore une réponse. Il faudrait un bouton « réponse rapide »."
+      },
+      {
+        "agent": "lea",
+        "text": "PRISE pour juillet au magasin de sport 🥳🥳 merci Saisonia"
+      }
+    ],
+    "recommendations": [
+      "Avoir assez d'offres avant de communiquer, y compris hors de Clermont (Vichy, Montluçon, Aurillac, Le Puy, stations) : le premier essai décide de tout.",
+      "Lancer par les relais (profs principaux, BDE, Mission locale, comptes « bons plans » locaux) plutôt que par la publicité : ce sont eux qui font basculer les parents et les jeunes.",
+      "Aider les employeurs à répondre : bouton « réponse rapide », réponses toutes faites, rappel au bout de 7 jours, badge « répond vite ».",
+      "Rassurer parents et jeunes méfiants : entreprises vérifiées, page « pour les parents », signalement d'une offre douteuse.",
+      "Ajouter des stages de seconde et de bac pro, et de vraies alternances (partenariat CFA ou CCI) : ce sont les besoins non couverts dans la simulation.",
+      "Mettre en avant les réussites (« trouvé mon job d'été ») : c'est le message qui circule le mieux entre jeunes."
+    ],
+    "limits": "Simulation faite par une IA à partir d'hypothèses : 18 personnages inventés, 6 groupes aux tailles estimées, 4 tours (environ un mois). Les pourcentages sont des ordres de grandeur pour comparer des scénarios, pas des chiffres réels : ne pas les présenter comme des résultats sur le portfolio ou à des partenaires."
+  }
+}
