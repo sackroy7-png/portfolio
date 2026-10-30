@@ -26,3 +26,8 @@ fais la modification, publie, puis confirme en une ou deux phrases.
 2. `git commit` puis `git push origin main`
 3. La publication GitHub Pages se fait automatiquement (~2 min) ; vérifier le statut via
    l'API publique : `https://api.github.com/repos/sackroy7-png/portfolio/actions/runs?per_page=1`
+
+## Skill « simulation de public »
+`.claude/skills/simulation-de-public/` : simule un public (façon MiroFish, sans clé ni installation) pour
+prédire les réactions à un post, une offre, une vidéo… Les simulations vont dans `simulations/<nom>/`
+(rapport HTML). Ce sont des simulations : ne jamais les présenter comme des résultats réels sur le site.
