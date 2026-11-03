@@ -17,7 +17,6 @@ const TABS = [
   { id: "profile", label: "Profil", icon: "user" },
 ];
 const EMBED = new URLSearchParams(window.location.search).has("embed");
-const PORTFOLIO_URL = "../#/projets/saisonia";
 
 function useNotifications(state, offers) {
   return useMemo(() => {
@@ -120,7 +119,7 @@ export default function App() {
             {tab === "home" && <Home state={state} offers={offers} notifCount={unread} go={go} onSave={onSave} />}
             {tab === "explore" && <Explore state={state} offers={offers} go={go} onSave={onSave} preset={explore.preset} focus={explore.focus} />}
             {tab === "applications" && <Applications state={state} offersById={offersById} go={go} onSave={onSave} />}
-            {tab === "profile" && <Profile state={state} dispatch={dispatch} toast={toast} portfolioUrl={PORTFOLIO_URL} />}
+            {tab === "profile" && <Profile state={state} dispatch={dispatch} toast={toast} />}
           </main>
 
           {pushed && <div className="pushed">{pushed}</div>}
@@ -158,7 +157,6 @@ export default function App() {
           <li>Simule la réponse de l'entreprise</li>
         </ol>
         <p className="intro__fine">Projet de création d'entreprise accompagné par PEPITE. Données fictives : aucune offre, entreprise ou personne réelle.</p>
-        <a className="intro__link" href={PORTFOLIO_URL}>← Portfolio de Sacha Roy</a>
       </aside>
       <div className="device">{app}</div>
     </div>

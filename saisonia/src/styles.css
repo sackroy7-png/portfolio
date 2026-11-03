@@ -211,13 +211,6 @@ img {
   color: var(--secondary);
 }
 
-.intro__link {
-  display: inline-block;
-  margin-top: 18px;
-  font-weight: 600;
-  color: var(--blue-ink);
-}
-
 /* Cadre de téléphone (ordinateur) */
 .device {
   position: relative;

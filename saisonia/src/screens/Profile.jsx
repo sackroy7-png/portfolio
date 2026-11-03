@@ -2,7 +2,7 @@ import { AVAILABILITY, CONTRACTS, HOME_CITIES, LEVELS, SKILLS, toggle } from "..
 import { Chip, Icon } from "../components/ui.jsx";
 
 // Profil façon « Réglages » : groupes de champs, modifiés en direct.
-export default function Profile({ state, dispatch, toast, portfolioUrl }) {
+export default function Profile({ state, dispatch, toast }) {
   const p = state.profile;
   const set = (patch) => dispatch({ type: "profile", patch });
   const checks = [p.firstName, p.formation, p.skills.length, p.availability.length, p.wanted.length, p.cv];
@@ -79,9 +79,8 @@ export default function Profile({ state, dispatch, toast, portfolioUrl }) {
       <div className="inset">
         <button type="button" className="row" onClick={() => dispatch({ type: "replayOnboarding" })}><span>Revoir l'introduction</span><Icon name="chevron" size={16} /></button>
         <button type="button" className="row row--danger" onClick={() => { dispatch({ type: "reset" }); toast("Démo réinitialisée"); }}>Réinitialiser la démo</button>
-        {portfolioUrl && <a className="row" href={portfolioUrl} target="_top"><span>Voir le portfolio de Sacha Roy</span><Icon name="chevron" size={16} /></a>}
       </div>
-      <p className="fine">Saisonia · prototype réalisé pour un portfolio. Offres, entreprises et profils sont fictifs.</p>
+      <p className="fine">Saisonia · prototype. Offres, entreprises et profils sont fictifs.</p>
     </div>
   );
 }
